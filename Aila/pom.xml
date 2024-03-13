@@ -4,6 +4,37 @@
   <artifactId>Aila</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+  <dependencies>
+	  <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.30</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- 3. JSP에서 간단하게 java코드를 tag로 사용할 수 있게 도와주는 라이브러리
+				JavaStanderdTagLibrary>> el이랑 짝꿍처럼 사용함.-->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- 2. java코드와 sql구문을 자동으로 연결해주는mybatis 가져오는 방법 -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.5.6</version>
+		</dependency>
+
+		<!-- 1. oracle db를 사용하겠다고 드라이버 라이브러리를 가져오는 방법-->
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.4</version>
+		</dependency>
+  </dependencies>
   <build>
     <plugins>
       <plugin>
