@@ -21002,6 +21002,7 @@ code {
 
 /* Footer */
 .footer {
+	display: none;
   background: #F4F5F7;
   color: color(dark);
   padding: 30px 2.45rem;
@@ -21068,7 +21069,7 @@ code {
 }
 
 .img-xs {
-  width: 32px;
+ /* width: 32px;*/
   height: 32px;
 }
 
