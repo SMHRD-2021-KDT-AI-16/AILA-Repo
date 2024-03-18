@@ -16,12 +16,13 @@ import com.aila.controller.command;
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+
 	HashMap<String, command> map = new HashMap<>();
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init();
-		
 	}
+
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

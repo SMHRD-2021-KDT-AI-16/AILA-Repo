@@ -16511,7 +16511,8 @@ textarea.is-invalid.tt-hint, .select2-container--default .select2-selection--sin
 }
 
 .mb-2 {
-  margin-bottom: 0.5rem !important;
+  /*margin-bottom: 0.5rem !important;*/
+  margin: 0;
 }
 
 .mb-3, .template-demo .circle-progress-block {
@@ -29011,7 +29012,7 @@ div.tagsinput span.tag a {
 .sidebar .nav .nav-item .nav-link .menu-title {
   color: inherit;
   display: inline-block;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1;
   vertical-align: middle;
 }
@@ -29068,7 +29069,7 @@ div.tagsinput span.tag a {
   border-bottom: none;
 }
 .sidebar .nav:not(.sub-menu) {
-  margin-top: 0;
+  margin-top: 20px;
   margin-left: 0;
   margin-right: 0;
 }

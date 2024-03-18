@@ -80,7 +80,7 @@ $(function() {
   };
   var doughnutPieData = {
     datasets: [{
-      data: [30, 40, 30],
+      data: [70, 30],
       backgroundColor: [
         'rgba(255, 99, 132, 0.5)',
         'rgba(54, 162, 235, 0.5)',
@@ -101,9 +101,9 @@ $(function() {
 
     // These labels appear in the legend and in the tooltips when hovering different arcs
     labels: [
-      'Pink',
-      'Blue',
-      'Yellow',
+      '긍정',
+      '부정',
+      
     ]
   };
   var doughnutPieOptions = {
@@ -272,6 +272,16 @@ $(function() {
     var barChartCanvas = $("#barChart").get(0).getContext("2d");
     // This will get the first returned node in the jQuery collection.
     var barChart = new Chart(barChartCanvas, {
+      type: 'bar',
+      data: data,
+      options: options
+    });
+  }
+  
+    if ($("#barChart-c").length) {
+    var barChartCanvas2 = $("#barChart-c").get(0).getContext("2d");
+    // This will get the first returned node in the jQuery collection.
+    var barChart2 = new Chart(barChartCanvas2, {
       type: 'bar',
       data: data,
       options: options
