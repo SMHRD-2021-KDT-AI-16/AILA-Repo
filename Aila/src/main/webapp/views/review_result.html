@@ -49,6 +49,30 @@
       </li>
     </ul>
     <ul class="navbar-nav ms-auto">
+		<!-- 품목 선택 -->
+		<li class="nav-item dropdown d-none d-lg-block">
+        <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#"
+          data-bs-toggle="dropdown" aria-expanded="false"> 품목 선택 </a>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
+          aria-labelledby="messageDropdown">
+          
+          <a class="dropdown-item preview-item" id="keyword">
+            <div class="preview-item-content flex-grow py-2">
+              
+              <h6 style="margin: 0.2rem;">고구마</h6>
+            </div>
+          </a>
+          <a class="dropdown-item preview-item" id="pos-and-neg">
+            <div class="preview-item-content flex-grow py-2">
+              
+              <h6 style="margin: 0.2rem;">김치</h6>
+            </div>
+          </a>
+         
+          
+        </div>
+      </li>
+      <!-- 분석 종류 -->
       <li class="nav-item dropdown d-none d-lg-block">
         <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#"
           data-bs-toggle="dropdown" aria-expanded="false"> 키워드 빈도 </a>
@@ -57,22 +81,19 @@
           
           <a class="dropdown-item preview-item" id="keyword">
             <div class="preview-item-content flex-grow py-2">
-              <!--<p class="preview-subject ellipsis font-weight-medium text-dark">키워드 빈도</p>-->
-              <!--<p class="fw-light small-text mb-0">리뷰에 어떤 키워드가 얼마나 언급됐는지 확인해보세요</p>-->
+              
               <h6 style="margin: 0.2rem;">키워드 빈도</h6>
             </div>
           </a>
           <a class="dropdown-item preview-item" id="pos-and-neg">
             <div class="preview-item-content flex-grow py-2">
-              <!--<p class="preview-subject ellipsis font-weight-medium text-dark">감정 분석</p>
-              <p class="fw-light small-text mb-0">긍정적인 리뷰와 부정적인 리뷰 통계</p>-->
+              
               <h6 style="margin: 0.2rem;">감정 분석</h6>
             </div>
           </a>
           <a class="dropdown-item preview-item" id="sales-volume">
             <div class="preview-item-content flex-grow py-2">
-              <!--<p class="preview-subject ellipsis font-weight-medium text-dark">판매량 변화</p>
-              <p class="fw-light small-text mb-0">리뷰의 갯수로 추정하는 판매량 변화</p>-->
+              
               <h6 style="margin: 0.2rem;">판매량 변화</h6>
             </div>
           </a>
