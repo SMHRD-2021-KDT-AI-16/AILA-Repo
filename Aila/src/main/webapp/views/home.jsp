@@ -21,10 +21,10 @@
                 <p>Aliquam libero augue varius non odio nec faucibus congue<br>felis quisque a diam rutrum tempus massa
                     accumsan faucibus purus.</p>
             </header>
-            <form action="yourActionServlet" method="post">
-                <input id="login" type="password" placeholder="인증 키 입력 후 엔터"><br>
-                <a href="#main" class="button big scrolly">Learn More</button>
-            </form>
+          <input id="login" type="password" placeholder="인증 키 입력 후 엔터"><br>
+        
+        <a href="#main" class="button big scrolly">Learn More</a>
+        
         </div>
     </section>
 
