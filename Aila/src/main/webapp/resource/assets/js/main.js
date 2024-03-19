@@ -18,15 +18,28 @@
 		
 		// 로그인(나중에 수정)
 		$('#login').keypress(function(e){
-			var loginKey = 'test';
+			
 			var inputKey = $('#login').val();
 			if(e.keyCode == 13){
-				if(loginKey === inputKey){
-					e.preventDefault();
-					location.href = '../index.html'
-				}else{
-					alert('인증키를 다시 확인해주세요.')
-				}
+				e.preventDefault();
+				$.ajax({
+					url : 'Login.do',
+					data : {'inputKey':inputKey},
+					type : 'post',
+					success : function(data){
+						if(data == 'true'){
+							
+							alert('인증 성공')
+							location.href = 'Gotrend.do'
+						}else{
+							alert('인증키를 다시 확인해주세요.')
+						}
+					},
+					error : function(){
+						alert('통신실패')
+					}
+				})
+				
 			}
 		})
 
