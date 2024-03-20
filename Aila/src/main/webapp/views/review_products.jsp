@@ -124,6 +124,12 @@
                             <span class="menu-title">리뷰 분석</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+			            <a class="nav-link" href="Goreview_products.do">
+			              <i class="mdi mdi-grid-large menu-icon"></i>
+			              <span class="menu-title">뉴스</span>
+			            </a>
+			          </li>
                 </ul>
             </nav>
             <!-- End Sidebar -->
@@ -190,4 +196,5 @@
     <script src="../resource/assets/js/chart.js"></script>
     <!-- End Scripts -->
 </body>
+
 </html>

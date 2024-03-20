@@ -8,6 +8,11 @@
 <typeAliases>
 		<typeAlias type="com.aila.model.CompanyVO" alias="Company"/>
 		<typeAlias type="com.aila.model.ReviewVO" alias="Review"/>
+		<typeAlias type="com.aila.model.FoodVO" alias="Food"/>
+		<typeAlias type="com.aila.model.NewsVO" alias="News"/>
+		<typeAlias type="com.aila.model.DeepAnalysis" alias="DeepAnalysis"/>
+		<typeAlias type="com.aila.model.RelatedSearchVO" alias="RelatedSearch"/>
+		<typeAlias type="com.aila.model.TrendVO" alias="Trend"/>
 	</typeAliases>
 	
 	<environments default="development">

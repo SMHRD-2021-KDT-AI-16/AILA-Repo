@@ -10,10 +10,11 @@ import lombok.Setter;
 
 public class ReviewVO {
 	
-	private String review_idx;
+	private int review_idx;
+	private int food_idx;
 	private String review_content;
-	private String review_source;
-	private int review_date;
+	private String created_at;
 	private int review_rating;
-
+	private String review_source;
+	
 } 

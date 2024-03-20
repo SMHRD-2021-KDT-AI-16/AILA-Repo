@@ -21071,7 +21071,7 @@ code {
 
 .img-xs {
  /* width: 32px;*/
-  height: 32px;
+  height: 24px;
 }
 
 .img-ss, .settings-panel .color-tiles .tiles {
@@ -21804,7 +21804,8 @@ code {
   line-height: 18px;
 }
 .home-tab .statistics-details {
-  margin-bottom: 48px;
+  margin-bottom: 32px;
+  margin-top: 8px;
 }
 .home-tab .statistics-details .statistics-title {
   font-style: normal;
