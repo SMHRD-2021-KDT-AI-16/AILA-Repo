@@ -76,7 +76,7 @@
               aria-labelledby="messageDropdown">
               <a class="dropdown-item preview-item" id="keyword">
                 <div class="preview-item-content flex-grow py-2">
-                  <h6 style="margin: 0.2rem;">키워드 빈도</h6>
+                  <h6 style="margin: 0.2rem;">키워드 분석</h6>
                 </div>
               </a>
               <a class="dropdown-item preview-item" id="pos-and-neg">

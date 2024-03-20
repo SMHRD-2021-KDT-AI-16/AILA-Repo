@@ -46,7 +46,7 @@
         <ul class="navbar-nav">
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
             <h1 class="welcome-text"><span class="text-black fw-bold">리뷰 분석</span></h1>
-            <h3 class="welcome-sub-text">키워드 빈도 </h3>
+            <h3 class="welcome-sub-text">키워드 분석 </h3>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -71,12 +71,12 @@
           <!-- 분석 종류 -->
           <li class="nav-item dropdown d-none d-lg-block">
             <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#"
-              data-bs-toggle="dropdown" aria-expanded="false"> 키워드 빈도 </a>
+              data-bs-toggle="dropdown" aria-expanded="false"> 키워드 분석 </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
               aria-labelledby="messageDropdown">
               <a class="dropdown-item preview-item" id="keyword">
                 <div class="preview-item-content flex-grow py-2">
-                  <h6 style="margin: 0.2rem;">키워드 빈도</h6>
+                  <h6 style="margin: 0.2rem;">키워드 분석</h6>
                 </div>
               </a>
               <a class="dropdown-item preview-item" id="pos-and-neg">
