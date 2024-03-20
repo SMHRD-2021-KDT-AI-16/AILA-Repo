@@ -13,6 +13,6 @@ public class NewsVO {
 	private int news_idx;
 	private String news_name;
 	private String news_link;
-	private int created_at;
+	private String created_at;
 	private int news_publisher;
 }

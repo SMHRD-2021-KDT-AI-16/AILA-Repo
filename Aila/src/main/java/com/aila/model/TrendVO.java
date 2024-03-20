@@ -12,7 +12,7 @@ import lombok.Setter;
 public class TrendVO {
 
 	private String trend_index;
-	private int created_at;
+	private String created_at;
 	private String search_form;
 	private int search_rank;
 	private String search_word;

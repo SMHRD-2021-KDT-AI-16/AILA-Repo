@@ -13,6 +13,6 @@ public class DeepAnalysis {
 	private int deep_idx;
 	private int food_idx;
 	private String deep_result;
-	private int created_at;
+	private String created_at;
 	
 }
