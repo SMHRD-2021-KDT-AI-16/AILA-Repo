@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../resource/assets/css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="../resource/assets/images/favicon.png" />
+   
 </head>
 
 <body>
@@ -130,16 +131,16 @@
 
                     <div class="row">
                         <div class="col-sm-12" style="position: relative;">
-                            <!--<div class="home-tab">
+                            <div class="home-tab">
 								<div class="statistics-details d-flex align-items-center">
 									<div style="width: 50%; margin-left: 1.5rem;">
-										<h3 class="rate-percentage">인기 검색어</h3>
+										<!-- <h3 class="rate-percentage">인기 검색어</h3> -->
 									</div>
 									<div style="width: 50%; margin-left: 1.5rem;">
-										<h3 class="rate-percentage">날씨 정보</h3>
+										<!-- <h3 class="rate-percentage">내일 날씨</h3> -->
 									</div>
 								</div>
-							</div>-->
+							</div>
                             <div class="row flex-grow" style="position: absolute; width: 100%;">
                                 
                                 <div class="col-md-6 col-lg-6 grid-margin stretch-card">
@@ -234,11 +235,13 @@
                                 </div>
                                 <div class="col-md-6 col-lg-6 grid-margin stretch-card">
                                     <div class="card">
-                                        <div class="card-body card-rounded">
+                                        <div class="card-body card-rounded" style="height: 750px;">
                                             <div class="d-flex align-items-center justify-content-between mb-3">
-                                                <h4 class="card-title card-title-dash">기상 정보</h4>
+                                                <h4 class="card-title card-title-dash">내일 날씨</h4>
                                             </div>
-                                            <div style="background-color: dodgerblue; width: 100%; height: 90%; border-radius: 15px;"></div>
+                                            <div style="background-color: dodgerblue; width: 100%; height: 90%; border-radius: 15px;">
+                                            	<iframe src="../resource/partials/map.html" width="100%" height="100%" frameborder='0' scrolling="no"></iframe>
+                                            </div>
                                             
                                         </div>
                                     </div>
@@ -284,6 +287,9 @@
             <!-- Custom js for this page-->
             <script src="../resource/assets/js/chart.js"></script>
             <!-- End custom js for this page-->
+            <script type="text/javascript">
+            	
+            </script>
 </body>
 
 </html>

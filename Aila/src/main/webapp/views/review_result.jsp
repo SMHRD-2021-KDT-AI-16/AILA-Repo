@@ -74,17 +74,17 @@
               data-bs-toggle="dropdown" aria-expanded="false"> 키워드 분석 </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
               aria-labelledby="messageDropdown">
-              <a class="dropdown-item preview-item" id="keyword">
+              <a href="Goreview_result.do" class="dropdown-item preview-item" id="keyword">
                 <div class="preview-item-content flex-grow py-2">
                   <h6 style="margin: 0.2rem;">키워드 분석</h6>
                 </div>
               </a>
-              <a class="dropdown-item preview-item" id="pos-and-neg">
+              <a href="Goreview_result2.do" class="dropdown-item preview-item" id="pos-and-neg">
                 <div class="preview-item-content flex-grow py-2">
                   <h6 style="margin: 0.2rem;">감정 분석</h6>
                 </div>
               </a>
-              <a class="dropdown-item preview-item" id="sales-volume">
+              <a href="Goreview_result3.do" class="dropdown-item preview-item" id="sales-volume">
                 <div class="preview-item-content flex-grow py-2">
                   <h6 style="margin: 0.2rem;">월별 리뷰 추세</h6>
                 </div>
@@ -148,7 +148,7 @@
               <span class="menu-title">트렌드</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="Goreview_products.do">
               <i class="mdi mdi-grid-large menu-icon"></i>
               <span class="menu-title">리뷰 분석</span>
@@ -172,8 +172,46 @@
           <div class="row">
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
+                <div class="card-body" style="height: 400px;">
+                  <h4 class="card-title">토픽 모델링</h4>
+                  <canvas id="barChart"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body" style="height: 400px;">
+                  <h4 class="card-title">토픽 모델링</h4>
+                  <canvas id="barChart-c"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Bar chart</h4>
+                  <h4 class="card-title">전체 키워드 순위</h4>
+                  <canvas id="barChart2"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">전체 키워드 순위</h4>
+                  <canvas id="barChart2-c"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">긍정/부정 top10</h4>
                   <canvas id="barChart"></canvas>
                 </div>
               </div>
@@ -181,7 +219,26 @@
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Bar chart</h4>
+                  <h4 class="card-title">긍정/부정 top10</h4>
+                  <canvas id="barChart-c"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">토픽 top10</h4>
+                  <canvas id="barChart"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">토픽 top10</h4>
                   <canvas id="barChart-c"></canvas>
                 </div>
               </div>
