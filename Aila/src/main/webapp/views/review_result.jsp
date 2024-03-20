@@ -127,7 +127,7 @@
           <div class="sidebar-bg-options" id="sidebar-dark-theme">
             <div class="img-ss rounded-circle bg-dark border me-3"></div>Dark
           </div>
-          <p class="settings-heading mt-2">HEADER SKINS</p>
+          <p class="settings-heading mt-2">HEADER SKINS</p>a
           <div class="color-tiles mx-0 px-4">
             <div class="tiles success"></div>
             <div class="tiles warning"></div>
