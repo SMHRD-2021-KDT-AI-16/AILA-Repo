@@ -29,6 +29,105 @@ $(function() {
       fill: false
     }]
   };
+  
+    var keywordData = {
+    labels: ["맛있다", "짱", "고구마", "최고", "집에", "가고", "싶다", "졸려", "그만", "할래"],
+    datasets: [{
+      label: '# of Votes',
+      data: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(54, 162, 235, 1)',
+      ],
+      borderWidth: 1,
+      fill: false
+    }]
+  };
+  
+  var multiBarData = {
+    labels: ["1위", "2위", "3위", "4위", "5위", "6위", "7위", "8위", "9위", "10위"],
+    datasets: [{
+      label: '긍정',
+      data: [20,19,18,17,16,15,14,13,12,11],
+      backgroundColor: [
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)'
+      ],
+      borderColor: [
+        'rgba(54, 162, 235, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(54, 162, 235, 1)'
+      ],
+      borderWidth: 1,
+      fill: false
+    },
+    {
+		label: '부정',
+		data: [10,9,8,7,6,5,4,3,2,1],
+		backgroundColor: [
+			'rgba(255, 99, 132, 0.2)',
+			'rgba(255, 99, 132, 0.2)',
+			'rgba(255, 99, 132, 0.2)',
+			'rgba(255, 99, 132, 0.2)',
+			'rgba(255, 99, 132, 0.2)',
+			'rgba(255, 99, 132, 0.2)',
+			'rgba(255, 99, 132, 0.2)',
+			'rgba(255, 99, 132, 0.2)',
+			'rgba(255, 99, 132, 0.2)',
+			'rgba(255, 99, 132, 0.2)'
+		],
+		borderColor: [
+			'rgba(255,99,132,1)',
+			'rgba(255,99,132,1)',
+			'rgba(255,99,132,1)',
+			'rgba(255,99,132,1)',
+			'rgba(255,99,132,1)',
+			'rgba(255,99,132,1)',
+			'rgba(255,99,132,1)',
+			'rgba(255,99,132,1)',
+			'rgba(255,99,132,1)',
+			'rgba(255,99,132,1)'
+		],
+		borderWidth: 1,
+      	fill: false
+	}]
+  };
+  
   var multiLineData = {
     labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
     datasets: [{
@@ -87,7 +186,8 @@ $(function() {
         radius: 0
       }
     },
-    indexAxis: 'y'
+    indexAxis: 'y',
+    maintainAspectRatio: false
 
   };
   
@@ -298,6 +398,26 @@ $(function() {
       type: 'bar',
       data: data,
       options: barOptions
+    });
+  }
+  
+  if ($("#barChart2").length) {
+    var barChartCanvas3 = $("#barChart2").get(0).getContext("2d");
+    // This will get the first returned node in the jQuery collection.
+    var barChart3 = new Chart(barChartCanvas3, {
+      type: 'bar',
+      data: keywordData,
+      options: options
+    });
+  }
+  
+  if ($("#barChart2-c").length) {
+    var barChartCanvas4 = $("#barChart2-c").get(0).getContext("2d");
+    // This will get the first returned node in the jQuery collection.
+    var barChart4 = new Chart(barChartCanvas4, {
+      type: 'bar',
+      data: keywordData,
+      options: options
     });
   }
 
