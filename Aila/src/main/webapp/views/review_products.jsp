@@ -140,7 +140,7 @@
                                             <div class="d-flex align-items-center justify-content-between mb-3">
                                                 <h4 class="card-title  card-title-dash">고구마</h4>
                                             </div>
-                                            <a>
+                                            <a href="Goreview_result.do">
                                                 <img src="../resource/assets/images/goguma.jpg" style="width: 100%;" />
                                             </a>
                                         </div>
@@ -152,7 +152,7 @@
                                             <div class="d-flex align-items-center justify-content-between mb-3">
                                                 <h4 class="card-title card-title-dash">총각김치</h4>
                                             </div>
-                                            <a>
+                                            <a href="Goreview_result.do">
                                                 <img src="../resource/assets/images/gimchi.jpg" style="width: 100%;" />
                                             </a>
                                         </div>

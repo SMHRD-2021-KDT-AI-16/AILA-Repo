@@ -7,6 +7,7 @@
 
 <typeAliases>
 		<typeAlias type="com.aila.model.CompanyVO" alias="Company"/>
+		<typeAlias type="com.aila.model.ReviewVO" alias="Review"/>
 	</typeAliases>
 	
 	<environments default="development">
