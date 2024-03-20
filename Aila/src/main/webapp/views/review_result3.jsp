@@ -46,7 +46,7 @@
         <ul class="navbar-nav">
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
             <h1 class="welcome-text"><span class="text-black fw-bold">리뷰 분석</span></h1>
-            <h3 class="welcome-sub-text">키워드 빈도 </h3>
+            <h3 class="welcome-sub-text">월별 리뷰 추세 </h3>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -71,7 +71,7 @@
           <!-- 분석 종류 -->
           <li class="nav-item dropdown d-none d-lg-block">
             <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#"
-              data-bs-toggle="dropdown" aria-expanded="false"> 키워드 빈도 </a>
+              data-bs-toggle="dropdown" aria-expanded="false"> 월별 리뷰 추세 </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
               aria-labelledby="messageDropdown">
               <a class="dropdown-item preview-item" id="keyword">
@@ -174,7 +174,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Bar chart</h4>
-                  <canvas id="barChart"></canvas>
+                  <canvas id="linechart-multi"></canvas>
                 </div>
               </div>
             </div>
@@ -182,7 +182,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Bar chart</h4>
-                  <canvas id="barChart-c"></canvas>
+                  <canvas id="linechart-multi-c"></canvas>
                 </div>
               </div>
             </div>
