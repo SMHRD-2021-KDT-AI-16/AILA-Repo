@@ -32,7 +32,7 @@ $(function() {
   var multiLineData = {
     labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
     datasets: [{
-        label: 'Dataset 1',
+        label: '긍정 리뷰',
         data: [12, 19, 3, 5, 2, 3],
         borderColor: [
           '#587ce4'
@@ -40,17 +40,9 @@ $(function() {
         borderWidth: 2,
         fill: false
       },
+      
       {
-        label: 'Dataset 2',
-        data: [5, 23, 7, 12, 42, 23],
-        borderColor: [
-          '#ede190'
-        ],
-        borderWidth: 2,
-        fill: false
-      },
-      {
-        label: 'Dataset 3',
+        label: '부정 리뷰',
         data: [15, 10, 21, 32, 12, 33],
         borderColor: [
           '#f44252'
@@ -78,6 +70,27 @@ $(function() {
     }
 
   };
+  
+    var barOptions = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    },
+    legend: {
+      display: false
+    },
+    elements: {
+      point: {
+        radius: 0
+      }
+    },
+    indexAxis: 'y'
+
+  };
+  
   var doughnutPieData = {
     datasets: [{
       data: [70, 30],
@@ -101,8 +114,8 @@ $(function() {
 
     // These labels appear in the legend and in the tooltips when hovering different arcs
     labels: [
-      '긍정',
       '부정',
+      '긍정',
       
     ]
   };
@@ -274,7 +287,7 @@ $(function() {
     var barChart = new Chart(barChartCanvas, {
       type: 'bar',
       data: data,
-      options: options
+      options: barOptions
     });
   }
   
@@ -284,7 +297,7 @@ $(function() {
     var barChart2 = new Chart(barChartCanvas2, {
       type: 'bar',
       data: data,
-      options: options
+      options: barOptions
     });
   }
 
@@ -300,6 +313,15 @@ $(function() {
   if ($("#linechart-multi").length) {
     var multiLineCanvas = $("#linechart-multi").get(0).getContext("2d");
     var lineChart = new Chart(multiLineCanvas, {
+      type: 'line',
+      data: multiLineData,
+      options: options
+    });
+  }
+  
+  if ($("#linechart-multi-c").length) {
+    var multiLineCanvas2 = $("#linechart-multi-c").get(0).getContext("2d");
+    var lineChart2 = new Chart(multiLineCanvas2, {
       type: 'line',
       data: multiLineData,
       options: options

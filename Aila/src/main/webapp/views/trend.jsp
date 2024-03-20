@@ -35,10 +35,10 @@
                     </button>
                 </div>
                 <div>
-                    <a class="navbar-brand brand-logo" href="../../index.html">
+                    <a class="navbar-brand brand-logo" href="Gotrend.do">
                         <img src="../resource/assets/images/logo_h.png" alt="logo" />
                     </a>
-                    <a class="navbar-brand brand-logo-mini" href="../../index.html">
+                    <a class="navbar-brand brand-logo-mini" href="Gotrend.do">
                         <img src="../resource/assets/images/logo_mini.png" alt="logo" />
                     </a>
                 </div>
@@ -109,14 +109,14 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="../../index.html">
+                        <a class="nav-link" href="Gotrend.do">
                             <i class="mdi mdi-chart-line menu-icon"></i>
                             <span class="menu-title">트렌드</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="../../index.html">
+                        <a class="nav-link" href="Goreview_products.do">
                             <i class="mdi mdi-grid-large menu-icon"></i>
                             <span class="menu-title">리뷰 분석</span>
                         </a>
