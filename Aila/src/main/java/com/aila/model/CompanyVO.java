@@ -1,10 +1,12 @@
 package com.aila.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
+@NoArgsConstructor
 @Setter
+@Getter
 public class CompanyVO {
 
 	private String company_index;
