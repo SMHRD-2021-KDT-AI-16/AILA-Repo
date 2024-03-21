@@ -140,6 +140,10 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="row flex-grow">
+                            	<script>
+                            		for()
+                            	
+                            	</script>
                                 <div class="col-md-6 food grid-margin stretch-card">
                                     <div class="card">
                                         <div class="card-body card-rounded">

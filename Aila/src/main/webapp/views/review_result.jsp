@@ -155,7 +155,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Goreview_products.do">
+            <a class="nav-link" href="Gotrend.do">
               <i class="mdi mdi-grid-large menu-icon"></i>
               <span class="menu-title">뉴스</span>
             </a>
