@@ -7,4 +7,7 @@
 	<select id="printReview" parameterType="Company" resultType="Review">
 		select * from review_info limit 10;
 	</select>
+	<select id="FoodInfo" parameterType="Company" resultType="Food">
+		select * from food_info limit 10;
+	</select>
 </mapper>

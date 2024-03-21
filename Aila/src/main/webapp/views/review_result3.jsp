@@ -21,6 +21,11 @@
   <link rel="stylesheet" href="../resource/assets/css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../resource/assets/images/favicon.png" />
+     <style>
+	   	.image-with-space {
+		margin-right: 13px; /* 그림의 오른쪽에 20px의 공백 추가 */
+		}
+   	</style>
 </head>
 
 <body>
@@ -140,22 +145,31 @@
       </div>
       <!-- partial -->
       <!-- partial:../../partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="Trend.do">
-              <i class="mdi mdi-chart-line menu-icon"></i>
-              <span class="menu-title">트렌드</span>
-            </a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="Goreview_products.do">
-              <i class="mdi mdi-grid-large menu-icon"></i>
-              <span class="menu-title">리뷰 분석</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+                  <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Trend.do">
+                            <i class="mdi mdi-chart-line menu-icon"></i>
+                            <span class="menu-title">트렌드</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="Goreview_products.do">
+                            <img class="image-with-space" src="../resource/assets/images/review.png">
+                            <span class="menu-title">리뷰 분석</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="Gonews.do">
+                            <img class="image-with-space" src="../resource/assets/images/news.png">
+                            <span class="menu-title">뉴스</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">

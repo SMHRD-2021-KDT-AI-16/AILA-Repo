@@ -12,12 +12,13 @@ public class FoodDAO {
 	
 private SqlSessionFactory factory = SqlSessionManager.getFactory();
 	
-	public List<FoodVO> FoodInfo(String food_idx){
+	public List<FoodVO> FoodInfo(){
 
 		List<FoodVO> Foods = null;
+		
 		SqlSession sqlsession = factory.openSession();
 		try {
-			Foods = sqlsession.selectList("FoodInfo", food_idx);
+			Foods = sqlsession.selectList("FoodInfo");
 		} catch (Exception e) {
 			// TODO: handle exception
 		}finally {
