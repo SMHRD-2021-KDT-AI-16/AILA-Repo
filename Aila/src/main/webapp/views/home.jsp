@@ -12,15 +12,21 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../resource/assets/css/main.css">
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Poor+Story&family=Sunflower:wght@300&display=swap')
+	</style>
+    
 </head>
 <body>
     <!-- Banner -->
     <section id="banner">
         <div class="inner">
-            <header><img src="../resource/assets/images/logo_h_fullname.png">
-                <p>Aliquam libero augue varius non odio nec faucibus congue<br>felis quisque a diam rutrum tempus massa
-                    accumsan faucibus purus.</p>
+            <header>
+            <img src="../resource/assets/images/logo_h_fullname.png">
             </header>
+            <p></p>
+            <p></p>
+            <p></p>
           <input id="login" type="password" placeholder="인증 키 입력 후 엔터"><br>
         
         <a href="#main" class="button big scrolly">Learn More</a>
@@ -82,19 +88,18 @@
     </div>
 
     <!-- Footer -->
-    <footer id="footer">
-        <div class="copyright">
-            <ul class="icons">
-                <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                <li><a href="#" class="icon fa-snapchat"><span class="label">Snapchat</span></a></li>
-            </ul>
-        </div>
-    </footer>
-    <div class="copyright">
-        Site made with: <a href="https://templated.co/">TEMPLATED.CO</a>
-    </div>
+    <footer>
+		<div class="footer-container container-lg">
+			<div>
+				<div class="copyright">
+						<span>전남 목포시 산정로212번길 13 (구, 청호중학교) |</span>
+						<span>T. 062-655-3510 |</span>
+						<span>E. smhrd@smhrd.or.kr |</span>
+					<p>2024 BY Aila</p>
+				</div>
+			</div>
+		</div>
+	</footer>
     <!-- Scripts -->
     <script src="../resource/assets/js/jquery.min.js"></script>
     <script src="../resource/assets/js/jquery.scrolly.min.js"></script>

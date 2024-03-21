@@ -28,6 +28,10 @@
         .food img{
             border-radius: 15px;
         }
+       	
+       	.image-with-space {
+		margin-right: 13px; /* 그림의 오른쪽에 20px의 공백 추가 */
+		}
     </style>
 </head>
 <body>
@@ -110,7 +114,7 @@
             <!-- End Settings Panel -->
 
             <!-- Sidebar -->
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                        <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link" href="Trend.do">
@@ -118,18 +122,21 @@
                             <span class="menu-title">트렌드</span>
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="Goreview_products.do">
-                            <i class="mdi mdi-grid-large menu-icon"></i>
+                            <img class="image-with-space" src="../resource/assets/images/review.png">
                             <span class="menu-title">리뷰 분석</span>
                         </a>
                     </li>
+                    
                     <li class="nav-item">
-			            <a class="nav-link" href="Goreview_products.do">
-			              <i class="mdi mdi-grid-large menu-icon"></i>
-			              <span class="menu-title">뉴스</span>
-			            </a>
-			          </li>
+                        <a class="nav-link" href="Gonews.do">
+                            <img class="image-with-space" src="../resource/assets/images/news.png">
+                            <span class="menu-title">뉴스</span>
+                        </a>
+                    </li>
+
                 </ul>
             </nav>
             <!-- End Sidebar -->
@@ -140,6 +147,10 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="row flex-grow">
+                            	<script>
+                            		for()
+                            	
+                            	</script>
                                 <div class="col-md-6 food grid-margin stretch-card">
                                     <div class="card">
                                         <div class="card-body card-rounded">

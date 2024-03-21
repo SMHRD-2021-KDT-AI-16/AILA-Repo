@@ -7,7 +7,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>트렌드</title>
+    <title>뉴스</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../resource/assets/vendors/feather/feather.css">
     <link rel="stylesheet" href="../resource/assets/vendors/mdi/css/materialdesignicons.min.css">
@@ -22,12 +22,11 @@
     <link rel="stylesheet" href="../resource/assets/css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="../resource/assets/images/favicon.png" />
-    <style>
+   	<style>
 	   	.image-with-space {
 		margin-right: 13px; /* 그림의 오른쪽에 20px의 공백 추가 */
 		}
    	</style>
-   
 </head>
 
 <body>
@@ -113,7 +112,7 @@
 
             <!-- partial -->
             <!-- partial:../../partials/_sidebar.html -->
-                       <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link" href="Trend.do">
