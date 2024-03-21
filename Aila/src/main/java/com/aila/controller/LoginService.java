@@ -17,7 +17,6 @@ public class LoginService implements command {
 			throws ServletException, IOException {
 
 		String inputKey = request.getParameter("inputKey");
-		System.out.println(inputKey);
 		CompanyVO vo = new CompanyVO();
 		vo.setCompany_key(inputKey);
 		CompanyVO result = new MemberDAO().login(vo);

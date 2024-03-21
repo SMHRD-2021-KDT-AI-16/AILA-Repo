@@ -30,7 +30,7 @@
 						if(data == 'true'){
 							
 							alert('인증 성공')
-							location.href = 'Gotrend.do'
+							location.href = 'Trend.do'
 						}else{
 							alert('인증키를 다시 확인해주세요.')
 						}

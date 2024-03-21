@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +26,7 @@
 </head>
 
 <body>
-    <div class="container-scroller">
+    <div>
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
@@ -36,10 +37,10 @@
                     </button>
                 </div>
                 <div>
-                    <a class="navbar-brand brand-logo" href="Gotrend.do">
+                    <a class="navbar-brand brand-logo" href="Trend.do">
                         <img src="../resource/assets/images/logo_h.png" alt="logo" />
                     </a>
-                    <a class="navbar-brand brand-logo-mini" href="Gotrend.do">
+                    <a class="navbar-brand brand-logo-mini" href="Trend.do">
                         <img src="../resource/assets/images/logo_mini.png" alt="logo" />
                     </a>
                 </div>
@@ -110,7 +111,7 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="Gotrend.do">
+                        <a class="nav-link" href="Trend.do">
                             <i class="mdi mdi-chart-line menu-icon"></i>
                             <span class="menu-title">트렌드</span>
                         </a>
@@ -147,89 +148,19 @@
                                     <div class="card">
                                         <div class="card-body card-rounded">
                                             <div class="d-flex align-items-center justify-content-between mb-3">
-                                                <h4 class="card-title card-title-dash">인기 검색어</h4>
+                                                <h4 class="card-title card-title-dash">인기 검색어 (일간)</h4>
                                             </div>
+                                            <c:forEach var="t" items="${top10}">
                                             <div class="list align-items-center border-bottom py-2">
                                                 <div class="wrapper w-100">
                                                     <p class="mb-2 font-weight-medium">
-                                                        1. 
+                                                        ${t.search_rank}위 ${t.search_word}
                                                     </p>
                                                     
                                                 </div>
                                             </div>
-                                            <div class="list align-items-center border-bottom py-2">
-                                                <div class="wrapper w-100">
-                                                    <p class="mb-2 font-weight-medium">
-                                                        2.
-                                                    </p>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="list align-items-center border-bottom py-2">
-                                                <div class="wrapper w-100">
-                                                    <p class="mb-2 font-weight-medium">
-                                                        3.
-                                                    </p>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="list align-items-center border-bottom py-2">
-                                                <div class="wrapper w-100">
-                                                    <p class="mb-2 font-weight-medium">
-                                                        4.
-                                                    </p>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="list align-items-center border-bottom py-2">
-                                                <div class="wrapper w-100">
-                                                    <p class="mb-2 font-weight-medium">
-                                                        5.
-                                                    </p>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="list align-items-center border-bottom py-2">
-                                                <div class="wrapper w-100">
-                                                    <p class="mb-2 font-weight-medium">
-                                                        6.
-                                                    </p>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="list align-items-center border-bottom py-2">
-                                                <div class="wrapper w-100">
-                                                    <p class="mb-2 font-weight-medium">
-                                                        7.
-                                                    </p>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="list align-items-center border-bottom py-2">
-                                                <div class="wrapper w-100">
-                                                    <p class="mb-2 font-weight-medium">
-                                                        8.
-                                                    </p>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="list align-items-center border-bottom py-2">
-                                                <div class="wrapper w-100">
-                                                    <p class="mb-2 font-weight-medium">
-                                                        9.
-                                                    </p>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="list align-items-center border-bottom py-2">
-                                                <div class="wrapper w-100">
-                                                    <p class="mb-2 font-weight-medium">
-                                                        10.
-                                                    </p>
-                                                    
-                                                </div>
-                                            </div>
-
+                                            </c:forEach>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -240,7 +171,7 @@
                                                 <h4 class="card-title card-title-dash">내일 날씨</h4>
                                             </div>
                                             <div style="background-color: dodgerblue; width: 100%; height: 90%; border-radius: 15px;">
-                                            	<iframe src="../resource/partials/map.html" width="100%" height="100%" frameborder='0' scrolling="no"></iframe>
+                                            	<iframe src="../resource/partials/weathermap.html" width="100%" height="100%" frameborder='0' scrolling="no"></iframe>
                                             </div>
                                             
                                         </div>

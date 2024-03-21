@@ -29,5 +29,6 @@
 	
 	<mappers>
 		<mapper resource="com/aila/db/MemberMapper.xml"></mapper>
+		<mapper resource="com/aila/db/TrendMapper.xml"></mapper>
 	</mappers>
 </configuration>

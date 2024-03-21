@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.aila.controller.LoginService;
+import com.aila.controller.TrendService;
 import com.aila.controller.command;
 
 @WebServlet("*.do")
@@ -25,13 +26,13 @@ public class FrontController extends HttpServlet {
 			super.init();
 			
 			map.put("views/Login.do", new LoginService());
+			map.put("views/Trend.do", new TrendService());
 			
 		}
 
 		protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
 			String uri = request.getRequestURI();
-			System.out.println(uri);
 			String cp = request.getContextPath();
 			String path = uri.substring(cp.length()+1);
 			
@@ -41,20 +42,15 @@ public class FrontController extends HttpServlet {
 			command com = null;
 			if (path.contains("Go")){
 				finalpath = path.replace("Go", "").replace(".do", ".jsp").replace("views/", "");
-				System.out.println(finalpath);
 			} else {
-				System.out.println(path);
 				com = map.get(path);
-				System.out.println(com);
 				finalpath = com.execute(request, response);
 			}
 			
 			if (finalpath != null) {
 				if (finalpath.contains("redirect:/")) {
-					System.out.println(finalpath);
 					response.sendRedirect(finalpath.replaceAll("redirect:/", ""));
 				} else {
-					System.out.println(finalpath);
 					RequestDispatcher rd = request.getRequestDispatcher(finalpath);
 					rd.forward(request, response);
 				}
