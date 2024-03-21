@@ -34,10 +34,10 @@
           </button>
         </div>
         <div>
-          <a class="navbar-brand brand-logo" href="Gotrend.do">
+          <a class="navbar-brand brand-logo" href="Trend.do">
             <img src="../resource/assets/images/logo_h.png" alt="logo" />
           </a>
-          <a class="navbar-brand brand-logo-mini" href="Gotrend.do">
+          <a class="navbar-brand brand-logo-mini" href="Trend.do">
             <img src="../resource/assets/images/logo_mini.png" alt="logo" />
           </a>
         </div>
@@ -143,7 +143,7 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="Gotrend.do">
+            <a class="nav-link" href="Trend.do">
               <i class="mdi mdi-chart-line menu-icon"></i>
               <span class="menu-title">트렌드</span>
             </a>
@@ -173,8 +173,8 @@
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Line chart</h4>
-                  <canvas id="lineChart"></canvas>
+                  <h4 class="card-title">Bar chart</h4>
+                  <canvas id="barChart2"></canvas>
                 </div>
               </div>
             </div>
@@ -182,7 +182,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Bar chart</h4>
-                  <canvas id="barChart2"></canvas>
+                  <canvas id="barChart2-c"></canvas>
                 </div>
               </div>
             </div>
@@ -192,7 +192,7 @@
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Line chart</h4>
+                  <h4 class="card-title">Doughnut chart</h4>
                   <canvas id="doughnutChart"></canvas>
                 </div>
               </div>
@@ -200,7 +200,7 @@
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Bar chart</h4>
+                  <h4 class="card-title">Doughnut chart</h4>
                   <canvas id="pieChart"></canvas>
                 </div>
               </div>

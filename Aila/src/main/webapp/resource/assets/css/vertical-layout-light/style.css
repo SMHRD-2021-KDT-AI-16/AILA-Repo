@@ -16512,7 +16512,7 @@ textarea.is-invalid.tt-hint, .select2-container--default .select2-selection--sin
 
 .mb-2 {
   /*margin-bottom: 0.5rem !important;*/
-  margin: 0;
+  margin: 0.5rem;
 }
 
 .mb-3, .template-demo .circle-progress-block {

@@ -42,10 +42,10 @@
                     </button>
                 </div>
                 <div>
-                    <a class="navbar-brand brand-logo" href="Gotrend.do">
+                    <a class="navbar-brand brand-logo" href="Trend.do">
                         <img src="../resource/assets/images/logo_h.png" alt="logo" />
                     </a>
-                    <a class="navbar-brand brand-logo-mini" href="Gotrend.do">
+                    <a class="navbar-brand brand-logo-mini" href="Trend.do">
                         <img src="../resource/assets/images/logo_mini.png" alt="logo" />
                     </a>
                 </div>
@@ -113,7 +113,7 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="Gotrend.do">
+                        <a class="nav-link" href="Trend.do">
                             <i class="mdi mdi-chart-line menu-icon"></i>
                             <span class="menu-title">트렌드</span>
                         </a>

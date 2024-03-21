@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aila.db.TrendMapper">
+	<select id="showTop10" resultType="Trend">
+		select a.* from (select * from trend_info where search_form = '네이버' order by created_at desc limit 10)a order by search_rank;	
+	</select>
+</mapper>
