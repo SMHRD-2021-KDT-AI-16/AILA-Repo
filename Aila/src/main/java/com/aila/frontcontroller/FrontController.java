@@ -32,7 +32,7 @@ public class FrontController extends HttpServlet {
 			map.put("views/Logout.do", new LogoutService());
 			map.put("views/Trend.do", new TrendService());
 			map.put("views/News.do", new NewsService());
-			map.put("views/review.do", new ReviewService());
+			map.put("views/Review.do", new ReviewService());
 }
 
 		protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -61,6 +61,5 @@ public class FrontController extends HttpServlet {
 				}
 			}
 		}
-
 
 }
