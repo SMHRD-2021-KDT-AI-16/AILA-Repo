@@ -33,5 +33,6 @@
 		<mapper resource="com/aila/db/MemberMapper.xml"></mapper>
 		<mapper resource="com/aila/db/TrendMapper.xml"></mapper>
 		<mapper resource="com/aila/db/review_result.xml"></mapper>
+		<mapper resource="com/aila/db/NewsMapper.xml"></mapper>
 	</mappers>
 </configuration>

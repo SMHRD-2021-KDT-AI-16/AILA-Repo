@@ -11,8 +11,9 @@ import lombok.Setter;
 public class NewsVO {
 
 	private int news_idx;
-	private String news_name;
+	private String news_key;
+	private String news_title;
 	private String news_link;
+	private String news_publisher;
 	private String created_at;
-	private int news_publisher;
 }

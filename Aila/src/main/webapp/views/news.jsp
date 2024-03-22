@@ -26,6 +26,9 @@
 	   	.image-with-space {
 		margin-right: 13px; /* 그림의 오른쪽에 20px의 공백 추가 */
 		}
+		a {
+			cursor: pointer;
+		}
    	</style>
 </head>
 
@@ -129,9 +132,9 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="Gonews.do">
+                        <a class="nav-link" href="News.do">
                             <img class="image-with-space" src="../resource/assets/images/news.png">
-                            <span class="menu-title">뉴스</span>
+                            <span class="menu-title">뉴스</span>                            
                         </a>
                     </li>
 
@@ -154,37 +157,33 @@
 								</div>
 							</div>
                             <div class="row flex-grow" style="position: absolute; width: 100%;">
-                                
                                 <div class="col-md-6 col-lg-6 grid-margin stretch-card">
                                     <div class="card">
                                         <div class="card-body card-rounded">
                                             <div class="d-flex align-items-center justify-content-between mb-3">
-                                                <h4 class="card-title card-title-dash">인기 검색어 (일간)</h4>
+                                                <h4 class="card-title card-title-dash">뉴스 검색어(일간)</h4>
                                             </div>
-                                            <c:forEach var="t" items="${top10}">
+                                            <c:forEach var="s" items="${stop10}">
                                             <div class="list align-items-center border-bottom py-2">
                                                 <div class="wrapper w-100">
                                                     <p class="mb-2 font-weight-medium">
-                                                        ${t.search_rank}위 ${t.search_word}
+                                                        <div onclick="test('${s.search_word}')"> ${s.search_rank}위 ${s.search_word}</div>
                                                     </p>
-                                                    
                                                 </div>
                                             </div>
                                             </c:forEach>
-                                            
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-6 grid-margin stretch-card">
                                     <div class="card">
-                                        <div class="card-body card-rounded" style="height: 750px;">
+                                        <div class="card-body card-rounded">
                                             <div class="d-flex align-items-center justify-content-between mb-3">
-                                                <h4 class="card-title card-title-dash">내일 날씨</h4>
+                                                <h4 class="card-title card-title-dash">뉴스</h4>
                                             </div>
-                                            <div style="background-color: dodgerblue; width: 100%; height: 90%; border-radius: 15px;">
-                                            	<iframe src="../resource/partials/weathermap.html" width="100%" height="100%" frameborder='0' scrolling="no"></iframe>
-                                            </div>
-                                            
+                                            <div id="news-list">
+                                            	
+                                            </div>                                           
                                         </div>
                                     </div>
                                 </div>
@@ -229,9 +228,49 @@
             <!-- Custom js for this page-->
             <script src="../resource/assets/js/chart.js"></script>
             <!-- End custom js for this page-->
-            <script type="text/javascript">
-            	
+            <script type="text/javascript">            
+            	function test(search_word) {
+            		
+            		$.ajax({
+          		      url: "News.do", // 데이터를 담고 있는 파일의 경로를 지정해주세요.
+          		      type: "GET",
+	          		  data: {
+	          			"search_word" : search_word,
+	          		        ajax: 'true'  // 서블릿에게 AJAX 요청임을 알림
+	          		  },// 서버에 보낼 데이터
+          		      dataType: "json", // 서버로부터 응답받은 데이터 타입
+          		      success: function(data) {
+          		    	  //let review = JSON.parse(data);
+          		    	  
+          		    	  let news_list = document.getElementById('news-list');
+          		    	  let element = "";
+          		    	  news_list.innerText = "";
+          		    	  for(let i = 0 ; i < data.length; i++) {
+          		    		console.log(data[i].news_title);
+          		    		  element += `					
+          		    			<div class="list align-items-center border-bottom py-2">
+                                  <div class="wrapper w-100">
+                                      <p class="mb-2 font-weight-medium">
+                                      	<div> <a target='_blank' onclick="newslink('\${data[i].news_link}')">\${ data[i].news_title }<a> </div>	
+                                      </p>
+                                  </div>
+                              	</div>
+          		    		  	
+          		    		  `;
+          		    	  }
+          		    	  news_list.insertAdjacentHTML("afterbegin", element)
+          		      },
+          		      error: function(xhr, status, error) {
+          		        console.error("데이터를 불러오는 중 오류가 발생했습니다:", status, error);
+          		      }
+          		    }); 
+            	}
+            	function newslink(news_link) {
+            	    window.location.href = news_link;
+            	}
+            
             </script>
+            
 </body>
 
 </html>

@@ -131,7 +131,7 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="Gonews.do">
+                        <a class="nav-link" href="News.do">
                             <img class="image-with-space" src="../resource/assets/images/news.png">
                             <span class="menu-title">뉴스</span>
                         </a>

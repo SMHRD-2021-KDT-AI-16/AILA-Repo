@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.aila.controller.LoginService;
 import com.aila.controller.ReviewService;
+import com.aila.controller.NewsService;
 import com.aila.controller.TrendService;
 import com.aila.controller.command;
 
@@ -31,7 +32,8 @@ public class FrontController extends HttpServlet {
 			map.put("views/review.do", new ReviewService()); // 키워드 분석 차트
 			map.put("views/review2.do", new ReviewService()); // 감정분석
 			map.put("views/review3.do", new ReviewService()); // 월별 리뷰 추세
-		}
+			map.put("views/News.do", new NewsService());
+	}
 
 		protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
