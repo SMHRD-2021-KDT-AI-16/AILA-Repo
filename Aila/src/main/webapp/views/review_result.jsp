@@ -112,7 +112,7 @@
                 <img class="img-md" src="../resource/assets/images/mggoon_logo.png" alt="Company logo">
                 <p class="mb-1 mt-3 font-weight-semibold">맛꾼푸드</p>
               </div>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>로그아웃</a>
+              <a href="Logout.do" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>로그아웃</a>
             </div>
           </li>
         </ul>
@@ -162,7 +162,7 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="Gonews.do">
+                        <a class="nav-link" href="News.do">
                             <img class="image-with-space" src="../resource/assets/images/news.png">
                             <span class="menu-title">뉴스</span>
                         </a>
@@ -296,23 +296,5 @@
   <script src="../resource/assets/js/chart.js"></script>
   <!-- End custom js for this page-->
 </body>
-<script>
-	function test(menu) {
-		//console.log(menu)
-		
-		$.ajax({
-		      url: "http://localhost:8087/Aila/ReviewTest", // 데이터를 담고 있는 파일의 경로를 지정해주세요.
-		      type: "GET",
-		      //data: {"data" : menu}, 
-		      dataType: "text",
-		      success: function(data) {
-		    	  let review = JSON.parse(data);
-		    	  console.log(review);
-		      },
-		      error: function(xhr, status, error) {
-		        console.error("데이터를 불러오는 중 오류가 발생했습니다:", status, error);
-		      }
-		    }); 
-	}
-</script>
+
 </html>

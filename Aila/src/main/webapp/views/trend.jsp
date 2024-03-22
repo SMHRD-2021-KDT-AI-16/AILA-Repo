@@ -77,7 +77,7 @@
                                 <p class="mb-1 mt-3 font-weight-semibold">맛꾼푸드</p>
                             </div>
 
-                            <a class="dropdown-item"><i
+                            <a href="Logout.do" class="dropdown-item"><i
                                     class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>로그아웃</a>
                         </div>
                     </li>

@@ -12,9 +12,10 @@ public class LogoutService implements command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		session.invalidate();
-		return "redirect:/Gohome.do";
-
+				HttpSession session= request.getSession();
+				session.invalidate();
+				return "redirect:/Gohome.do";
+				
 	}
+
 }

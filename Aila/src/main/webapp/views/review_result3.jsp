@@ -51,7 +51,7 @@
         <ul class="navbar-nav">
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
             <h1 class="welcome-text"><span class="text-black fw-bold">리뷰 분석</span></h1>
-            <h3 class="welcome-sub-text">월별 리뷰 추세 </h3>
+            <h3 class="welcome-sub-text">감정 분석 </h3>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -76,7 +76,7 @@
           <!-- 분석 종류 -->
           <li class="nav-item dropdown d-none d-lg-block">
             <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#"
-              data-bs-toggle="dropdown" aria-expanded="false"> 월별 리뷰 추세 </a>
+              data-bs-toggle="dropdown" aria-expanded="false"> 감정 분석 </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
               aria-labelledby="messageDropdown">
               <a href="Goreview_result.do" class="dropdown-item preview-item" id="keyword">
@@ -112,7 +112,7 @@
                 <img class="img-md" src="../resource/assets/images/mggoon_logo.png" alt="Company logo">
                 <p class="mb-1 mt-3 font-weight-semibold">맛꾼푸드</p>
               </div>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>로그아웃</a>
+              <a href="Logout.do" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>로그아웃</a>
             </div>
           </li>
         </ul>
@@ -162,7 +162,7 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="Gonews.do">
+                        <a class="nav-link" href="News.do">
                             <img class="image-with-space" src="../resource/assets/images/news.png">
                             <span class="menu-title">뉴스</span>
                         </a>
@@ -183,26 +183,6 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Bar chart</h4>
-                  <canvas id="linechart-multi"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Bar chart</h4>
-                  <canvas id="linechart-multi-c"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        </div>
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
@@ -238,6 +218,23 @@
   <!-- Custom js for this page-->
   <script src="../resource/assets/js/chart.js"></script>
   <!-- End custom js for this page-->
+  <script>
+	   function test(menu) {   
+	      $.ajax({
+	            url: "http://localhost:8087/Aila/ReviewService", // 데이터를 담고 있는 파일의 경로를 지정해주세요.
+	            type: "GET",
+	            //data: {"data" : menu}, 
+	            dataType: "text",
+	            success: function(data) {
+	               let review = JSON.parse(data);
+	               console.log(review);
+	            },
+	            error: function(xhr, status, error) {
+	              console.error("데이터를 불러오는 중 오류가 발생했습니다:", status, error);
+	            }
+	          }); 
+	   }
+	</script>
 </body>
 
 </html>

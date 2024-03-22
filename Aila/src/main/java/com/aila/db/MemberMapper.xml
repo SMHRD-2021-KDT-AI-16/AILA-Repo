@@ -4,10 +4,4 @@
 	<select id="login" parameterType="Company" resultType="Company">
 		SELECT * FROM company_info WHERE company_key = #{company_key}
 	</select>
-	<select id="printReview" parameterType="Company" resultType="Review">
-		select * from review_info limit 10;
-	</select>
-	<select id="FoodInfo" parameterType="Company" resultType="Food">
-		select * from food_info limit 10;
-	</select>
 </mapper>

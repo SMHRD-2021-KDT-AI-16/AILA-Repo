@@ -15,6 +15,8 @@ import com.aila.controller.LoginService;
 import com.aila.controller.NewsService;
 import com.aila.controller.TrendService;
 import com.aila.controller.command;
+import com.aila.controller.LogoutService;
+import com.aila.controller.ReviewService;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -27,9 +29,10 @@ public class FrontController extends HttpServlet {
 			super.init();
 			
 			map.put("views/Login.do", new LoginService());
+			map.put("views/Logout.do", new LogoutService());
 			map.put("views/Trend.do", new TrendService());
 			map.put("views/News.do", new NewsService());
-			
+	
 			
 		}
 
