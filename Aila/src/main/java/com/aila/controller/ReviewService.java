@@ -2,6 +2,8 @@ package com.aila.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +22,7 @@ public class ReviewService implements command {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
-		String food_name = request.getParameter("food_name");
+		String food_name = request.getParameter("food");
 		String review_source = request.getParameter("review_source");
 		Review_resultDAO dao = new Review_resultDAO();
 		ArrayList<Frequency_cntVO> cnt_list = new ArrayList();
@@ -72,25 +74,17 @@ public class ReviewService implements command {
 		}else {
 			System.out.println("review 못가져왔음");
 		}
-		
-		for(int i =0; i < pos_review.size();i++) {
-			if(pos_review.get(i).getCreated_at().split("-")[1].equals("01")) {
-				
-			}
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+        // 월별 리뷰 개수를 저장할 HashMap
+        Map<String, Integer> review_cnt_M = new HashMap<>();
+
+        // 리뷰 리스트를 반복하면서 각 리뷰의 생성 월을 가져와서 월별 개수를 계산
+        for (ReviewVO review : review_list) {
+            String month = review.getMonth();
+            // 해당 월의 개수를 가져와 증가시킴
+            review_cnt_M.put(month, review_cnt_M.getOrDefault(month, 0) + 1);
+        }
+        HttpSession session = request.getSession();
+		session.setAttribute("review_cnt_M", review_cnt_M);
 		
 		
 		
