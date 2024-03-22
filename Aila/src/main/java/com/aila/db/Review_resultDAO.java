@@ -69,10 +69,4 @@ public class Review_resultDAO {
 		return result;
 	}
 	
-	
-	
-	
-	
-	
-	
 }

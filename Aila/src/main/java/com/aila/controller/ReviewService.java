@@ -19,13 +19,16 @@ public class ReviewService implements command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		response.setContentType("text/html;charset=utf-8");
 		String food_name = request.getParameter("food_name");
 		String review_source = request.getParameter("review_source");
+		
 		Review_resultDAO dao = new Review_resultDAO();
 		ArrayList<Frequency_cntVO> cnt_list = new ArrayList();
 		ArrayList<TopicVO> topic_list = new ArrayList();
 		ArrayList<ReviewVO> review_list = new ArrayList();
+		
 		int food_idx = 1;
 		if(food_name.equals("김치")) {
 			food_idx=2;
@@ -78,20 +81,6 @@ public class ReviewService implements command {
 				
 			}
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		return "Goreview_result.do";

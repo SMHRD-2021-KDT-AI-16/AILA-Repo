@@ -159,11 +159,17 @@
                                             <div class="d-flex align-items-center justify-content-between mb-3">
                                                 <h4 class="card-title card-title-dash">인기 검색어 (일간)</h4>
                                             </div>
+                                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                                <h4 class="card-title card-title-dash">연관 검색어 (일간)</h4>
+                                            </div>
+                                            <div id="related-list">
+                                            	
+                                            </div>
                                             <c:forEach var="t" items="${top10}">
                                             <div class="list align-items-center border-bottom py-2">
-                                                <div class="wrapper w-100">
+                                            	<div class="wrapper w-100">
                                                     <p class="mb-2 font-weight-medium">
-                                                        ${t.search_rank}위 ${t.search_word}
+                                                        <div onclick="test('${t.search_word}')"> ${t.search_rank}위 ${t.search_word}</div>
                                                     </p>
                                                 </div>
                                             </div>
@@ -225,8 +231,41 @@
             <!-- Custom js for this page-->
             <script src="../resource/assets/js/chart.js"></script>
             <!-- End custom js for this page-->
-            <script type="text/javascript">
-            	
+            <script type="text/javascript">            
+            	function test(search_word) {
+            		$.ajax({
+          		      url: "Trend.do", // 데이터를 담고 있는 파일의 경로를 지정해주세요.
+          		      type: "GET",
+	          		  data: {
+	          			"search_word" : search_word,
+	          		        ajax: 'true'  // 서블릿에게 AJAX 요청임을 알림
+	          		  },// 서버에 보낼 데이터
+          		      dataType: "json", // 서버로부터 응답받은 데이터 타입
+          		      success: function(data) {
+          		    	  //let review = JSON.parse(data);
+          		    	  
+          		    	  let related_list = document.getElementById('related-list');
+          		    	  let element = "";
+          		    	  related_list.innerText = "";
+          		    	  for(let i = 0 ; i < data.length; i++) {
+          		    		console.log(data[i].rel_search);
+          		    		  element += `					
+          		    			<div class="list align-items-center border-bottom py-2">
+                                  <div class="wrapper w-100">
+	                                  <p class="mb-2 font-weight-medium">
+	                                	<div> <a target='_blank' onclick="relatelink('\${data[i].related_list}')">\${ data[i].rel_search }<a> </div>	
+	                                </p>
+                                  </div>
+                              	</div>
+          		    		  `;
+          		    	  }
+          		    	related_list.insertAdjacentHTML("afterbegin", element)
+          		      },
+          		      error: function(xhr, status, error) {
+          		        console.error("데이터를 불러오는 중 오류가 발생했습니다:", status, error);
+          		      }
+          		    }); 
+            	}
             </script>
 </body>
 
