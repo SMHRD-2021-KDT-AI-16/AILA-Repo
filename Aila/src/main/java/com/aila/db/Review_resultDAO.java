@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.aila.model.Frequency_cntVO;
+import com.aila.model.ReviewVO;
 import com.aila.model.TopicVO;
 
 public class Review_resultDAO {
@@ -46,6 +47,25 @@ public class Review_resultDAO {
 		}
 		
 		
+		return result;
+	}
+	
+	
+	public ArrayList<ReviewVO> selectReview(int food_idx, String review_source){
+		
+		SqlSession sqlsession = factory.openSession();
+		ReviewVO vo = new ReviewVO();
+		vo.setFood_idx(food_idx);
+		vo.setReview_source(review_source);
+		ArrayList<ReviewVO> result = new ArrayList();
+		try {
+			result = (ArrayList)sqlsession.selectList("review", vo);
+		} catch (Exception e) {
+			System.out.println("리뷰 데이터 못가져왔음");
+		} finally {
+			System.out.println("리뷰 데이터 가져옴");
+			sqlsession.close();
+		}
 		return result;
 	}
 	

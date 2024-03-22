@@ -8,4 +8,7 @@
 	<select id="review_topic" parameterType="String" resultType="TopicVO">
 		SELECT * FROM topic_info WHERE food_name = #{food_name}
 	</select>
+	<select id="review" parameterType="review" resultType="review">
+		SELECT * FROM review_info where food_idx = #{food_idx} and review_source=#{review_source}
+	</select>
 </mapper>
