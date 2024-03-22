@@ -121,21 +121,18 @@
                             <span class="menu-title">트렌드</span>
                         </a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="Goreview_products.do">
                             <img class="image-with-space" src="../resource/assets/images/review.png">
                             <span class="menu-title">리뷰 분석</span>
                         </a>
                     </li>
-                    
                     <li class="nav-item">
-                        <a class="nav-link" href="Gonews.do">
+                        <a class="nav-link" href="News.do">
                             <img class="image-with-space" src="../resource/assets/images/news.png">
                             <span class="menu-title">뉴스</span>
                         </a>
                     </li>
-
                 </ul>
             </nav>
             <!-- partial -->
@@ -168,11 +165,9 @@
                                                     <p class="mb-2 font-weight-medium">
                                                         ${t.search_rank}위 ${t.search_word}
                                                     </p>
-                                                    
                                                 </div>
                                             </div>
                                             </c:forEach>
-                                            
                                         </div>
                                     </div>
                                 </div>

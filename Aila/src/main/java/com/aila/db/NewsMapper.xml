@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aila.db.NewsMapper">
+	<select id="news" resultType="News">
+		select a.* from (select * from news_info order by created_at)a;	
+	</select>
+	<select id="sTop10" resultType="Trend">
+		select a.* from (select * from trend_info where search_form = '구글' order by created_at desc limit 10)a order by search_rank;	
+	</select>
+	
+	<select id="top10news" resultType="HashMap">
+		select *
+		from news_info A
+			left outer join trend_info B
+		    on A.news_key = B.search_word
+		where B.search_form = "구글" and search_word = #{ search_word };
+	</select>
+</mapper>

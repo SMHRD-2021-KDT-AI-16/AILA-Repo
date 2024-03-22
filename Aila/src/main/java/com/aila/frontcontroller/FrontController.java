@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.aila.controller.LoginService;
+import com.aila.controller.NewsService;
 import com.aila.controller.TrendService;
 import com.aila.controller.command;
 
@@ -27,6 +28,8 @@ public class FrontController extends HttpServlet {
 			
 			map.put("views/Login.do", new LoginService());
 			map.put("views/Trend.do", new TrendService());
+			map.put("views/News.do", new NewsService());
+			
 			
 		}
 
