@@ -13,6 +13,8 @@
 		<typeAlias type="com.aila.model.DeepAnalysis" alias="DeepAnalysis"/>
 		<typeAlias type="com.aila.model.RelatedSearchVO" alias="RelatedSearch"/>
 		<typeAlias type="com.aila.model.TrendVO" alias="Trend"/>
+		<typeAlias type="com.aila.model.Frequency_cntVO" alias="FC_VO"/>
+		<typeAlias type="com.aila.model.TopicVO" alias="TopicVO"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -30,5 +32,6 @@
 	<mappers>
 		<mapper resource="com/aila/db/MemberMapper.xml"></mapper>
 		<mapper resource="com/aila/db/TrendMapper.xml"></mapper>
+		<mapper resource="com/aila/db/review_result.xml"></mapper>
 	</mappers>
 </configuration>

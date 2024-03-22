@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.aila.controller.LoginService;
+import com.aila.controller.ReviewService;
 import com.aila.controller.TrendService;
 import com.aila.controller.command;
 
@@ -27,7 +28,9 @@ public class FrontController extends HttpServlet {
 			
 			map.put("views/Login.do", new LoginService());
 			map.put("views/Trend.do", new TrendService());
-			
+			map.put("views/review.do", new ReviewService()); // 키워드 분석 차트
+			map.put("views/review2.do", new ReviewService()); // 감정분석
+			map.put("views/review3.do", new ReviewService()); // 월별 리뷰 추세
 		}
 
 		protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,16 +38,16 @@ public class FrontController extends HttpServlet {
 			String uri = request.getRequestURI();
 			String cp = request.getContextPath();
 			String path = uri.substring(cp.length()+1);
-			
 			request.setCharacterEncoding("UTF-8");
-			
 			String finalpath = null;
 			command com = null;
 			if (path.contains("Go")){
 				finalpath = path.replace("Go", "").replace(".do", ".jsp").replace("views/", "");
 			} else {
 				com = map.get(path);
+				
 				finalpath = com.execute(request, response);
+				System.out.println("execute까진 됨");
 			}
 			
 			if (finalpath != null) {

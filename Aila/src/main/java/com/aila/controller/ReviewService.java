@@ -1,15 +1,17 @@
 package com.aila.controller;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.aila.db.ReviewDAO;
-import com.aila.model.ReviewVO;
+import com.aila.db.Review_resultDAO;
+import com.aila.model.Frequency_cntVO;
+import com.aila.model.TopicVO;
+
 
 public class ReviewService implements command {
 
@@ -17,24 +19,28 @@ public class ReviewService implements command {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
-		String inputKey = request.getParameter("inputKey");
+		String food_name = request.getParameter("food");
+		Review_resultDAO dao = new Review_resultDAO();
+		System.out.println(food_name);
+		ArrayList<Frequency_cntVO> cnt_list = new ArrayList();
+		ArrayList<TopicVO> topic_list = new ArrayList();
+		cnt_list=dao.fc_cnt(food_name);
+		topic_list = dao.selectTopic(food_name);
 		
-		ReviewVO vo = new ReviewVO();
-		ReviewDAO dao = new ReviewDAO();
-		
-		vo.setReview_content(inputKey);
-		List<ReviewVO> list = dao.printReview();
-		//ReviewVO result = (ReviewVO) new ReviewDAO().allReview(inputKey);
-		
-		if(list != null) {
+		if(cnt_list != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("Review", list);
-			response.getWriter().print(true);
+			session.setAttribute("result", cnt_list);
 		}else {
-			response.getWriter().print(false);
+			System.out.println("cnt_list 못가져왔음");
+		}
+		if(topic_list != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("result", topic_list);
+		}else {
+			System.out.println("topic_list 못가져왔음");
 		}
 		
-		return null;
+		return "Goreview_result.do";
 	}
 
 }
