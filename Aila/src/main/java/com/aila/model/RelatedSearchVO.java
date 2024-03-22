@@ -16,4 +16,5 @@ public class RelatedSearchVO {
 	private int rel_search_rank;
 	private int search_cnt;
 	private int click_cnt;
+	private String created_at;
 }

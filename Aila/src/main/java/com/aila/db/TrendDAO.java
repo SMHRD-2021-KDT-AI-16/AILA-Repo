@@ -1,5 +1,6 @@
 package com.aila.db;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -16,6 +17,13 @@ public class TrendDAO {
 		List<TrendVO> result = sqlsession.selectList("showTop10");
 		sqlsession.close();
 		return result;
+	}
+	
+	public List<HashMap<String, Object>> related10(String search_word) {
+		SqlSession sqlsession = factory.openSession(true);
+		List<HashMap<String, Object>> result = sqlsession.selectList("related10", search_word);
+		sqlsession.close();
+		return result;		
 	}
 
 }

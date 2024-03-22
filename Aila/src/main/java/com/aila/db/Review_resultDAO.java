@@ -78,10 +78,4 @@ public class Review_resultDAO {
 
 	
 	
-	
-	
-	
-	
-	
-	
 }

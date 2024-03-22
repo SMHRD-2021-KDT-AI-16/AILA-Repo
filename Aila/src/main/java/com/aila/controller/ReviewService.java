@@ -20,13 +20,16 @@ public class ReviewService implements command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		response.setContentType("text/html;charset=utf-8");
 		String food_name = request.getParameter("food");
 		String review_source = request.getParameter("review_source");
+		
 		Review_resultDAO dao = new Review_resultDAO();
 		ArrayList<Frequency_cntVO> cnt_list = new ArrayList();
 		ArrayList<TopicVO> topic_list = new ArrayList();
 		ArrayList<ReviewVO> review_list = new ArrayList();
+		
 		int food_idx = 1;
 		if (food_name.equals("김치")) {
 			food_idx = 2;
@@ -102,8 +105,6 @@ public class ReviewService implements command {
 			// 해당 월의 개수를 가져와 증가시킴
 			review_cnt_M.put(month, review_cnt_M.getOrDefault(month, 0) + 1);
 		}
-		HttpSession session = request.getSession();
-		session.setAttribute("review_cnt_M", review_cnt_M);
 
 		return "Goreview_result.do";
 	}
