@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.aila.model.FoodVO;
-import com.aila.model.ReviewVO;
 
 public class FoodDAO {
 	
