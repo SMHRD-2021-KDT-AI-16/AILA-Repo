@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.aila.controller.LoginService;
+import com.aila.controller.ReviewService;
 import com.aila.controller.NewsService;
 import com.aila.controller.TrendService;
 import com.aila.controller.command;
 import com.aila.controller.LogoutService;
-import com.aila.controller.ReviewService;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -32,25 +32,23 @@ public class FrontController extends HttpServlet {
 			map.put("views/Logout.do", new LogoutService());
 			map.put("views/Trend.do", new TrendService());
 			map.put("views/News.do", new NewsService());
-	
-			
-		}
+}
 
 		protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
 			String uri = request.getRequestURI();
 			String cp = request.getContextPath();
 			String path = uri.substring(cp.length()+1);
-			
 			request.setCharacterEncoding("UTF-8");
-			
 			String finalpath = null;
 			command com = null;
 			if (path.contains("Go")){
 				finalpath = path.replace("Go", "").replace(".do", ".jsp").replace("views/", "");
 			} else {
 				com = map.get(path);
+				
 				finalpath = com.execute(request, response);
+				System.out.println("execute까진 됨");
 			}
 			
 			if (finalpath != null) {
@@ -62,5 +60,6 @@ public class FrontController extends HttpServlet {
 				}
 			}
 		}
+
 
 }

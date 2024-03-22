@@ -218,22 +218,22 @@
   <!-- Custom js for this page-->
   <script src="../resource/assets/js/chart.js"></script>
   <!-- End custom js for this page-->
-  <script>
-	   function test(menu) {   
-	      $.ajax({
-	            url: "http://localhost:8087/Aila/ReviewService", // 데이터를 담고 있는 파일의 경로를 지정해주세요.
-	            type: "GET",
-	            //data: {"data" : menu}, 
-	            dataType: "text",
-	            success: function(data) {
-	               let review = JSON.parse(data);
-	               console.log(review);
-	            },
-	            error: function(xhr, status, error) {
-	              console.error("데이터를 불러오는 중 오류가 발생했습니다:", status, error);
-	            }
-	          }); 
-	   }
+	  <script>
+		   function test(menu) {   
+		      $.ajax({
+		            url: "views/Review.do", // 데이터를 담고 있는 파일의 경로를 지정해주세요.
+		            type: "GET",
+		            //data: {"data" : menu}, 
+		            dataType: "text",
+		            success: function(data) {
+		               let review = JSON.parse(data);
+		               console.log(review);
+		            },
+		            error: function(xhr, status, error) {
+		              console.error("데이터를 불러오는 중 오류가 발생했습니다:", status, error);
+		            }
+		          }); 
+		   }
 	</script>
 </body>
 
