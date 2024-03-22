@@ -86,8 +86,9 @@ public class ReviewService implements command {
 			System.out.println("리뷰 긍정/부정 분리 끝");
 			System.out.println(review_emotion_cnt.get("pos"));
 			System.out.println(review_emotion_cnt.get("neg"));
-			HttpSession session = request.getSession();
-			session.setAttribute("review_emotion_cnt", review_emotion_cnt);
+//			HttpSession session = request.getSession();
+//			session.setAttribute("review_emotion_cnt", review_emotion_cnt);
+			request.setAttribute("review_emotion_cnt", review_emotion_cnt);
 			System.out.println("감정 비율 보내기 성공 review_emotion");
 		} else {
 			System.out.println("review 못가져왔음");
