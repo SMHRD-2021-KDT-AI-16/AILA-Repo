@@ -1,6 +1,7 @@
 package com.aila.db;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -66,7 +67,6 @@ public class Review_resultDAO {
 		ArrayList<ReviewVO> result = new ArrayList();
 		try {
 			result = (ArrayList)sqlsession.selectList("review", vo);
-			System.out.println("리뷰 데이터 가져옴");
 		} catch (Exception e) {
 			System.out.println("리뷰 데이터 못가져왔음");
 		} finally {
@@ -75,4 +75,6 @@ public class Review_resultDAO {
 		}
 		return result;
 	}
+	
+	
 }
