@@ -67,11 +67,7 @@ public class Review_resultDAO {
 		ArrayList<ReviewVO> result = new ArrayList();
 		try {
 			result = (ArrayList)sqlsession.selectList("review", vo);
-			//System.out.println("리뷰 데이터"+result.size()+"개 가져옴");
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-            System.err.format("IOException: %s%n", e);
-        } catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println("리뷰 데이터 못가져왔음");
 		} finally {
 			
@@ -80,23 +76,5 @@ public class Review_resultDAO {
 		return result;
 	}
 	
-	public List<String> selectReviewCnt(String review_source){
-		
-		SqlSession sqlsession = factory.openSession();
-		ReviewVO vo = new ReviewVO();
-		//vo.setFood_idx(food_idx);
-		vo.setReview_source(review_source);
-		List<String> result2 = new ArrayList<String>();
-		try {
-			result2 = sqlsession.selectList("reviewCnt", review_source);
-			System.out.println("selectReviewCnt리뷰 데이터"+result2.size()+"개 가져옴");
-			
-		} catch (Exception e) {
-			System.out.println("selectReviewCnt 리뷰 데이터 못가져왔음");
-		} finally {
-			
-			sqlsession.close();
-		}
-		return result2;
-	}
+	
 }

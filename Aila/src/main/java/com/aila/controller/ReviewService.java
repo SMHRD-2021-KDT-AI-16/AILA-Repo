@@ -82,9 +82,8 @@ public class ReviewService implements command {
 		} else {
 			System.out.println("cnt 못가져왔음");
 		}
-		dao.selectReviewCnt(review_source);
 		if (topic_list != null) {
-			for (int i = 0;i<cnt_list.size();i++) {
+			for (int i = 0;i<topic_list.size();i++) {
 				if(topic_list.get(i).getTopic_emotion()==1) {
 					pos_topic_word.add(topic_list.get(i).getTopic_content());
 					pos_topic.add(topic_list.get(i).getTopic_rating());
