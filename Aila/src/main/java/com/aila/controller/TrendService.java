@@ -30,6 +30,8 @@ public class TrendService implements command{
 		String jsonArr = gson.toJson(Tresult);
 		System.out.println(Tresult);
 		
+		response.setContentType("application/json; charset=utf-8");
+		
 		if("true".equals(request.getParameter("ajax"))) {
 	    	response.getWriter().print(jsonArr.toString());
 	    	response.getWriter().flush();

@@ -10,9 +10,10 @@
 	
 	<select id="top10news" resultType="HashMap">
 		select *
-		from news_info A
-			left outer join trend_info B
-		    on A.news_key = B.search_word
-		where B.search_form = "구글" and search_word = #{ search_word };
+	    from news_info A
+	    left outer join trend_info B
+	    on A.news_key = B.search_word
+	    where B.search_form = "구글" and search_word = #{ search_word }
+	    AND DATE(A.created_at) = CURDATE() And DATE(B.created_at)= CURDATE();
 	</select>
 </mapper>
