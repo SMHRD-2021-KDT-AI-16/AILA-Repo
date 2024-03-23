@@ -173,7 +173,7 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-        <div style="max-width: 1280px;">
+        <!-- <div style="max-width: 80%;"> -->
         
           <!-- <div class="row">
             <div class="col-sm-12">
@@ -186,7 +186,7 @@
           </div> -->
           
           <div class="row">
-            <div class="col-lg-6 grid-margin stretch-card" style="width: 35%;">
+            <div class="col-lg-6 grid-margin stretch-card" style="width: 30%;">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">긍정/부정 비율</h4>
@@ -194,7 +194,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 grid-margin stretch-card" style="width: 65%;">
+            <div class="col-lg-6 grid-margin stretch-card" style="width: 50%;">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">리뷰 추이</h4>
@@ -202,13 +202,30 @@
                 </div>
               </div>
             </div>
+            
+        	<div class="col-lg-6 grid-margin stretch-card" style="width: 20%;">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">임시 기능</h4>
+                  <div style="width: 100%; height: 100%;"></div>
+                </div>
+              </div>
+            </div>
+            
           </div>
           
-          <div class="row">
+          <div class="row" style="width: 80%;">
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">키워드 Top10</h4>
+                
+                  <h4 class="card-title" style="display: flex; justify-content: space-between;">키워드 Top10
+                  <span>
+                  <button type="button" class="btn btn-info btn-rounded btn-fw btn-sm">긍정</button>
+                  <button type="button" class="btn btn-danger btn-rounded btn-fw btn-sm">부정</button>
+                  </span>
+                  </h4>
+                  
                   <canvas id="barChart2"></canvas>
                 </div>
               </div>
@@ -216,14 +233,20 @@
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">워드 클라우드</h4>
+                  <h4 class="card-title" style="display: flex; justify-content: space-between;">워드 클라우드
+                  <span><button type="button" class="btn btn-info btn-rounded btn-fw btn-sm">긍정</button>
+                  <button type="button" class="btn btn-danger btn-rounded btn-fw btn-sm">부정</button>
+                  </span></h4>
                   <canvas id="barChart2-c"></canvas>
                 </div>
               </div>
             </div>
           </div>
           
-        </div>
+        <!-- </div> -->
+        
+        
+        
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
