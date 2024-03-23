@@ -30,30 +30,24 @@ public class ReviewService implements command {
 		}catch (NullPointerException e) {
 			HttpSession session= request.getSession();
 			food_idx =(int) session.getAttribute("food_idx");
+			System.out.println("세션에서 idx가져옴");
 		}
 		String review_source = request.getParameter("review_source");
 		
 		Review_resultDAO dao = new Review_resultDAO();
-		ArrayList<Frequency_cntVO> cnt_list = new ArrayList();
-		ArrayList<TopicVO> topic_list = new ArrayList();
-		ArrayList<ReviewVO> review_list = new ArrayList();
+		ArrayList<Frequency_cntVO> cnt_list = new ArrayList<>();
+		ArrayList<TopicVO> topic_list = new ArrayList<>();
+		ArrayList<ReviewVO> review_list = new ArrayList<>();
 		
 		review_list = dao.selectReview(food_idx, review_source);
 		cnt_list = dao.fc_cnt(food_idx, review_source);
 		topic_list = dao.selectTopic(food_idx, review_source);
-		Map<String, TopicVO> topic_list_map = new HashMap<>();
-		Map<String, Frequency_cntVO> cnt_list_map = new HashMap<>();
-
-		int pos_cnt = 1;
-		int neg_cnt = 1;
+		ArrayList<String> pos_cnt_word = new ArrayList();
+		ArrayList<String> neg_cnt_word = new ArrayList();
+		int pos_cnt = 0;
+		int neg_cnt = 0;
 		if (cnt_list != null) {
-			for (int i = 0; i < cnt_list.size(); i++) {
-				if (cnt_list.get(i).getFc_emotion() == 1) {
-					cnt_list_map.put("pos_vo"+pos_cnt++,cnt_list.get(i) );					
-				}else {
-					cnt_list_map.put("pos_vo"+neg_cnt++,cnt_list.get(i) );
-				}
-			}
+			
 		} else {
 			System.out.println("cnt_list 못가져왔음");
 		}
@@ -62,12 +56,9 @@ public class ReviewService implements command {
 			neg_cnt = 1;
 			for (int i = 0; i < topic_list.size(); i++) {
 				if (topic_list.get(i).getTopic_emotion() == 1) {
-					topic_list_map.put("pos_vo" + pos_cnt++, topic_list.get(i));
 				} else {
-					topic_list_map.put("neg_vo" + neg_cnt++, topic_list.get(i));
 				}
 			}
-			request.setAttribute("topic_list_map", topic_list_map);
 			System.out.println("토픽리스트 보내기 성공");
 
 		} else {
@@ -123,22 +114,24 @@ public class ReviewService implements command {
 						neg_cnt++;
 					}
 			}
-			System.out.println(pos_cnt+":"+neg_cnt);
 			pos_m_cnt.add(pos_cnt);
 			neg_m_cnt.add(neg_cnt);
 			pos_cnt=0;
 			neg_cnt=0;
 		}
-		for(int i = 0; i<yearDates.size();i++) {
-			System.out.println("날짜 :"+yearDates.get(i)+ "긍정 리뷰 수 :"+pos_m_cnt.get(i)+"부정 리뷰 수: "+neg_m_cnt.get(i));
+		
+		ArrayList<String> year = new ArrayList();
+		for (int i =0;i<yearDates.size();i++) {
+			year.add(yearDates.get(i).replace("20", "").replace("-", "년")+"월");
+			
+			System.out.println(year.get(i)+":"+pos_m_cnt.get(i)+":"+neg_m_cnt.get(i));
 		}
-		request.setAttribute("Dates", yearDates);
+		
+		request.setAttribute("Dates", year);
 		request.setAttribute("pos_m", pos_m_cnt);
 		request.setAttribute("neg_m", neg_m_cnt);
 		
 		
-		request.setAttribute("cnt_list_map", cnt_list_map);
-		System.out.println("빈도수 단어 리스트 보내기 성공");
 		request.setAttribute("review_emotion_cnt", review_emotion_cnt);
 
 		System.out.println("감정 비율 보내기 성공 review_emotion");

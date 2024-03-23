@@ -27,7 +27,6 @@ public class Review_resultDAO {
 		} catch (Exception e) {
 			System.out.println("빈도수 못가져왔음");
 		} finally {
-			System.out.println("빈도수 가져옴");
 			sqlsession.close();
 		}
 		
@@ -46,10 +45,10 @@ public class Review_resultDAO {
 		vo.setReview_source(review_source);
 		try {
 			result = (ArrayList)sqlsession.selectList("review_topic", vo);
+			System.out.println("리뷰 토픽 가져옴");
 		} catch (Exception e) {
 			System.out.println("토픽 못가져왔음");
 		} finally {
-			System.out.println("리뷰 토픽 가져옴");
 			sqlsession.close();
 		}
 		
@@ -67,15 +66,13 @@ public class Review_resultDAO {
 		ArrayList<ReviewVO> result = new ArrayList();
 		try {
 			result = (ArrayList)sqlsession.selectList("review", vo);
+			System.out.println("리뷰 데이터 가져옴");
 		} catch (Exception e) {
 			System.out.println("리뷰 데이터 못가져왔음");
 		} finally {
-			System.out.println("리뷰 데이터 가져옴");
+			
 			sqlsession.close();
 		}
 		return result;
 	}
-
-	
-	
 }
