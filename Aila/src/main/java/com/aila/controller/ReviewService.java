@@ -19,18 +19,18 @@ import com.aila.model.TopicVO;
 
 public class ReviewService implements command {
 	
-	int food_idx=1;
+	String food_name=null;
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		response.setContentType("text/html;charset=utf-8");
 		try {
-			food_idx = Integer.parseInt(request.getParameter("food_idx"));
+			food_name = request.getParameter("food_name");
 		}catch (NullPointerException e) {
 			HttpSession session= request.getSession();
-			food_idx =(int) session.getAttribute("food_idx");
-			System.out.println("세션에서 idx가져옴");
+			food_name =(String) session.getAttribute("food_name");
+			System.out.println("세션에서 이름 가져옴");
 		}
 		String review_source = request.getParameter("review_source");
 		
@@ -39,26 +39,56 @@ public class ReviewService implements command {
 		ArrayList<TopicVO> topic_list = new ArrayList<>();
 		ArrayList<ReviewVO> review_list = new ArrayList<>();
 		
+		int food_idx=1;
+		
+		if(food_name.equals("김치")) {
+			food_idx=2;
+		}
 		review_list = dao.selectReview(food_idx, review_source);
-		cnt_list = dao.fc_cnt(food_idx, review_source);
-		topic_list = dao.selectTopic(food_idx, review_source);
+		cnt_list = dao.fc_cnt(food_name, review_source);
+		topic_list = dao.selectTopic(food_name, review_source);
 		ArrayList<String> pos_cnt_word = new ArrayList();
 		ArrayList<String> neg_cnt_word = new ArrayList();
+		ArrayList<Integer> pos_cnt_ = new ArrayList();
+		ArrayList<Integer> neg_cnt_ = new ArrayList();
+		ArrayList<String> pos_topic_word = new ArrayList();
+		ArrayList<String> neg_topic_word = new ArrayList();
+		ArrayList<Integer> pos_topic = new ArrayList();
+		ArrayList<Integer> neg_topic = new ArrayList();
 		int pos_cnt = 0;
 		int neg_cnt = 0;
 		if (cnt_list != null) {
-			
-		} else {
-			System.out.println("cnt_list 못가져왔음");
-		}
-		if (topic_list != null) {
-			pos_cnt = 1;
-			neg_cnt = 1;
-			for (int i = 0; i < topic_list.size(); i++) {
-				if (topic_list.get(i).getTopic_emotion() == 1) {
-				} else {
+			for (int i = 0;i<cnt_list.size();i++) {
+				if(cnt_list.get(i).getFc_emotion()==1) {
+					pos_cnt_word.add(cnt_list.get(i).getFc_word());
+					pos_cnt_.add(cnt_list.get(i).getFc_cnt());
+				}else {
+					neg_cnt_word.add(cnt_list.get(i).getFc_word());
+					neg_cnt_.add(cnt_list.get(i).getFc_cnt());
 				}
 			}
+			request.setAttribute("pos_cnt_word", pos_cnt_word);
+			request.setAttribute("pos_cnt", pos_cnt_);
+			request.setAttribute("neg_cnt_word", neg_cnt_word);
+			request.setAttribute("neg_cnt", pos_cnt_);
+			System.out.println("cnt 보내기 끝~!");
+		} else {
+			System.out.println("cnt 못가져왔음");
+		}
+		if (topic_list != null) {
+			for (int i = 0;i<cnt_list.size();i++) {
+				if(topic_list.get(i).getTopic_emotion()==1) {
+					pos_topic_word.add(topic_list.get(i).getTopic_content());
+					pos_topic.add(topic_list.get(i).getTopic_rating());
+				}else {
+					neg_topic_word.add(topic_list.get(i).getTopic_content());
+					neg_topic.add(topic_list.get(i).getTopic_rating());
+				}
+			}
+			request.setAttribute("pos_topic_word", pos_topic_word);
+			request.setAttribute("pos_topic", pos_topic);
+			request.setAttribute("neg_topic_word", neg_topic_word);
+			request.setAttribute("neg_topic", pos_topic);
 			System.out.println("토픽리스트 보내기 성공");
 
 		} else {

@@ -15,12 +15,12 @@ public class Review_resultDAO {
 	private SqlSessionFactory factory = SqlSessionManager.getFactory();
 	
 	
-	public ArrayList<Frequency_cntVO> fc_cnt(int food_idx, String review_source){
+	public ArrayList<Frequency_cntVO> fc_cnt(String food_name, String review_source){
 		
 		SqlSession sqlsession = factory.openSession();
 		ArrayList<Frequency_cntVO> result = null;
 		Frequency_cntVO vo = new Frequency_cntVO();
-		vo.setFood_idx(food_idx);
+		vo.setFood_name(food_name);
 		vo.setFc_resource(review_source);
 		try {
 			result = (ArrayList)sqlsession.selectList("review_cnt", vo);
@@ -34,14 +34,14 @@ public class Review_resultDAO {
 		
 	}
 	
-	public ArrayList<TopicVO> selectTopic(int food_idx, String review_source){
+	public ArrayList<TopicVO> selectTopic(String food_name, String review_source){
 		
 		SqlSession sqlsession = factory.openSession();
 		
 		ArrayList<TopicVO> result = null;
 		
 		TopicVO vo = new TopicVO();
-		vo.setFood_idx(food_idx);
+		vo.setFood_name(food_name);
 		vo.setReview_source(review_source);
 		try {
 			result = (ArrayList)sqlsession.selectList("review_topic", vo);
