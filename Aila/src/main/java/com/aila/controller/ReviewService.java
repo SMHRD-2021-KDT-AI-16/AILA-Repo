@@ -75,6 +75,7 @@ public class ReviewService implements command {
 		} else {
 			System.out.println("cnt 못가져왔음");
 		}
+		dao.selectReviewCnt(review_source);
 		if (topic_list != null) {
 			for (int i = 0;i<cnt_list.size();i++) {
 				if(topic_list.get(i).getTopic_emotion()==1) {
@@ -162,6 +163,7 @@ public class ReviewService implements command {
 		request.setAttribute("month", month);
 		request.setAttribute("pos_m", pos_m_cnt);
 		request.setAttribute("neg_m", neg_m_cnt);
+		
 		
 		
 		request.setAttribute("review_emotion_cnt", review_emotion_cnt);
