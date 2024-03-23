@@ -29,6 +29,7 @@
 		}
 		
    	</style>
+   	
    
 </head>
 
@@ -174,7 +175,7 @@
 			 									<div class="list align-items-center border-bottom py-2">
 				                                  <div class="wrapper w-100">
 					                                  <p class="mb-2 font-weight-medium">
-					                                	<canvas id="SearchCntChart"></canvas>
+					                                	<canvas id="SearchCntChart" style = "height : 250px"></canvas>
 					                                </p>
 				                                  </div>
 			                        			</div>
@@ -275,8 +276,6 @@
 				            }]
 				          },
 				          options: {
-				              maintainAspectRatio: false,
-				              responsive: true,
 				            scales: {
 				            },
 				            plugins: {
@@ -293,7 +292,6 @@
           		      }
           		    }); 
             	}
-            	
             </script>
 </body>
 
