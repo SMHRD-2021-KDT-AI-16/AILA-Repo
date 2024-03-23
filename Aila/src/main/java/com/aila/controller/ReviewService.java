@@ -123,15 +123,12 @@ public class ReviewService implements command {
 						neg_cnt++;
 					}
 			}
-			System.out.println(pos_cnt+":"+neg_cnt);
 			pos_m_cnt.add(pos_cnt);
 			neg_m_cnt.add(neg_cnt);
 			pos_cnt=0;
 			neg_cnt=0;
 		}
-		for(int i = 0; i<yearDates.size();i++) {
-			System.out.println("날짜 :"+yearDates.get(i)+ "긍정 리뷰 수 :"+pos_m_cnt.get(i)+"부정 리뷰 수: "+neg_m_cnt.get(i));
-		}
+		
 		request.setAttribute("Dates", yearDates);
 		request.setAttribute("pos_m", pos_m_cnt);
 		request.setAttribute("neg_m", neg_m_cnt);
