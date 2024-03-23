@@ -147,7 +147,6 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="row flex-grow">
-                            	
                                 <div class="col-md-6 food grid-margin stretch-card">
                                     <div class="card">
                                         <div class="card-body card-rounded">
@@ -168,6 +167,94 @@
                                             </div>
                                             <a href="Review.do?food_idx=2&review_source=쿠팡">
                                                 <img src="../resource/assets/images/gimchi.jpg" style="width: 100%;" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 food grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body card-rounded">
+                                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                                <h4 class="card-title card-title-dash">망고</h4>
+                                            </div>
+                                                <img src="../resource/assets/images/mango.png" style="width: 100%;" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 food grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body card-rounded">
+                                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                                <h4 class="card-title card-title-dash">구운란</h4>
+                                            </div>
+                                                <img src="../resource/assets/images/egg.jpg" style="width: 100%;" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 food grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body card-rounded">
+                                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                                <h4 class="card-title card-title-dash">감자탕</h4>
+                                            </div>
+                                                <img src="../resource/assets/images/bonesoup.jpg" style="width: 100%;" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 food grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body card-rounded">
+                                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                                <h4 class="card-title card-title-dash">오렌지</h4>
+                                            </div>
+                                                <img src="../resource/assets/images/orange.png" style="width: 100%;" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 food grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body card-rounded">
+                                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                                <h4 class="card-title card-title-dash">새꼬막</h4>
+                                            </div>
+                                                <img src="../resource/assets/images/telltale.jpg" style="width: 100%;" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 food grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body card-rounded">
+                                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                                <h4 class="card-title card-title-dash">오징어</h4>
+                                            </div>
+                                                <img src="../resource/assets/images/Squid.jpg" style="width: 100%;" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 food grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body card-rounded">
+                                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                                <h4 class="card-title card-title-dash">토마토</h4>
+                                            </div>
+                                                <img src="../resource/assets/images/tomato.png" style="width: 100%;" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 food grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body card-rounded">
+                                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                                <h4 class="card-title card-title-dash">참외</h4>
+                                            </div>
+                                                <img src="../resource/assets/images/yellowmelon.jpg" style="width: 100%;" />
                                             </a>
                                         </div>
                                     </div>
