@@ -1,6 +1,8 @@
 package com.aila.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,13 +18,19 @@ import com.aila.model.ReviewVO;
 import com.aila.model.TopicVO;
 
 public class ReviewService implements command {
-
+	
+	int food_idx=1;
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		response.setContentType("text/html;charset=utf-8");
-		String food_name = request.getParameter("food");
+		try {
+			food_idx = Integer.parseInt(request.getParameter("food_idx"));
+		}catch (NullPointerException e) {
+			HttpSession session= request.getSession();
+			food_idx =(int) session.getAttribute("food_idx");
+		}
 		String review_source = request.getParameter("review_source");
 		
 		Review_resultDAO dao = new Review_resultDAO();
@@ -30,13 +38,9 @@ public class ReviewService implements command {
 		ArrayList<TopicVO> topic_list = new ArrayList();
 		ArrayList<ReviewVO> review_list = new ArrayList();
 		
-		int food_idx = 1;
-		if (food_name.equals("김치")) {
-			food_idx = 2;
-		}
 		review_list = dao.selectReview(food_idx, review_source);
-		cnt_list = dao.fc_cnt(food_name, review_source);
-		topic_list = dao.selectTopic(food_name, review_source);
+		cnt_list = dao.fc_cnt(food_idx, review_source);
+		topic_list = dao.selectTopic(food_idx, review_source);
 		Map<String, TopicVO> topic_list_map = new HashMap<>();
 		Map<String, Frequency_cntVO> cnt_list_map = new HashMap<>();
 
@@ -50,8 +54,6 @@ public class ReviewService implements command {
 					cnt_list_map.put("pos_vo"+neg_cnt++,cnt_list.get(i) );
 				}
 			}
-//			HttpSession session = request.getSession();
-//			session.setAttribute("cnt_result", cnt_list_map);
 		} else {
 			System.out.println("cnt_list 못가져왔음");
 		}
@@ -65,9 +67,9 @@ public class ReviewService implements command {
 					topic_list_map.put("neg_vo" + neg_cnt++, topic_list.get(i));
 				}
 			}
+			request.setAttribute("topic_list_map", topic_list_map);
+			System.out.println("토픽리스트 보내기 성공");
 
-//			HttpSession session = request.getSession();
-//			session.setAttribute("topic_result", topic_list_map);
 		} else {
 			System.out.println("topic_list 못가져왔음");
 		}
@@ -89,38 +91,56 @@ public class ReviewService implements command {
 			System.out.println("리뷰 긍정/부정 분리 끝");
 			System.out.println(review_emotion_cnt.get("pos"));
 			System.out.println(review_emotion_cnt.get("neg"));
-//			HttpSession session = request.getSession();
-//			session.setAttribute("review_emotion_cnt", review_emotion_cnt);
 			
 		} else {
 			System.out.println("review 못가져왔음");
 		}
-		// 월별 리뷰 개수를 저장할 HashMap
-		Map<String, Integer> pos_cnt_M = new HashMap<>();
-		Map<String, Integer> neg_cnt_M = new HashMap<>();
+		// 현재 날짜를 가져옵니다.
+        LocalDate today = LocalDate.now();
+        
+        // YYYY-MM 형식으로 날짜를 포맷할 DateTimeFormatter를 생성합니다.
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM");
+        
+        // 최근 일년간의 날짜를 담을 배열을 생성합니다.
+        ArrayList<String> yearDates = new ArrayList<>();
+        
+        // 최근 일년간의 날짜를 계산하여 배열에 추가합니다.
+        for (int i = 0; i < 12; i++) {
+            LocalDate date = today.minusMonths(i);
+            String formattedDate = date.format(formatter);
+            yearDates.add(formattedDate);
+        }
+    
 		pos_cnt=0;
 		neg_cnt=0;
-
-		// 리뷰 리스트를 반복하면서 각 리뷰의 생성 월을 가져와서 월별 개수를 계산
-		for (int i =0 ; i<review_list.size();i++) {
-			String month = review_list.get(i).getMonth();
-			if(review_list.get(i).getReview_rating()>3) {
-				// 해당 월의 개수를 가져와 증가시킴
-				pos_cnt_M.put(month, pos_cnt_M.getOrDefault(month, 0) + 1);				
-			}else {
-				neg_cnt_M.put(month, neg_cnt_M.getOrDefault(month, 0) + 1);
+		ArrayList<Integer> pos_m_cnt = new ArrayList();
+		ArrayList<Integer> neg_m_cnt = new ArrayList();
+		for(int j=0;j<yearDates.size();j++) {
+			for (int i =0 ; i<review_list.size();i++) {
+				if(review_list.get(i).getReview_rating()==1 && review_list.get(i).getMonth().equals(yearDates.get(j))) {
+						pos_cnt++;
+					}else if(review_list.get(i).getReview_rating()==0 && review_list.get(i).getMonth().equals(yearDates.get(j))) {
+						neg_cnt++;
+					}
 			}
+			System.out.println(pos_cnt+":"+neg_cnt);
+			pos_m_cnt.add(pos_cnt);
+			neg_m_cnt.add(neg_cnt);
+			pos_cnt=0;
+			neg_cnt=0;
 		}
+		for(int i = 0; i<yearDates.size();i++) {
+			System.out.println("날짜 :"+yearDates.get(i)+ "긍정 리뷰 수 :"+pos_m_cnt.get(i)+"부정 리뷰 수: "+neg_m_cnt.get(i));
+		}
+		request.setAttribute("Dates", yearDates);
+		request.setAttribute("pos_m", pos_m_cnt);
+		request.setAttribute("neg_m", neg_m_cnt);
+		
+		
 		request.setAttribute("cnt_list_map", cnt_list_map);
 		System.out.println("빈도수 단어 리스트 보내기 성공");
-		request.setAttribute("topic_list_map", topic_list_map);
-		System.out.println("토픽리스트 보내기 성공");
 		request.setAttribute("review_emotion_cnt", review_emotion_cnt);
 		System.out.println("감정 비율 보내기 성공 review_emotion");
-		request.setAttribute("pos_cnt_M", pos_cnt_M);
-		System.out.println("월별 긍정 리뷰 개수 보내기 성공");
-		request.setAttribute("pos_cnt_M", pos_cnt_M);
-		System.out.println("월별 부정 리뷰 개수 보내기 성공");
 		return "Goreview_result.do";
 	}
 

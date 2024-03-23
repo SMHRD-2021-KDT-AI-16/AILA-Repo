@@ -154,7 +154,7 @@
                                             <div class="d-flex align-items-center justify-content-between mb-3">
                                                 <h4 class="card-title  card-title-dash">고구마</h4>
                                             </div>
-                                            <a href="Review.do?food=고구마&review_source=쿠팡">
+                                            <a href="Review.do?food_idx=1&review_source=쿠팡">
                                                 <img src="../resource/assets/images/goguma.jpg" style="width: 100%;" />
                                             </a>
                                         </div>
@@ -166,7 +166,7 @@
                                             <div class="d-flex align-items-center justify-content-between mb-3">
                                                 <h4 class="card-title card-title-dash">김치</h4>
                                             </div>
-                                            <a href="Review.do?food=김치&review_source=쿠팡">
+                                            <a href="Review.do?food_idx=2&review_source=쿠팡">
                                                 <img src="../resource/assets/images/gimchi.jpg" style="width: 100%;" />
                                             </a>
                                         </div>
