@@ -336,7 +336,7 @@ var options = {
 	  }
 	
 	// 리뷰 추이 차트
-	var dData = ${Dates}
+	/* var dData = ${Dates} */
 	var pData = ${pos_m}
 	var nData = ${neg_m}
 	
@@ -344,19 +344,15 @@ var options = {
 	var pList = new Array();
 	var nList = new Array();
 	
-	for(var i = 0; i<dData.length; i++) {
-		labelList.push(dData[i]);
-		console.log(dData[i]);
+	for(var i = 0; i<pData.length; i++) {
+		/* labelList.push(dData[i]);
+		console.log(dData[i]); */
 		pList.push(pData[i]);		
 		nList.push(nData[i]);
 	}
-	/* for(var i = 0; i<pData.length; i++) {
-	}
-	for(var i = 0; i<nData.length; i++) {
-	} */
 
 	var multiLineData = {
-		    labels: labelList,
+		    labels: ['24년03월', '24년02월', '24년01월', '23년12월', '23년11월', '23년10월', '23년09월', '23년08월', '23년07월', '23년06월', '23년05월', '23년04월'],
 		    datasets: [{
 		        label: '긍정 리뷰',
 		        data: pList,
