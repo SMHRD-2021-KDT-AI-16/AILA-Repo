@@ -5,9 +5,14 @@
 		select a.* from (select * from trend_info where search_form = '네이버' order by created_at desc limit 10)a order by search_rank;	
 	</select>
 	<select id="related10" resultType="HashMap">
-		select * 
-		from related_search_info A left outer join trend_info B
-		on A.search = B.search_word
-    	where B.search_form = "구글" and search_word = #{ search_word };
+		SELECT A.*
+		FROM (
+		    SELECT rel_search, MAX(rel_search_idx) AS max_rel_search_idx
+		    FROM related_search_info 
+		    WHERE search IN (SELECT search_word FROM trend_info WHERE search_form = '네이버' and search = #{search_word})
+		    AND DATE(created_at) = CURDATE()
+		    GROUP BY rel_search
+		) AS max_rel_search
+		JOIN related_search_info A ON max_rel_search.rel_search = A.rel_search AND max_rel_search.max_rel_search_idx = A.rel_search_idx;
 	</select>
 </mapper>
