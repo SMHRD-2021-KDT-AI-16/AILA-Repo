@@ -24,7 +24,6 @@ public class Review2Service implements command {
 		
 		vo.setReview_content(inputKey);
 		List<ReviewVO> list = dao.ReviewM();
-		//ReviewVO result = (ReviewVO) new ReviewDAO().allReview(inputKey);
 		
 		if(list != null) {
 			HttpSession session = request.getSession();
