@@ -140,6 +140,7 @@ public class ReviewService implements command {
 		request.setAttribute("cnt_list_map", cnt_list_map);
 		System.out.println("빈도수 단어 리스트 보내기 성공");
 		request.setAttribute("review_emotion_cnt", review_emotion_cnt);
+
 		System.out.println("감정 비율 보내기 성공 review_emotion");
 		return "Goreview_result.do";
 	}

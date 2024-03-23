@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -158,13 +159,7 @@
                                         <div class="card-body card-rounded">
                                             <div class="d-flex align-items-center justify-content-between mb-3">
                                                 <h4 class="card-title card-title-dash">인기 검색어 (일간)</h4>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between mb-3">
-                                                <h4 class="card-title card-title-dash">연관 검색어 (일간)</h4>
-                                            </div>
-                                            <div id="related-list">
-                                            	
-                                            </div>
+                                            </div>  
                                             <c:forEach var="t" items="${top10}">
                                             <div class="list align-items-center border-bottom py-2">
                                             	<div class="wrapper w-100">
@@ -172,6 +167,9 @@
                                                         <div onclick="test('${t.search_word}')"> ${t.search_rank}위 ${t.search_word}</div>
                                                     </p>
                                                 </div>
+                                                 <div id="related-list">
+                                            	
+                                            	</div>
                                             </div>
                                             </c:forEach>
                                         </div>
@@ -191,7 +189,6 @@
                                     </div>
                                 </div>
                             </div>
-                            
                             <!-- 검색어 관련 정보들 -->
                             <div style="display: none; width: 70%; height: 800px; background-color: green; float: right;"></div>
                         </div>
