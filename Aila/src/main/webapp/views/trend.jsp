@@ -27,6 +27,7 @@
 	   	.image-with-space {
 		margin-right: 13px; /* 그림의 오른쪽에 20px의 공백 추가 */
 		}
+		
    	</style>
    
 </head>
@@ -137,80 +138,68 @@
                 </ul>
             </nav>
             <!-- partial -->
-<div class="main-panel">
-    <div class="content-wrapper">
-        <div class="row">
-            <div class="col-sm-12" style="position: relative;">
-                <div class="home-tab">
-                    <div class="statistics-details d-flex align-items-center">
-                        <div style="width: 25%; margin-left: 1.5rem;">
-                            <!-- <h3 class="rate-percentage">인기 검색어</h3> -->
-                        </div>
-                        <div style="width: 25%; margin-left: 1.5rem;">
-                            <!-- <h3 class="rate-percentage">내일 날씨</h3> -->
-                        </div>
-                        <div style="width: 25%; margin-left: 1.5rem;">
-                            <!-- <h3 class="rate-percentage">세 번째 섹션</h3> -->
-                        </div>
-                        <div style="width: 25%; margin-left: 1.5rem;">
-                            <!-- <h3 class="rate-percentage">네 번째 섹션</h3> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="row flex-grow" style="position: absolute; width: 100%;">
-                    <div class="col-md-6 col-lg-3 grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body card-rounded">
-                                <div class="d-flex align-items-center justify-content-between mb-3">
-                                    <h4 class="card-title card-title-dash">인기 검색어 (일간)</h4>
-                                </div>  
-                                <c:forEach var="t" items="${top10}">
-                                <div class="list align-items-center border-bottom py-2">
-                                    <div class="wrapper w-100">
-                                        <p class="mb-2 font-weight-medium">
-                                            <div onclick="test('${t.search_word}')"> ${t.search_rank}위 ${t.search_word}</div>
-                                        </p>
-                                    </div>
-                                </div>
-                                </c:forEach>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body card-rounded">
-                                <div class="d-flex align-items-center justify-content-between mb-3">
-                                    <h4 class="card-title card-title-dash">연관 검색어(일간)</h4>
-                                </div>  
- 								<div id="related-list">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 추가 열을 여기에 추가합니다 -->
-                    <div class="col-md-6 col-lg-3 grid-margin stretch-card">
-                        <div class="card">
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body card-rounded" style="height: 750px;">
-                                <div class="d-flex align-items-center justify-content-between mb-3">
-                                    <h4 class="card-title card-title-dash">내일 날씨</h4>
-                                </div>
-                                <div style="background-color: dodgerblue; width: 100%; height: 90%; border-radius: 15px;">
-                                    <iframe src="../resource/partials/weathermap.html" width="100%" height="100%" frameborder='0' scrolling="no"></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-                            <!-- 검색어 관련 정보들 -->
+			<div class="main-panel">
+			    <div class="content-wrapper">
+			        <div class="row">
+			            <div class="col-sm-12" style="position: relative;">
+			                <div class="home-tab">
+		
+			                </div>
+			                <div class="row flex-grow" style="position: absolute; width: 100%;">
+			                    <div class="col-md-6 col-lg-3 grid-margin stretch-card" style="width: 15%;">
+			                        <div class="card">
+			                            <div class="card-body card-rounded">
+			                                <div class="d-flex align-items-center justify-content-between mb-3">
+			                                    <h4 class="card-title card-title-dash">인기 검색어 (일간)</h4>
+			                                </div>  
+			                                <c:forEach var="t" items="${top10}">
+			                                <div class="list align-items-center border-bottom py-2">
+			                                    <div class="wrapper w-100">
+			                                        <p class="mb-2 font-weight-medium">
+			                                            <div onclick="test('${t.search_word}')"> ${t.search_rank}위 ${t.search_word}</div>
+			                                        </p>
+			                                    </div>
+			                                </div>
+			                                </c:forEach>
+			                            </div>
+			                        </div>
+			                    </div>
+			                    <div class="col-md-6 col-lg-3 grid-margin stretch-card" style="width: 50%;">
+			                        <div class="card"> 
+			                        	<div class="card-body card-rounded">
+			                                <div class="d-flex align-items-center justify-content-between mb-3">
+			                                    <h4 class="card-title card-title-dash">검색량(일간)</h4>
+			                                </div>  
+			 								<div>
+			 									<div class="list align-items-center border-bottom py-2">
+				                                  <div class="wrapper w-100">
+					                                  <p class="mb-2 font-weight-medium">
+					                                	<canvas id="SearchCntChart"></canvas>
+					                                </p>
+				                                  </div>
+			                        			</div>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                   <div class="col-md-6 col-lg-3 grid-margin stretch-card" style="width: 35%;">
+			                        <div class="card">
+			                            <div class="card-body card-rounded" style="height: 100%; width: 100%">
+			                                <div class="d-flex align-items-center justify-content-between mb-3">
+			                                    <h4 class="card-title card-title-dash">내일 날씨</h4>
+			                                </div>
+			                                <div style="background-color: dodgerblue; width: 100%; height: 90%; border-radius: 15px;">
+			                                    <iframe src="../resource/partials/weathermap.html" width="100%" height="100%" frameborder='0' scrolling="no"></iframe>
+			                                </div>
+			                            </div>
+			                        </div>
+			                   </div>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+                       <!-- 검색어 관련 정보들 -->
                             <div style="display: none; width: 70%; height: 800px; background-color: green; float: right;"></div>
                         </div>
                         <!-- content-wrapper ends -->
@@ -249,7 +238,8 @@
             <!-- Custom js for this page-->
             <script src="../resource/assets/js/chart.js"></script>
             <!-- End custom js for this page-->
-            <script type="text/javascript">            
+            <script type="text/javascript">     
+            	var scb = document.getElementById('SearchCntChart').getContext('2d');
             	function test(search_word) {
             		$.ajax({
           		      url: "Trend.do", // 데이터를 담고 있는 파일의 경로를 지정해주세요.
@@ -260,30 +250,50 @@
 	          		  },// 서버에 보낼 데이터
           		      dataType: "json", // 서버로부터 응답받은 데이터 타입
           		      success: function(data) {
-          		    	  //let review = JSON.parse(data);
-          		    	  
-          		    	  let related_list = document.getElementById('related-list');
-          		    	  let element = "";
-          		    	  related_list.innerText = "";
+	          		    	var existingChart = Chart.getChart("SearchCntChart");
+	          		    	if (existingChart) {
+	          		    	    existingChart.destroy();
+	          		    	}
+          		    	  let a = []
+          		    	  let b = []
           		    	  for(let i = 0 ; i < data.length; i++) {
-          		    		console.log(data[i].rel_search);
-          		    		  element += `					
-          		    			<div class="list align-items-center border-bottom py-2">
-                                  <div class="wrapper w-100">
-	                                  <p class="mb-2 font-weight-medium">
-	                                	<div> <a target='_blank' onclick="relatelink('\${data[i].related_list}')">\${ data[i].rel_search }<a> </div>	
-	                                </p>
-                                  </div>
-                              	</div>
-          		    		  `;
+          		    		  a.push(data[i].rel_search)
+          		    		  b.push(data[i].search_cnt)
+          		    		 
           		    	  }
-          		    	related_list.insertAdjacentHTML("afterbegin", element)
+          		    	  console.log(a)
+          		    	  console.log(b)
+          		    	  
+          		    	let searchCntBar = new Chart(scb, {
+				          type: 'bar',
+				          data: {
+				            labels: a, 
+				            datasets: [{
+				              label: '검색량',
+				              data: b,
+				              backgroundColor: 'aqua'
+				            }]
+				          },
+				          options: {
+				              maintainAspectRatio: false,
+				              responsive: true,
+				            scales: {
+				            },
+				            plugins: {
+				              legend: {
+				                position: 'right'
+				              }
+				            },
+				            indexAxis: 'y'
+				          }
+				        })
           		      },
           		      error: function(xhr, status, error) {
           		        console.error("데이터를 불러오는 중 오류가 발생했습니다:", status, error);
           		      }
           		    }); 
             	}
+            	
             </script>
 </body>
 
