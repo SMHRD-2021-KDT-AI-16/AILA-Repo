@@ -13,26 +13,33 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.aila.db.Review_resultDAO;
+import com.aila.model.CompanyVO;
 import com.aila.model.Frequency_cntVO;
 import com.aila.model.ReviewVO;
 import com.aila.model.TopicVO;
 
 public class ReviewService implements command {
 	
-	String food_name=null;
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		HttpSession session= request.getSession();
 		response.setContentType("text/html;charset=utf-8");
-		try {
-			food_name = request.getParameter("food_name");
-		}catch (NullPointerException e) {
-			HttpSession session= request.getSession();
-			food_name =(String) session.getAttribute("food_name");
-			System.out.println("세션에서 이름 가져옴");
-		}
+		
+		String food_name = request.getParameter("food_name");
+		session.setAttribute("food_name", food_name);
+
 		String review_source = request.getParameter("review_source");
+		
+		if(review_source == null) {
+			CompanyVO vo = (CompanyVO) session.getAttribute("member");
+			System.out.println("member : " + vo);
+			review_source = vo.getCompany_name();
+		}
+		
+		
+		session.setAttribute("review_source", review_source);
 		
 		Review_resultDAO dao = new Review_resultDAO();
 		ArrayList<Frequency_cntVO> cnt_list = new ArrayList<>();
