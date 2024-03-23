@@ -137,58 +137,79 @@
                 </ul>
             </nav>
             <!-- partial -->
-            <div class="main-panel">
-                <div class="content-wrapper">
-
-                    <div class="row">
-                        <div class="col-sm-12" style="position: relative;">
-                            <div class="home-tab">
-								<div class="statistics-details d-flex align-items-center">
-									<div style="width: 50%; margin-left: 1.5rem;">
-										<!-- <h3 class="rate-percentage">인기 검색어</h3> -->
-									</div>
-									<div style="width: 50%; margin-left: 1.5rem;">
-										<!-- <h3 class="rate-percentage">내일 날씨</h3> -->
-									</div>
-								</div>
-							</div>
-                            <div class="row flex-grow" style="position: absolute; width: 100%;">
-                                
-                                <div class="col-md-6 col-lg-6 grid-margin stretch-card">
-                                    <div class="card">
-                                        <div class="card-body card-rounded">
-                                            <div class="d-flex align-items-center justify-content-between mb-3">
-                                                <h4 class="card-title card-title-dash">인기 검색어 (일간)</h4>
-                                            </div>  
-                                            <c:forEach var="t" items="${top10}">
-                                            <div class="list align-items-center border-bottom py-2">
-                                            	<div class="wrapper w-100">
-                                                    <p class="mb-2 font-weight-medium">
-                                                        <div onclick="test('${t.search_word}')"> ${t.search_rank}위 ${t.search_word}</div>
-                                                    </p>
-                                                </div>
-                                                 <div id="related-list">
-                                            	
-                                            	</div>
-                                            </div>
-                                            </c:forEach>
-                                        </div>
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-sm-12" style="position: relative;">
+                <div class="home-tab">
+                    <div class="statistics-details d-flex align-items-center">
+                        <div style="width: 25%; margin-left: 1.5rem;">
+                            <!-- <h3 class="rate-percentage">인기 검색어</h3> -->
+                        </div>
+                        <div style="width: 25%; margin-left: 1.5rem;">
+                            <!-- <h3 class="rate-percentage">내일 날씨</h3> -->
+                        </div>
+                        <div style="width: 25%; margin-left: 1.5rem;">
+                            <!-- <h3 class="rate-percentage">세 번째 섹션</h3> -->
+                        </div>
+                        <div style="width: 25%; margin-left: 1.5rem;">
+                            <!-- <h3 class="rate-percentage">네 번째 섹션</h3> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row flex-grow" style="position: absolute; width: 100%;">
+                    <div class="col-md-6 col-lg-3 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body card-rounded">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <h4 class="card-title card-title-dash">인기 검색어 (일간)</h4>
+                                </div>  
+                                <c:forEach var="t" items="${top10}">
+                                <div class="list align-items-center border-bottom py-2">
+                                    <div class="wrapper w-100">
+                                        <p class="mb-2 font-weight-medium">
+                                            <div onclick="test('${t.search_word}')"> ${t.search_rank}위 ${t.search_word}</div>
+                                        </p>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-lg-6 grid-margin stretch-card">
-                                    <div class="card">
-                                        <div class="card-body card-rounded" style="height: 750px;">
-                                            <div class="d-flex align-items-center justify-content-between mb-3">
-                                                <h4 class="card-title card-title-dash">내일 날씨</h4>
-                                            </div>
-                                            <div style="background-color: dodgerblue; width: 100%; height: 90%; border-radius: 15px;">
-                                            	<iframe src="../resource/partials/weathermap.html" width="100%" height="100%" frameborder='0' scrolling="no"></iframe>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body card-rounded">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <h4 class="card-title card-title-dash">연관 검색어(일간)</h4>
+                                </div>  
+ 								<div id="related-list">
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <!-- 추가 열을 여기에 추가합니다 -->
+                    <div class="col-md-6 col-lg-3 grid-margin stretch-card">
+                        <div class="card">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body card-rounded" style="height: 750px;">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <h4 class="card-title card-title-dash">내일 날씨</h4>
+                                </div>
+                                <div style="background-color: dodgerblue; width: 100%; height: 90%; border-radius: 15px;">
+                                    <iframe src="../resource/partials/weathermap.html" width="100%" height="100%" frameborder='0' scrolling="no"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
                             <!-- 검색어 관련 정보들 -->
                             <div style="display: none; width: 70%; height: 800px; background-color: green; float: right;"></div>
                         </div>
