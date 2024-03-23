@@ -285,7 +285,25 @@
   <!-- End custom js for this page-->
 </body>
 <script>
-	
+var options = {
+	    scales: {
+	      yAxes: [{
+	        ticks: {
+	          beginAtZero: true
+	        }
+	      }]
+	    },
+	    legend: {
+	      display: false
+	    },
+	    elements: {
+	      point: {
+	        radius: 0
+	      }
+	    }
+
+	  };
+	// 감정 도넛 차트
 	var eRateData = {
 			labels: ['부정', '긍정'],
 			datasets: [{
@@ -316,6 +334,57 @@
 	      data: eRateData
 	    });
 	  }
-	  
+	
+	// 리뷰 추이 차트
+	var dData = ${Dates}
+	var pData = ${pos_m}
+	var nData = ${neg_m}
+	
+	var labelList = new Array();
+	var pList = new Array();
+	var nList = new Array();
+	
+	for(var i = 0; i<dData.length; i++) {
+		labelList.push(dData[i]);
+		console.log(dData[i]);
+		pList.push(pData[i]);		
+		nList.push(nData[i]);
+	}
+	/* for(var i = 0; i<pData.length; i++) {
+	}
+	for(var i = 0; i<nData.length; i++) {
+	} */
+
+	var multiLineData = {
+		    labels: labelList,
+		    datasets: [{
+		        label: '긍정 리뷰',
+		        data: pList,
+		        borderColor: [
+		          '#587ce4'
+		        ],
+		        borderWidth: 2,
+		        fill: false
+		      },
+		      
+		      {
+		        label: '부정 리뷰',
+		        data: nList,
+		        borderColor: [
+		          '#f44252'
+		        ],
+		        borderWidth: 2,
+		        fill: false
+		      }
+		    ]
+		  };
+	if ($("#linechart-multi").length) {
+	    var multiLineCanvas = $("#linechart-multi").get(0).getContext("2d");
+	    var lineChart = new Chart(multiLineCanvas, {
+	      type: 'line',
+	      data: multiLineData,
+	      options: options
+	    });
+	  }
 </script>
 </html>
