@@ -285,6 +285,24 @@
   <!-- End custom js for this page-->
 </body>
 <script>
+	var options = {
+		    scales: {
+		      yAxes: [{
+		        ticks: {
+		          beginAtZero: true
+		        }
+		      }]
+		    },
+		    legend: {
+		      display: false
+		    },
+		    elements: {
+		      point: {
+		        radius: 0
+		      }
+		    }
+
+		  };
 	//감정 도넛 차트
 	var eRateData = {
 			labels: ['부정', '긍정'],
@@ -342,24 +360,6 @@
     ]
   };
 	
-	var options = {
-		    scales: {
-		      yAxes: [{
-		        ticks: {
-		          beginAtZero: true
-		        }
-		      }]
-		    },
-		    legend: {
-		      display: false
-		    },
-		    elements: {
-		      point: {
-		        radius: 0
-		      }
-		    }
-
-		  };
 	
 	if ($("#review-multi").length) {
 	    var multiLineCanvas = $("#review-multi").get(0).getContext("2d");

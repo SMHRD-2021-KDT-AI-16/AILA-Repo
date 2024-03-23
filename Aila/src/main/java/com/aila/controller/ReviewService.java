@@ -119,7 +119,7 @@ public class ReviewService implements command {
 		System.out.println("감정 비율 보내기 성공 review_emotion");
 		request.setAttribute("pos_cnt_M", pos_cnt_M);
 		System.out.println("월별 긍정 리뷰 개수 보내기 성공");
-		request.setAttribute("neg_cnt_M", neg_cnt_M);
+		request.setAttribute("pos_cnt_M", pos_cnt_M);
 		System.out.println("월별 부정 리뷰 개수 보내기 성공");
 		return "Goreview_result.do";
 	}
