@@ -198,7 +198,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">리뷰 추이</h4>
-                  <canvas id="linechart-multi"></canvas>
+                  <canvas id="review-multi"></canvas>
                 </div>
               </div>
             </div>
@@ -285,7 +285,7 @@
   <!-- End custom js for this page-->
 </body>
 <script>
-	
+	//감정 도넛 차트
 	var eRateData = {
 			labels: ['부정', '긍정'],
 			datasets: [{
@@ -314,6 +314,59 @@
 	    var doughnutChart = new Chart(doughnutChartCanvas, {
 	      type: 'doughnut',
 	      data: eRateData
+	    });
+	  }
+	
+	// 월별 리뷰 갯수 차트
+	var reviewMultiLineData = {
+    labels: [${review_cnt_M}],
+    datasets: [{
+        label: '긍정 리뷰',
+        data: [${pos_cnt_M.YYYY-MMMM}],
+        borderColor: [
+          '#587ce4'
+        ],
+        borderWidth: 2,
+        fill: false
+      },
+      
+      {
+        label: '부정 리뷰',
+        data: [${neg_cnt_M.YYYY-MMMM}],
+        borderColor: [
+          '#f44252'
+        ],
+        borderWidth: 2,
+        fill: false
+      }
+    ]
+  };
+	
+	var options = {
+		    scales: {
+		      yAxes: [{
+		        ticks: {
+		          beginAtZero: true
+		        }
+		      }]
+		    },
+		    legend: {
+		      display: false
+		    },
+		    elements: {
+		      point: {
+		        radius: 0
+		      }
+		    }
+
+		  };
+	
+	if ($("#review-multi").length) {
+	    var multiLineCanvas = $("#review-multi").get(0).getContext("2d");
+	    var review_multiChart = new Chart(multiLineCanvas, {
+	      type: 'line',
+	      data: reviewMultiLineData,
+	      options: options
 	    });
 	  }
 	  
