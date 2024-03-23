@@ -50,8 +50,8 @@ public class ReviewService implements command {
 					cnt_list_map.put("pos_vo"+neg_cnt++,cnt_list.get(i) );
 				}
 			}
-			HttpSession session = request.getSession();
-			session.setAttribute("cnt_result", cnt_list_map);
+//			HttpSession session = request.getSession();
+//			session.setAttribute("cnt_result", cnt_list_map);
 		} else {
 			System.out.println("cnt_list 못가져왔음");
 		}
@@ -66,8 +66,8 @@ public class ReviewService implements command {
 				}
 			}
 
-			HttpSession session = request.getSession();
-			session.setAttribute("topic_result", topic_list_map);
+//			HttpSession session = request.getSession();
+//			session.setAttribute("topic_result", topic_list_map);
 		} else {
 			System.out.println("topic_list 못가져왔음");
 		}
@@ -91,21 +91,36 @@ public class ReviewService implements command {
 			System.out.println(review_emotion_cnt.get("neg"));
 //			HttpSession session = request.getSession();
 //			session.setAttribute("review_emotion_cnt", review_emotion_cnt);
-			request.setAttribute("review_emotion_cnt", review_emotion_cnt);
-			System.out.println("감정 비율 보내기 성공 review_emotion");
+			
 		} else {
 			System.out.println("review 못가져왔음");
 		}
 		// 월별 리뷰 개수를 저장할 HashMap
-		Map<String, Integer> review_cnt_M = new HashMap<>();
+		Map<String, Integer> pos_cnt_M = new HashMap<>();
+		Map<String, Integer> neg_cnt_M = new HashMap<>();
+		pos_cnt=0;
+		neg_cnt=0;
 
 		// 리뷰 리스트를 반복하면서 각 리뷰의 생성 월을 가져와서 월별 개수를 계산
-		for (ReviewVO review : review_list) {
-			String month = review.getMonth();
-			// 해당 월의 개수를 가져와 증가시킴
-			review_cnt_M.put(month, review_cnt_M.getOrDefault(month, 0) + 1);
+		for (int i =0 ; i<review_list.size();i++) {
+			String month = review_list.get(i).getMonth();
+			if(review_list.get(i).getReview_rating()>3) {
+				// 해당 월의 개수를 가져와 증가시킴
+				pos_cnt_M.put(month, pos_cnt_M.getOrDefault(month, 0) + 1);				
+			}else {
+				neg_cnt_M.put(month, neg_cnt_M.getOrDefault(month, 0) + 1);
+			}
 		}
-
+		request.setAttribute("cnt_list_map", cnt_list_map);
+		System.out.println("빈도수 단어 리스트 보내기 성공");
+		request.setAttribute("topic_list_map", topic_list_map);
+		System.out.println("토픽리스트 보내기 성공");
+		request.setAttribute("review_emotion_cnt", review_emotion_cnt);
+		System.out.println("감정 비율 보내기 성공 review_emotion");
+		request.setAttribute("pos_cnt_M", pos_cnt_M);
+		System.out.println("월별 긍정 리뷰 개수 보내기 성공");
+		request.setAttribute("pos_cnt_M", pos_cnt_M);
+		System.out.println("월별 부정 리뷰 개수 보내기 성공");
 		return "Goreview_result.do";
 	}
 
