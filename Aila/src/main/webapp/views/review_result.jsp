@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -30,6 +31,9 @@
 </head>
 
 <body>
+<% ArrayList<String> pos_cnt_word = (ArrayList<String>) request.getAttribute("pos_cnt_word") ;
+ ArrayList<String> neg_cnt_word = (ArrayList<String>) request.getAttribute("neg_cnt_word") ;
+%>
   <div class="container-scroller">
     <!-- partial:../../partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
@@ -214,12 +218,12 @@
                 
                   <h4 class="card-title d-flex justify-content-between">키워드 Top10
                   <span>
-                  <button type="button" class="btn btn-info btn-rounded btn-fw btn-sm">긍정</button>
-                  <button type="button" class="btn btn-danger btn-rounded btn-fw btn-sm">부정</button>
+                  <button id="pos-t" type="button" class="btn btn-info btn-rounded btn-fw btn-sm">긍정</button>
+                  <button id="neg-t" type="button" class="btn btn-danger btn-rounded btn-fw btn-sm">부정</button>
                   </span>
                   </h4>
                   
-                  <canvas id="topicChart"></canvas>
+                  <canvas id="posTopicChart"></canvas>
                 </div>
               </div>
             </div>
@@ -274,6 +278,7 @@
   <!-- End custom js for this page-->
 </body>
 <script>
+
 var options = {
 	    scales: {
 	      yAxes: [{
@@ -373,11 +378,18 @@ var options = {
 	  }
 	
 	// 키워드 차트
-	var pos_cnt_word = '${pos_cnt_word}'
-	var pos_cnt = ${pos_cnt}
-	var neg_cnt_word = '${neg_cnt_word}'
-	var neg_cnt = ${neg_cnt}
+	var pos_word='<%=pos_cnt_word%>'
+    var pos_cnt_word=[]
+    pos_cnt_word=pos_word.trim().replace("[","").replace("]","").split(",")
 	console.log(pos_cnt_word)
+	var pos_cnt = ${pos_cnt}
+	console.log(pos_cnt)
+	var neg_word = '<%=neg_cnt_word%>'
+	var neg_cnt_word=[]
+	neg_cnt_word=neg_word.trim().replace("[","").replace("]","").split(",")
+	console.log(neg_cnt_word)
+	var neg_cnt = ${neg_cnt}
+	console.log(neg_cnt)
 	
 	var posWordList = new Array()
 	var posCntList = new Array()
@@ -387,6 +399,7 @@ var options = {
 	var posColorBorder = new Array()
 	var negColor = new Array()
 	var negColorBorder = new Array()
+	
 	
 	for(var i = 0; i<10; i++){
 		posWordList.push(pos_cnt_word[i])
@@ -398,7 +411,25 @@ var options = {
 		negColor.push('rgba(255, 99, 132, 0.2)')
 		negColorBorder.push('rgba(255,99,132,1)')
 	}
-	var topicData = {
+	
+$('#neg-t').on('click', function(){
+	$('#posTopicChart').attr('id', 'negTopicChart')
+	drawNegTopicChart()
+})
+
+$('#pos-t').on('click', function(){
+	$('#negTopicChart').attr('id', 'posTopicChart')
+	
+	// 기존에 남아있는 차트 제거
+	let chartStatus = Chart.getChart('posTopicChart');
+	if (chartStatus !== undefined) {
+		chartStatus.destroy();
+	}
+	drawPosTopicChart();
+})
+
+	// 긍정 키워드 차트 데이터
+	var posTopicData = {
 		    labels: posWordList,
 		    datasets: [{
 		      label: '긍정 키워드',
@@ -409,15 +440,85 @@ var options = {
 		      fill: false
 		    }]
 		  };
+		  
+		  // 긍정 키워드 차트 그리기
+	 if ($("#posTopicChart").length) {
+		 drawPosTopicChart();
+	}
+		  
+	function drawPosTopicChart(){
+		var posTopicCanvas = $("#posTopicChart").get(0).getContext("2d");
+	    
+	    var posTopicChart = new Chart(posTopicCanvas, {
+	      type: 'bar',
+	      data: posTopicData,
+	      options: {
+	    	    scales: {
+	    	        yAxes: [{
+	    	          ticks: {
+	    	            beginAtZero: true
+	    	          }
+	    	        }]
+	    	      },
+	    	      legend: {
+	    	        display: false
+	    	      },
+	    	      elements: {
+	    	        point: {
+	    	          radius: 0
+	    	        }
+	    	      }
+
+	    	    }
+	    });
+	}
+			// 부정 키워드 차트 데이터
+			var negTopicData = {
+				    labels: negWordList,
+				    datasets: [{
+				      label: '부정 키워드',
+				      data: negCntList,
+				      backgroundColor: negColor,
+				      borderColor: negColorBorder,
+				      borderWidth: 1,
+				      fill: false
+				    }]
+				  };
+			
+			// 부정 키워드 차트 그리기
+	 function drawNegTopicChart(){
+			if ($("#negTopicChart").length) {
+			    // 기존에 남아있는 차트 제거
+			    let chartStatus = Chart.getChart('negTopicChart');
+			    if (chartStatus !== undefined) {
+			      chartStatus.destroy();
+			    }
+			    var negTopicCanvas = $("#negTopicChart").get(0).getContext("2d");
+			    
+			    var negTopicChart = new Chart(negTopicCanvas, {
+			      type: 'bar',
+			      data: negTopicData,
+			      options: {
+			    	    scales: {
+			    	        yAxes: [{
+			    	          ticks: {
+			    	            beginAtZero: true
+			    	          }
+			    	        }]
+			    	      },
+			    	      legend: {
+			    	        display: false
+			    	      },
+			    	      elements: {
+			    	        point: {
+			    	          radius: 0
+			    	        }
+			    	      }
+
+			    	    }
+			    });
+			  }
+	 }
 	
-	 if ($("#topicChart").length) {
-		    var topicCanvas = $("#topicChart").get(0).getContext("2d");
-		    // This will get the first returned node in the jQuery collection.
-		    var topicChart = new Chart(topicCanvas, {
-		      type: 'bar',
-		      data: topicData,
-		      options: options
-		    });
-		  }
 </script>
 </html>

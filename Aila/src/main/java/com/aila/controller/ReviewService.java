@@ -75,11 +75,14 @@ public class ReviewService implements command {
 					neg_cnt_.add(cnt_list.get(i).getFc_cnt());
 				}
 			}
-			
+			System.out.println("긍정 단어"+pos_cnt_word);
+			System.out.println("긍정 갯수"+pos_cnt_);
+			System.out.println("부정 단어"+neg_cnt_word);
+			System.out.println("부정 갯수"+neg_cnt_);
 			request.setAttribute("pos_cnt_word", pos_cnt_word);
 			request.setAttribute("pos_cnt", pos_cnt_);
 			request.setAttribute("neg_cnt_word", neg_cnt_word);
-			request.setAttribute("neg_cnt", pos_cnt_);
+			request.setAttribute("neg_cnt", neg_cnt_);
 			System.out.println("cnt 보내기 끝~!");
 		} else {
 			System.out.println("cnt 못가져왔음");
