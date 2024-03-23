@@ -61,12 +61,12 @@
               data-bs-toggle="dropdown" aria-expanded="false"> 품목 선택 </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
               aria-labelledby="messageDropdown">
-              <a class="dropdown-item preview-item" id="keyword">
+              <a class="dropdown-item preview-item select-food">
                 <div class="preview-item-content flex-grow py-2">
                   <h6 style="margin: 0.2rem;">고구마</h6>
                 </div>
               </a>
-              <a class="dropdown-item preview-item" id="pos-and-neg">
+              <a class="dropdown-item preview-item select-food">
                 <div class="preview-item-content flex-grow py-2">
                   <h6 style="margin: 0.2rem;">김치</h6>
                 </div>
@@ -79,17 +79,17 @@
               data-bs-toggle="dropdown" aria-expanded="false"> 채널 선택 </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
               aria-labelledby="messageDropdown">
-              <a href="Goreview_result.do" class="dropdown-item preview-item" id="keyword">
+              <a href="" class="dropdown-item preview-item select-channel">
                 <div class="preview-item-content flex-grow py-2">
                   <h6 style="margin: 0.2rem;">자사몰</h6>
                 </div>
               </a>
-              <a href="Goreview_result2.do" class="dropdown-item preview-item" id="pos-and-neg">
+              <a href="" class="dropdown-item preview-item select-channel">
                 <div class="preview-item-content flex-grow py-2">
                   <h6 style="margin: 0.2rem;">네이버</h6>
                 </div>
               </a>
-              <a href="Goreview_result3.do" class="dropdown-item preview-item" id="sales-volume">
+              <a href="" class="dropdown-item preview-item select-channel">
                 <div class="preview-item-content flex-grow py-2">
                   <h6 style="margin: 0.2rem;">쿠팡</h6>
                 </div>
@@ -175,15 +175,20 @@
         <div class="content-wrapper">
         <!-- <div style="max-width: 80%;"> -->
         
-          <!-- <div class="row">
+         <%--  <div class="row">
             <div class="col-sm-12">
               <div class="home-tab">
                 <div class="statistics-details d-flex align-items-center">
-                  <div style="margin-left: 1.5rem;"><h3 class="rate-percentage">자사몰</h3></div>
+                  <div style="margin-left: 1.5rem;"><h3 class="rate-percentage">
+                  <c:if test="${review_resource == null }">
+                  ${member.company_name}
+                  </c:if>
+                  <c:if test="${review_resource != null }">${review_resource }</c:if>
+                  </h3></div>
                 </div>
               </div>
             </div>
-          </div> -->
+          </div> --%>
           
           <div class="row">
             <div class="col-lg-6 grid-margin stretch-card" style="width: 30%;">
@@ -336,7 +341,8 @@ var options = {
 	  }
 	
 	// 리뷰 추이 차트
-	/* var dData = ${Dates} */
+	var yData = ${year}
+	var mData = ${month}
 	var pData = ${pos_m}
 	var nData = ${neg_m}
 	
@@ -345,14 +351,13 @@ var options = {
 	var nList = new Array();
 	
 	for(var i = 0; i<pData.length; i++) {
-		/* labelList.push(dData[i]);
-		console.log(dData[i]); */
+		labelList.push(yData[i]+" "+mData[i].toString());
 		pList.push(pData[i]);		
 		nList.push(nData[i]);
 	}
 
 	var multiLineData = {
-		    labels: ['24년03월', '24년02월', '24년01월', '23년12월', '23년11월', '23년10월', '23년09월', '23년08월', '23년07월', '23년06월', '23년05월', '23년04월'],
+		    labels: labelList,
 		    datasets: [{
 		        label: '긍정 리뷰',
 		        data: pList,
