@@ -424,14 +424,14 @@ $(function() {
     });
   }
 
-  if ($("#linechart-multi").length) {
+  /*if ($("#linechart-multi").length) {
     var multiLineCanvas = $("#linechart-multi").get(0).getContext("2d");
     var lineChart = new Chart(multiLineCanvas, {
       type: 'line',
       data: multiLineData,
       options: options
     });
-  }
+  }*/
   
   if ($("#linechart-multi-c").length) {
     var multiLineCanvas2 = $("#linechart-multi-c").get(0).getContext("2d");
