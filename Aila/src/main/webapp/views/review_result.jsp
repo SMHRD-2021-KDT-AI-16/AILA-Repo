@@ -335,6 +335,50 @@ var options = {
 	      type: 'doughnut',
 	      data: eRateData
 	    });
+	    
+	    let seasonlengthChart = new Chart(slc, {
+	        type: 'bar',
+	        data: {
+	          labels: ['봄', '여름', '가을', '겨울'],
+	          datasets: [{
+	            data: [90, 120, 60, 90],
+	            backgroundColor: [
+	              '#f9a73f',
+	              '#6aafac',
+	              '#e96551',
+	              '#596f84'],
+	            borderColor: [
+	              '#f9a73f',
+	              '#6aafac',
+	              '#e96551',
+	              '#596f84'],
+	            hoverBorderColor: ['#f78d08', '#59a6a2', '#e3361c', '#678098'],
+	            hoverBackgroundColor: ['#f78d08', '#59a6a2', '#e3361c', '#678098'],
+	            hoverBorderWidth: 5
+	          }, {
+	            data: [85, 98, 73, 109],
+	            backgroundColor: ['#fbc683', '#8bc1be', '#f19b8e', '#94a6b7'],
+	            borderColor: ['#fbc683', '#8bc1be', '#f19b8e', '#94a6b7'],
+	            hoverBorderColor: ['#f78d08', '#59a6a2', '#e3361c', '#678098'],
+	            hoverBackgroundColor: ['#f78d08', '#59a6a2', '#e3361c', '#678098'],
+	            hoverBorderWidth: 5
+	          }]
+	        },
+	        options: {
+	  		
+	          events: ["mouseout", "click", "touchstart", "touchmove", "touchend"],
+	          responsive: false,
+	          legend: {
+	            position: 'left',
+	            align: 'center',
+	            fontSize: '2px'
+	          },
+	          label: {
+	            align: 'start'
+	          },
+	          cutoutPercentage: 0
+	        }
+	      })
 	  }
 	
 	// 리뷰 추이 차트
