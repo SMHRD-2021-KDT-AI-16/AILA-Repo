@@ -61,12 +61,12 @@
               data-bs-toggle="dropdown" aria-expanded="false"> 품목 선택 </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
               aria-labelledby="messageDropdown">
-              <a class="dropdown-item preview-item" id="keyword">
+              <a href="Review.do?food_name=고구마&review_source=${review_source }" class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
                   <h6 style="margin: 0.2rem;">고구마</h6>
                 </div>
               </a>
-              <a class="dropdown-item preview-item" id="pos-and-neg">
+              <a href="Review.do?food_name=김치&review_source=${review_source }" class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
                   <h6 style="margin: 0.2rem;">김치</h6>
                 </div>
@@ -79,17 +79,17 @@
               data-bs-toggle="dropdown" aria-expanded="false"> 채널 선택 </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
               aria-labelledby="messageDropdown">
-              <a href="Goreview_result.do" class="dropdown-item preview-item" id="keyword">
+              <a href="Review.do?food_name=${food_name }&review_source=${member.company_name }" class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
                   <h6 style="margin: 0.2rem;">자사몰</h6>
                 </div>
               </a>
-              <a href="Goreview_result2.do" class="dropdown-item preview-item" id="pos-and-neg">
+              <a href="Review.do?food_name=${food_name }&review_source=네이버" class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
                   <h6 style="margin: 0.2rem;">네이버</h6>
                 </div>
               </a>
-              <a href="Goreview_result3.do" class="dropdown-item preview-item" id="sales-volume">
+              <a href="Review.do?food_name=${food_name }&review_source=쿠팡" class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
                   <h6 style="margin: 0.2rem;">쿠팡</h6>
                 </div>
@@ -175,15 +175,17 @@
         <div class="content-wrapper">
         <!-- <div style="max-width: 80%;"> -->
         
-          <!-- <div class="row">
+          <div class="row">
             <div class="col-sm-12">
               <div class="home-tab">
                 <div class="statistics-details d-flex align-items-center">
-                  <div style="margin-left: 1.5rem;"><h3 class="rate-percentage">자사몰</h3></div>
+                  <div style="margin-left: 1.5rem;"><h3 class="rate-percentage">
+                  ${review_source}
+                  </h3></div>
                 </div>
               </div>
             </div>
-          </div> -->
+          </div>
           
           <div class="row">
             <div class="col-lg-6 grid-margin stretch-card" style="width: 30%;">
@@ -285,7 +287,25 @@
   <!-- End custom js for this page-->
 </body>
 <script>
-	
+var options = {
+	    scales: {
+	      yAxes: [{
+	        ticks: {
+	          beginAtZero: true
+	        }
+	      }]
+	    },
+	    legend: {
+	      display: false
+	    },
+	    elements: {
+	      point: {
+	        radius: 0
+	      }
+	    }
+
+	  };
+	// 감정 도넛 차트
 	var eRateData = {
 			labels: ['부정', '긍정'],
 			datasets: [{
@@ -360,6 +380,54 @@
 	        }
 	      })
 	  }
-	  
+	
+	// 리뷰 추이 차트
+	var yData = ${year}
+	var mData = ${month}
+	var pData = ${pos_m}
+	var nData = ${neg_m}
+	
+	var labelList = new Array();
+	var pList = new Array();
+	var nList = new Array();
+	
+	for(var i = 0; i<pData.length; i++) {
+		labelList.push(yData[i]+" "+mData[i].toString());
+		pList.push(pData[i]);		
+		nList.push(nData[i]);
+	}
+
+	var multiLineData = {
+		    labels: labelList,
+		    datasets: [{
+		        label: '긍정 리뷰',
+		        data: pList,
+		        borderColor: [
+		          '#587ce4'
+		        ],
+		        borderWidth: 2,
+		        fill: false
+		      },
+		      
+		      {
+		        label: '부정 리뷰',
+		        data: nList,
+		        borderColor: [
+		          '#f44252'
+		        ],
+		        borderWidth: 2,
+		        fill: false
+		      }
+		    ]
+		  };
+	if ($("#linechart-multi").length) {
+	    var multiLineCanvas = $("#linechart-multi").get(0).getContext("2d");
+	    var lineChart = new Chart(multiLineCanvas, {
+	      type: 'line',
+	      data: multiLineData,
+	      options: options
+	    });
+	  }
+	
 </script>
 </html>
