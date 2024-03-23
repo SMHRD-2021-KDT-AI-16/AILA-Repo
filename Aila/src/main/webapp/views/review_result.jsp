@@ -173,7 +173,7 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-        <!-- <div style="max-width: 80%;"> -->
+        <div style="max-width: 80%;">
         
           <div class="row">
             <div class="col-sm-12">
@@ -188,7 +188,7 @@
           </div>
           
           <div class="row">
-            <div class="col-lg-6 grid-margin stretch-card" style="width: 30%;">
+            <div class="col-lg-6 grid-margin stretch-card" style="width: 35%;">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">긍정/부정 비율</h4>
@@ -196,7 +196,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 grid-margin stretch-card" style="width: 50%;">
+            <div class="col-lg-6 grid-margin stretch-card" style="width: 65%;">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">리뷰 추이</h4>
@@ -205,18 +205,9 @@
               </div>
             </div>
             
-        	<div class="col-lg-6 grid-margin stretch-card" style="width: 20%;">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">임시 기능</h4>
-                  <div style="width: 100%; height: 100%;"></div>
-                </div>
-              </div>
-            </div>
-            
           </div>
           
-          <div class="row" style="width: 80%;">
+          <div class="row">
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
@@ -228,7 +219,7 @@
                   </span>
                   </h4>
                   
-                  <canvas id="barChart2"></canvas>
+                  <canvas id="topicChart"></canvas>
                 </div>
               </div>
             </div>
@@ -244,11 +235,7 @@
               </div>
             </div>
           </div>
-          
-        <!-- </div> -->
-        
-        
-        
+        </div>
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
@@ -385,5 +372,52 @@ var options = {
 	    });
 	  }
 	
+	// 키워드 차트
+	var pos_cnt_word = '${pos_cnt_word}'
+	var pos_cnt = ${pos_cnt}
+	var neg_cnt_word = '${neg_cnt_word}'
+	var neg_cnt = ${neg_cnt}
+	console.log(pos_cnt_word)
+	
+	var posWordList = new Array()
+	var posCntList = new Array()
+	var negWordList = new Array()
+	var negCntList = new Array()
+	var posColor = new Array()
+	var posColorBorder = new Array()
+	var negColor = new Array()
+	var negColorBorder = new Array()
+	
+	for(var i = 0; i<10; i++){
+		posWordList.push(pos_cnt_word[i])
+		posCntList.push(pos_cnt[i])
+		negWordList.push(neg_cnt_word[i])
+		negCntList.push(neg_cnt[i])
+		posColor.push('rgba(54, 162, 235, 0.2)')
+		posColorBorder.push('rgba(54, 162, 235, 1)')
+		negColor.push('rgba(255, 99, 132, 0.2)')
+		negColorBorder.push('rgba(255,99,132,1)')
+	}
+	var topicData = {
+		    labels: posWordList,
+		    datasets: [{
+		      label: '긍정 키워드',
+		      data: posCntList,
+		      backgroundColor: posColor,
+		      borderColor: posColorBorder,
+		      borderWidth: 1,
+		      fill: false
+		    }]
+		  };
+	
+	 if ($("#topicChart").length) {
+		    var topicCanvas = $("#topicChart").get(0).getContext("2d");
+		    // This will get the first returned node in the jQuery collection.
+		    var topicChart = new Chart(topicCanvas, {
+		      type: 'bar',
+		      data: topicData,
+		      options: options
+		    });
+		  }
 </script>
 </html>

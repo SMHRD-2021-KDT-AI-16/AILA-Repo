@@ -123,7 +123,6 @@
 
     var tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
-    console.log(tomorrow)
     var tomorrowDate = tomorrow.toISOString().split('T')[0];
 
     var promises = locations.map(function(location) {
@@ -143,7 +142,6 @@
         for (var i = 0; i < arguments.length; i++) {
             var response = arguments[i][0];
             var location = locations[i];
-			console.log(response)
 			
 			response.list.forEach(function(forecast) {
                 var dateTime = forecast.dt_txt;

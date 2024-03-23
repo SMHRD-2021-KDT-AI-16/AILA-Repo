@@ -54,6 +54,7 @@ public class ReviewService implements command {
 		review_list = dao.selectReview(food_idx, review_source);
 		cnt_list = dao.fc_cnt(food_name, review_source);
 		topic_list = dao.selectTopic(food_name, review_source);
+		
 		ArrayList<String> pos_cnt_word = new ArrayList();
 		ArrayList<String> neg_cnt_word = new ArrayList();
 		ArrayList<Integer> pos_cnt_ = new ArrayList();
@@ -74,6 +75,7 @@ public class ReviewService implements command {
 					neg_cnt_.add(cnt_list.get(i).getFc_cnt());
 				}
 			}
+			
 			request.setAttribute("pos_cnt_word", pos_cnt_word);
 			request.setAttribute("pos_cnt", pos_cnt_);
 			request.setAttribute("neg_cnt_word", neg_cnt_word);
