@@ -121,13 +121,15 @@ public class ReviewService implements command {
 		}
 		
 		ArrayList<String> year = new ArrayList();
+		ArrayList<String> month = new ArrayList();
 		for (int i =0;i<yearDates.size();i++) {
-			year.add(yearDates.get(i).replace("20", "").replace("-", "년")+"월");
-			
-			System.out.println(year.get(i)+":"+pos_m_cnt.get(i)+":"+neg_m_cnt.get(i));
+			year.add(yearDates.get(i).split("-")[0]);
+			month.add(yearDates.get(i).split("-")[1]);
+			System.out.println(year.get(i)+"-"+month.get(i)+":"+pos_m_cnt.get(i)+":"+neg_m_cnt.get(i));
 		}
 		
-		request.setAttribute("Dates", year);
+		request.setAttribute("year", year);
+		request.setAttribute("month", month);
 		request.setAttribute("pos_m", pos_m_cnt);
 		request.setAttribute("neg_m", neg_m_cnt);
 		
