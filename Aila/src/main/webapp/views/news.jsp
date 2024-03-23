@@ -26,7 +26,7 @@
 	   	.image-with-space {
 		margin-right: 13px; /* 그림의 오른쪽에 20px의 공백 추가 */
 		}
-		a {
+		a, .wrapper {
 			cursor: pointer;
 		}
    	</style>

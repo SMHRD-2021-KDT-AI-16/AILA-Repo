@@ -27,10 +27,11 @@
 	   	.image-with-space {
 		margin-right: 13px; /* 그림의 오른쪽에 20px의 공백 추가 */
 		}
-		
+		.wrapper {
+			cursor: pointer;
+		}
    	</style>
-   	
-   
+
 </head>
 
 <body>
@@ -167,19 +168,15 @@
 			                    </div>
 			                    <div class="col-md-6 col-lg-3 grid-margin stretch-card" style="width: 50%;">
 			                        <div class="card"> 
-			                        	<div class="card-body card-rounded">
+			                        	<div class="card-body card-rounded" >
 			                                <div class="d-flex align-items-center justify-content-between mb-3">
-			                                    <h4 class="card-title card-title-dash">검색량(일간)</h4>
+			                                    <h4 class="card-title card-title-dash">연관검색량(일간)</h4>
 			                                </div>  
-			 								<div>
-			 									<div class="list align-items-center border-bottom py-2">
-				                                  <div class="wrapper w-100">
-					                                  <p class="mb-2 font-weight-medium">
-					                                	<canvas id="SearchCntChart" style = "height : 250px"></canvas>
-					                                </p>
-				                                  </div>
-			                        			</div>
-			                                </div>
+			 								<div class="list align-items-center border-bottom py-2">
+			 									<div class="chart-wrap" style= "height: 550px">
+					                             	<canvas id="SearchCntChart"></canvas>
+					                            </div>
+			                        		</div>
 			                            </div>
 			                        </div>
 			                    </div>
@@ -224,6 +221,7 @@
             <!-- plugins:js -->
             <script src="../resource/assets/vendors/js/vendor.bundle.base.js"></script>
             <script src="../resource/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+            
             <!-- endinject -->
             <!-- Plugin js for this page -->
             <script src="../resource/assets/vendors/chart.js/Chart.min.js"></script>
@@ -239,60 +237,70 @@
             <!-- Custom js for this page-->
             <script src="../resource/assets/js/chart.js"></script>
             <!-- End custom js for this page-->
-            <script type="text/javascript">     
-            	var scb = document.getElementById('SearchCntChart').getContext('2d');
-            	function test(search_word) {
-            		$.ajax({
-          		      url: "Trend.do", // 데이터를 담고 있는 파일의 경로를 지정해주세요.
-          		      type: "GET",
-	          		  data: {
-	          			"search_word" : search_word,
-	          		        ajax: 'true'  // 서블릿에게 AJAX 요청임을 알림
-	          		  },// 서버에 보낼 데이터
-          		      dataType: "json", // 서버로부터 응답받은 데이터 타입
-          		      success: function(data) {
-	          		    	var existingChart = Chart.getChart("SearchCntChart");
-	          		    	if (existingChart) {
-	          		    	    existingChart.destroy();
-	          		    	}
-          		    	  let a = []
-          		    	  let b = []
-          		    	  for(let i = 0 ; i < data.length; i++) {
-          		    		  a.push(data[i].rel_search)
-          		    		  b.push(data[i].search_cnt)
-          		    		 
-          		    	  }
-          		    	  console.log(a)
-          		    	  console.log(b)
-          		    	  
-          		    	let searchCntBar = new Chart(scb, {
-				          type: 'bar',
-				          data: {
-				            labels: a, 
-				            datasets: [{
-				              label: '검색량',
-				              data: b,
-				              backgroundColor: 'aqua'
-				            }]
-				          },
-				          options: {
-				            scales: {
-				            },
-				            plugins: {
-				              legend: {
-				                position: 'right'
-				              }
-				            },
-				            indexAxis: 'y'
-				          }
-				        })
-          		      },
-          		      error: function(xhr, status, error) {
-          		        console.error("데이터를 불러오는 중 오류가 발생했습니다:", status, error);
-          		      }
-          		    }); 
-            	}
-            </script>
+			<script type="text/javascript">     
+			    var scb = document.getElementById('SearchCntChart').getContext('2d');
+			
+			    function test(search_word) {
+			        $.ajax({
+			            url: "Trend.do",
+			            type: "GET",
+			            data: {
+			                "search_word" : search_word,
+			                ajax: 'true'
+			            },
+			            dataType: "json",
+			            success: function(data) {
+			                var existingChart = Chart.getChart("SearchCntChart");
+			                if (existingChart) {
+			                    existingChart.destroy();
+			                }
+			                let a = [];
+			                let b = [];
+			                for(let i = 0 ; i < data.length; i++) {
+			                    a.push(data[i].rel_search);
+			                    b.push(data[i].search_cnt);
+			                }
+			
+			                let searchCntBar = new Chart(scb, {
+			                    type: 'bar',
+			                    data: {
+			                        labels: a, 
+			                        datasets: [{
+			                            data: b,
+ 										backgroundColor:[
+ 										    "#1f77b4",
+ 										    "#d62728",
+ 										    "#2ca02c",
+ 										    "#9467bd",
+ 										    "#ff7f0e", 
+ 										    "#ffdb00", 
+ 										    "#e377c2", 
+ 										    "#17becf",  
+ 										    "#7f7f7f", 
+ 										    "#8c564b" 
+ 										]
+			                        }]
+			                    },
+			                    options: {
+			                    	maintainAspectRatio: false,
+			                    	responsive: true,
+			                        scales: {},
+			                        plugins: {
+			                            legend: {
+			                                display: false
+			                            }
+			                        },
+			                        indexAxis: 'y'
+			                    }
+			                });
+			            },
+			            error: function(xhr, status, error) {
+			                console.error("데이터를 불러오는 중 오류가 발생했습니다:", status, error);
+			            }
+			        }); 
+			    }
+			    
+			</script>
 </body>
 
 </html>
