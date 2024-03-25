@@ -86,10 +86,10 @@ public class ReviewService implements command {
 			for (int i = 0;i<topic_list.size();i++) {
 				if(topic_list.get(i).getTopic_emotion()==1) {
 					pos_topic_word.add(topic_list.get(i).getTopic_content());
-					pos_topic.add(topic_list.get(i).getTopic_rating());
+					pos_topic.add(Math.round(topic_list.get(i).getTopic_rating()));
 				}else {
 					neg_topic_word.add(topic_list.get(i).getTopic_content());
-					neg_topic.add(topic_list.get(i).getTopic_rating());
+					neg_topic.add(Math.round(topic_list.get(i).getTopic_rating()));
 				}
 			}
 			request.setAttribute("pos_topic_word", pos_topic_word);
