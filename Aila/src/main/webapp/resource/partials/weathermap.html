@@ -5,7 +5,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<svg style='background:transparent;overflow:visible' width="100%" height="100%" viewbox="70 70 600 865" xmlns="http://www.w3.org/2000/svg">
+	<!-- svg파일 출처 : 지오서비스웹 -->
+<svg style='background:transparent;overflow:visible' width="100%" height="100%" viewbox="70 70 700 865" xmlns="http://www.w3.org/2000/svg">
 <style>
 .OUTLINE {
     stroke-linejoin:round;
@@ -142,7 +143,7 @@
         for (var i = 0; i < arguments.length; i++) {
             var response = arguments[i][0];
             var location = locations[i];
-			
+			console.log(location)
 			response.list.forEach(function(forecast) {
                 var dateTime = forecast.dt_txt;
                 if (dateTime.startsWith(tomorrowDate)) {

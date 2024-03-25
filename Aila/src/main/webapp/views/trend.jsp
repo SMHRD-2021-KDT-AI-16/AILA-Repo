@@ -117,23 +117,25 @@
 
             <!-- partial -->
             <!-- partial:../../partials/_sidebar.html -->
-                       <nav class="sidebar sidebar-offcanvas" id="sidebar">
+             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link" href="Trend.do">
-                            <i class="mdi mdi-chart-line menu-icon"></i>
+                            <i class="ti-stats-up menu-icon"></i>
                             <span class="menu-title">트렌드</span>
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="Goreview_products.do">
-                            <img class="image-with-space" src="../resource/assets/images/review.png">
+                            <i class="ti-bar-chart-alt menu-icon"></i>
                             <span class="menu-title">리뷰 분석</span>
                         </a>
                     </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="News.do">
-                            <img class="image-with-space" src="../resource/assets/images/news.png">
+                            <i class="mdi mdi-card-text-outline menu-icon"></i>
                             <span class="menu-title">뉴스</span>
                         </a>
                     </li>

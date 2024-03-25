@@ -187,7 +187,7 @@ $(function() {
       }
     },
     indexAxis: 'y',
-    maintainAspectRatio: false
+    maintainAspectRatio: true
 
   };
   
@@ -381,19 +381,10 @@ $(function() {
     var barChart = new Chart(barChartCanvas, {
       type: 'bar',
       data: data,
-      options: barOptions
+      options: options
     });
   }
-  
-    if ($("#barChart-c").length) {
-    var barChartCanvas2 = $("#barChart-c").get(0).getContext("2d");
-    // This will get the first returned node in the jQuery collection.
-    var barChart2 = new Chart(barChartCanvas2, {
-      type: 'bar',
-      data: data,
-      options: barOptions
-    });
-  }
+ 
   
   if ($("#barChart2").length) {
     var barChartCanvas3 = $("#barChart2").get(0).getContext("2d");
