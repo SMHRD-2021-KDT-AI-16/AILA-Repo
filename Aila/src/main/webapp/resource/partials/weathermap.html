@@ -143,7 +143,7 @@
         for (var i = 0; i < arguments.length; i++) {
             var response = arguments[i][0];
             var location = locations[i];
-			console.log(location)
+			
 			response.list.forEach(function(forecast) {
                 var dateTime = forecast.dt_txt;
                 if (dateTime.startsWith(tomorrowDate)) {
