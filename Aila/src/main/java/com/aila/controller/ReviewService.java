@@ -52,6 +52,7 @@ public class ReviewService implements command {
 			food_idx=2;
 		}
 		review_list = dao.selectReview(food_idx, review_source);
+		System.out.println("review_list : " +review_list.size());
 		cnt_list = dao.fc_cnt(food_name, review_source);
 		topic_list = dao.selectTopic(food_name, review_source);
 		ArrayList<String> pos_cnt_word = new ArrayList();
@@ -138,7 +139,7 @@ public class ReviewService implements command {
             String formattedDate = date.format(formatter);
             yearDates.add(formattedDate);
         }
-    
+        ArrayList<String> monthdate=new ArrayList();
 		pos_cnt=0;
 		neg_cnt=0;
 		ArrayList<Integer> pos_m_cnt = new ArrayList();
@@ -149,14 +150,17 @@ public class ReviewService implements command {
 						pos_cnt++;
 					}else if(review_list.get(i).getReview_rating()==0 && review_list.get(i).getMonth().equals(yearDates.get(j))) {
 						neg_cnt++;
+					}else if(review_list.get(i).getMonth().equals("2023-04")){
+						monthdate.add(review_list.get(i).getMonth());
 					}
 			}
+			
 			pos_m_cnt.add(pos_cnt);
 			neg_m_cnt.add(neg_cnt);
 			pos_cnt=0;
 			neg_cnt=0;
 		}
-		
+		System.out.println("monthdate"+ monthdate.size());
 		ArrayList<String> year = new ArrayList();
 		ArrayList<String> month = new ArrayList();
 		for (int i =0;i<yearDates.size();i++) {

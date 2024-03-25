@@ -11,7 +11,4 @@
 	<select id="review" parameterType="review" resultType="review" fetchSize="1000">
 		SELECT * FROM review_info where food_idx = #{food_idx} and review_source=#{review_source}
 	</select>
-	<select id="reviewCnt" parameterType="review" resultType="String">
-		SELECT review_content FROM review_info where food_idx = 1 and review_source='맛꾼푸드'
-	</select>
 </mapper>
