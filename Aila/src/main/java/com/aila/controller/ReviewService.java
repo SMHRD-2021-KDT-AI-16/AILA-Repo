@@ -56,6 +56,7 @@ public class ReviewService implements command {
 		}
 		
 		review_list = dao.selectReview(food_idx, review_source);
+		System.out.println("review_list : " +review_list.size());
 		cnt_list = dao.fc_cnt(food_name, review_source);
 		topic_list = dao.selectTopic(food_name, review_source);
 		
@@ -103,10 +104,10 @@ public class ReviewService implements command {
 			for (int i = 0;i<topic_list.size();i++) {
 				if(topic_list.get(i).getTopic_emotion()==1) {
 					pos_topic_word.add(topic_list.get(i).getTopic_content());
-					pos_topic.add(topic_list.get(i).getTopic_rating());
+					pos_topic.add(Math.round(topic_list.get(i).getTopic_rating()));
 				}else {
 					neg_topic_word.add(topic_list.get(i).getTopic_content());
-					neg_topic.add(topic_list.get(i).getTopic_rating());
+					neg_topic.add(Math.round(topic_list.get(i).getTopic_rating()));
 				}
 			}
 			
@@ -165,7 +166,7 @@ public class ReviewService implements command {
             String formattedDate = date.format(formatter);
             yearDates.add(formattedDate);
         }
-    
+        ArrayList<String> monthdate=new ArrayList();
 		pos_cnt=0;
 		neg_cnt=0;
 		ArrayList<Integer> pos_m_cnt = new ArrayList();
@@ -176,14 +177,17 @@ public class ReviewService implements command {
 						pos_cnt++;
 					}else if(review_list.get(i).getReview_rating()==0 && review_list.get(i).getMonth().equals(yearDates.get(j))) {
 						neg_cnt++;
+					}else if(review_list.get(i).getMonth().equals("2023-04")){
+						monthdate.add(review_list.get(i).getMonth());
 					}
 			}
+			
 			pos_m_cnt.add(pos_cnt);
 			neg_m_cnt.add(neg_cnt);
 			pos_cnt=0;
 			neg_cnt=0;
 		}
-		
+
 		JsonArray jArray = new JsonArray();
 		for(int i = 0; i < yearDates.size(); i++) {
 			JsonObject object = new JsonObject();
