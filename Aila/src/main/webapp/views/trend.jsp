@@ -30,6 +30,12 @@
 		.wrapper {
 			cursor: pointer;
 		}
+		.h:hover{	
+			text-decoration : underline;
+			text-decoration-color : yellowgreen;
+			text-decoration-thickness: 3px;
+		}
+
    	</style>
 
 </head>
@@ -158,7 +164,7 @@
 			                                <div class="list align-items-center border-bottom py-2">
 			                                    <div class="wrapper w-100">
 			                                        <p class="mb-2 font-weight-medium">
-			                                            <div onclick="test('${t.search_word}')"> ${t.search_rank}위 ${t.search_word}</div>
+			                                            <div class ="h" onclick="test('${t.search_word}')"> ${t.search_rank}위 ${t.search_word}</div>
 			                                        </p>
 			                                    </div>
 			                                </div>
