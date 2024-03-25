@@ -30,10 +30,21 @@
 		.wrapper {
 			cursor: pointer;
 		}
-		.h:hover{	
-			text-decoration : underline;
-			text-decoration-color : yellowgreen;
-			text-decoration-thickness: 3px;
+		.h{
+	       	font-size: 16px; /* 기본 텍스트 크기 */
+	        transition: font-size 0.3s; /* 변경 시 부드럽게 전환 */
+	      }
+	    .h:hover{   
+	        text-decoration : underline;
+	        text-decoration-color : yellowgreen;
+	       	text-decoration-thickness: 3px;
+	        font-size: 20px;
+	      }
+		#test2 {
+			display: none;
+		}
+		.test {
+			transition: all 2s;
 		}
 
    	</style>
@@ -174,7 +185,7 @@
 			                            </div>
 			                        </div>
 			                    </div>
-			                    <div class="col-md-6 col-lg-3 grid-margin stretch-card" style="width: 50%;">
+			                    <div id="test2" class="col-md-6 col-lg-3 grid-margin stretch-card" style="width: 50%;">
 			                        <div class="card"> 
 			                        	<div class="card-body card-rounded" >
 			                                <div class="d-flex align-items-center justify-content-between mb-3">
@@ -188,7 +199,7 @@
 			                            </div>
 			                        </div>
 			                    </div>
-			                   <div class="col-md-6 col-lg-3 grid-margin stretch-card" style="width: 35%;">
+			                   <div class="col-md-6 col-lg-3 grid-margin stretch-card test" style="width: 35%;">
 			                        <div class="card">
 			                            <div class="card-body card-rounded" style="height: 100%; width: 100%">
 			                                <div class="d-flex align-items-center justify-content-between mb-3">
@@ -247,7 +258,7 @@
             <!-- End custom js for this page-->
 			<script type="text/javascript">     
 			    var scb = document.getElementById('SearchCntChart').getContext('2d');
-			
+				var test2 = document.getElementById('test2')
 			    function test(search_word) {
 			        $.ajax({
 			            url: "Trend.do",
@@ -259,6 +270,7 @@
 			            dataType: "json",
 			            success: function(data) {
 			                var existingChart = Chart.getChart("SearchCntChart");
+			                test2.style.display = 'block';
 			                if (existingChart) {
 			                    existingChart.destroy();
 			                }

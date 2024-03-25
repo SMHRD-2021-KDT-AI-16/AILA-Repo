@@ -32,6 +32,13 @@
 			text-decoration-color : yellowgreen;
 			text-decoration-thickness: 3px;
 		}
+		 ._blankResize{
+	        font-size: 16px; /* 기본 텍스트 크기 */
+	        transition: font-size 0.3s; /* 변경 시 부드럽게 전환 */
+	    }
+	    ._blankResize:hover{
+	        font-size: 20px; /* 커서가 요소 위에 있을 때 변경할 텍스트 크기 */
+	    }
    	</style>
 </head>
 
@@ -170,7 +177,7 @@
                                             <div class="list align-items-center border-bottom py-2">
                                                 <div class="wrapper w-100">
                                                     <p class="mb-2 font-weight-medium">
-                                                        <div onclick="test('${s.search_word}')"> ${s.search_rank}위 ${s.search_word}</div>
+                                                        <div class="_blankResize" onclick="test('${s.search_word}')"> ${s.search_rank}위 ${s.search_word}</div>
                                                     </p>
                                                 </div>
                                             </div>
@@ -254,7 +261,7 @@
           		    			<div class="list align-items-center border-bottom py-2">
                                   <div class="wrapper w-100">
                                       <p class="mb-2 font-weight-medium">
-                                      	<div> <a target='_blank' onclick="newslink('\${data[i].news_link}')">\${ data[i].news_title }<a> </div>	
+                                      	<div class="_blankResize"> <a target='_blank' onclick="newslink('\${data[i].news_link}')">\${ data[i].news_title }<a> </div>	
                                       </p>
                                   </div>
                               	</div>
