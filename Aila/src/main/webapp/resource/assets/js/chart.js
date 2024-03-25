@@ -31,7 +31,7 @@ $(function() {
   };
   
     var keywordData = {
-    labels: ["", "", "", "", "", "", "", "", "", ""],
+    labels: ["1", "2", "3", "4", "", "", "", "", "", ""],
     datasets: [{
       label: '# of Votes',
       data: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
@@ -187,7 +187,7 @@ $(function() {
       }
     },
     indexAxis: 'y',
-    maintainAspectRatio: false
+    maintainAspectRatio: true
 
   };
   
@@ -381,19 +381,10 @@ $(function() {
     var barChart = new Chart(barChartCanvas, {
       type: 'bar',
       data: data,
-      options: barOptions
+      options: options
     });
   }
-  
-    if ($("#barChart-c").length) {
-    var barChartCanvas2 = $("#barChart-c").get(0).getContext("2d");
-    // This will get the first returned node in the jQuery collection.
-    var barChart2 = new Chart(barChartCanvas2, {
-      type: 'bar',
-      data: data,
-      options: barOptions
-    });
-  }
+ 
   
   if ($("#barChart2").length) {
     var barChartCanvas3 = $("#barChart2").get(0).getContext("2d");
@@ -424,14 +415,6 @@ $(function() {
     });
   }
 
-  /*if ($("#linechart-multi").length) {
-    var multiLineCanvas = $("#linechart-multi").get(0).getContext("2d");
-    var lineChart = new Chart(multiLineCanvas, {
-      type: 'line',
-      data: multiLineData,
-      options: options
-    });
-  }*/
   
   if ($("#linechart-multi-c").length) {
     var multiLineCanvas2 = $("#linechart-multi-c").get(0).getContext("2d");

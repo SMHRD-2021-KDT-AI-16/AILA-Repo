@@ -17,6 +17,9 @@ import com.aila.model.CompanyVO;
 import com.aila.model.Frequency_cntVO;
 import com.aila.model.ReviewVO;
 import com.aila.model.TopicVO;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 public class ReviewService implements command {
 	
@@ -51,10 +54,14 @@ public class ReviewService implements command {
 		if(food_name.equals("김치")) {
 			food_idx=2;
 		}
+		
 		review_list = dao.selectReview(food_idx, review_source);
 		System.out.println("review_list : " +review_list.size());
 		cnt_list = dao.fc_cnt(food_name, review_source);
 		topic_list = dao.selectTopic(food_name, review_source);
+		
+		Gson gson = new Gson();
+		
 		ArrayList<String> pos_cnt_word = new ArrayList();
 		ArrayList<String> neg_cnt_word = new ArrayList();
 		ArrayList<Integer> pos_cnt_ = new ArrayList();
@@ -75,10 +82,20 @@ public class ReviewService implements command {
 					neg_cnt_.add(cnt_list.get(i).getFc_cnt());
 				}
 			}
-			request.setAttribute("pos_cnt_word", pos_cnt_word);
-			request.setAttribute("pos_cnt", pos_cnt_);
-			request.setAttribute("neg_cnt_word", neg_cnt_word);
-			request.setAttribute("neg_cnt", pos_cnt_);
+			
+			JsonArray jsonArray = new JsonArray();
+			for(int i = 0; i < pos_cnt_word.size(); i++) {
+				JsonObject object = new JsonObject();
+				object.addProperty("pos_cnt_word", pos_cnt_word.get(i));
+				object.addProperty("pos_cnt", pos_cnt_.get(i));
+				object.addProperty("neg_cnt_word", neg_cnt_word.get(i));
+				object.addProperty("neg_cnt", neg_cnt_.get(i));
+				
+				jsonArray.add(object);
+			}
+			String json = gson.toJson(jsonArray);
+			request.setAttribute("keywordJson", json);
+			
 			System.out.println("cnt 보내기 끝~!");
 		} else {
 			System.out.println("cnt 못가져왔음");
@@ -93,10 +110,20 @@ public class ReviewService implements command {
 					neg_topic.add(Math.round(topic_list.get(i).getTopic_rating()));
 				}
 			}
-			request.setAttribute("pos_topic_word", pos_topic_word);
-			request.setAttribute("pos_topic", pos_topic);
-			request.setAttribute("neg_topic_word", neg_topic_word);
-			request.setAttribute("neg_topic", pos_topic);
+			
+			JsonArray jsonArray = new JsonArray();
+			for(int i = 0; i < pos_topic_word.size(); i++) {
+				JsonObject object = new JsonObject();
+				object.addProperty("pos_topic_word", pos_topic_word.get(i));
+				object.addProperty("pos_topic_count", pos_topic.get(i));
+				object.addProperty("neg_topic_word", neg_topic_word.get(i));
+				object.addProperty("neg_topic_count", neg_topic.get(i));
+				
+				jsonArray.add(object);
+			}
+			String json = gson.toJson(jsonArray);
+			request.setAttribute("wcJson", json);
+
 			System.out.println("토픽리스트 보내기 성공");
 
 		} else {
@@ -160,25 +187,24 @@ public class ReviewService implements command {
 			pos_cnt=0;
 			neg_cnt=0;
 		}
-		System.out.println("monthdate"+ monthdate.size());
-		ArrayList<String> year = new ArrayList();
-		ArrayList<String> month = new ArrayList();
-		for (int i =0;i<yearDates.size();i++) {
-			year.add(yearDates.get(i).split("-")[0]);
-			month.add(yearDates.get(i).split("-")[1]);
-			System.out.println(year.get(i)+"-"+month.get(i)+":"+pos_m_cnt.get(i)+":"+neg_m_cnt.get(i));
+
+		JsonArray jArray = new JsonArray();
+		for(int i = 0; i < yearDates.size(); i++) {
+			JsonObject object = new JsonObject();
+			object.addProperty("yearDates", yearDates.get(i));
+			object.addProperty("pos_m", pos_m_cnt.get(i));
+			object.addProperty("neg_m", neg_m_cnt.get(i));
+			jArray.add(object);			
 		}
-		
-		request.setAttribute("year", year);
-		request.setAttribute("month", month);
-		request.setAttribute("pos_m", pos_m_cnt);
-		request.setAttribute("neg_m", neg_m_cnt);
-		
+		String json = gson.toJson(jArray);
+		request.setAttribute("amountJason", json);
 		
 		
 		request.setAttribute("review_emotion_cnt", review_emotion_cnt);
 
 		System.out.println("감정 비율 보내기 성공 review_emotion");
+		
+		
 		return "Goreview_result.do";
 	}
 

@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -58,7 +59,7 @@
           <!-- 품목 선택 -->
           <li class="nav-item dropdown d-none d-lg-block">
             <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#"
-              data-bs-toggle="dropdown" aria-expanded="false"> 품목 선택 </a>
+              data-bs-toggle="dropdown" aria-expanded="false"> ${food_name} </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
               aria-labelledby="messageDropdown">
               <a href="Review.do?food_name=고구마&review_source=${review_source }" class="dropdown-item preview-item">
@@ -71,12 +72,23 @@
                   <h6 style="margin: 0.2rem;">김치</h6>
                 </div>
               </a>
+              
+              <% String[] foodList = {"망고", "구운란", "감자탕", "오렌지", "새꼬막", "오징어", "토마토", "참외"};
+              	pageContext.setAttribute("foodList", foodList);%>
+              	<c:forEach var="food" items="${foodList }">
+              		<a class="dropdown-item preview-item">
+                <div class="preview-item-content flex-grow py-2">
+                  <h6 style="margin: 0.2rem;">${food }</h6>
+                </div>
+              </a>
+              	</c:forEach>
+              
             </div>
           </li>
           <!-- 분석 종류 -->
           <li class="nav-item dropdown d-none d-lg-block">
             <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#"
-              data-bs-toggle="dropdown" aria-expanded="false"> 채널 선택 </a>
+              data-bs-toggle="dropdown" aria-expanded="false"> ${review_source} </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
               aria-labelledby="messageDropdown">
               <a href="Review.do?food_name=${food_name }&review_source=${member.company_name }" class="dropdown-item preview-item">
@@ -132,7 +144,7 @@
           <div class="sidebar-bg-options" id="sidebar-dark-theme">
             <div class="img-ss rounded-circle bg-dark border me-3"></div>Dark
           </div>
-          <p class="settings-heading mt-2">HEADER SKINS</p>a
+          <p class="settings-heading mt-2">HEADER SKINS</p>
           <div class="color-tiles mx-0 px-4">
             <div class="tiles success"></div>
             <div class="tiles warning"></div>
@@ -149,21 +161,21 @@
                 <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link" href="Trend.do">
-                            <i class="mdi mdi-chart-line menu-icon"></i>
+                            <i class="ti-stats-up menu-icon"></i>
                             <span class="menu-title">트렌드</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="Goreview_products.do">
-                            <img class="image-with-space" src="../resource/assets/images/review.png">
+                            <i class="ti-bar-chart-alt menu-icon"></i>
                             <span class="menu-title">리뷰 분석</span>
                         </a>
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="Gonews.do">
-                            <img class="image-with-space" src="../resource/assets/images/news.png">
+                        <a class="nav-link" href="News.do">
+                            <i class="mdi mdi-card-text-outline menu-icon"></i>
                             <span class="menu-title">뉴스</span>
                         </a>
                     </li>
@@ -173,22 +185,10 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-        <!-- <div style="max-width: 80%;"> -->
-        
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="home-tab">
-                <div class="statistics-details d-flex align-items-center">
-                  <div style="margin-left: 1.5rem;"><h3 class="rate-percentage">
-                  ${review_source}
-                  </h3></div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div style="max-width: 80%;">
           
           <div class="row">
-            <div class="col-lg-6 grid-margin stretch-card" style="width: 30%;">
+            <div class="col-lg-6 grid-margin stretch-card" style="width: 35%;">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">긍정/부정 비율</h4>
@@ -196,7 +196,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 grid-margin stretch-card" style="width: 50%;">
+            <div class="col-lg-6 grid-margin stretch-card" style="width: 65%;">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">리뷰 추이</h4>
@@ -205,30 +205,21 @@
               </div>
             </div>
             
-        	<div class="col-lg-6 grid-margin stretch-card" style="width: 20%;">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">임시 기능</h4>
-                  <div style="width: 100%; height: 100%;"></div>
-                </div>
-              </div>
-            </div>
-            
           </div>
           
-          <div class="row" style="width: 80%;">
+          <div class="row">
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                 
                   <h4 class="card-title d-flex justify-content-between">키워드 Top10
                   <span>
-                  <button type="button" class="btn btn-info btn-rounded btn-fw btn-sm">긍정</button>
-                  <button type="button" class="btn btn-danger btn-rounded btn-fw btn-sm">부정</button>
+                  <button id="pos-t" type="button" class="btn btn-info btn-rounded btn-fw btn-sm">긍정</button>
+                  <button id="neg-t" type="button" class="btn btn-danger btn-rounded btn-fw btn-sm">부정</button>
                   </span>
                   </h4>
                   
-                  <canvas id="barChart2"></canvas>
+                  <canvas id="posTopicChart"></canvas>
                 </div>
               </div>
             </div>
@@ -236,19 +227,15 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title d-flex justify-content-between">워드 클라우드
-                  <span><button type="button" class="btn btn-info btn-rounded btn-fw btn-sm">긍정</button>
-                  <button type="button" class="btn btn-danger btn-rounded btn-fw btn-sm">부정</button>
+                  <span><button type="button" id="wc-p-btn" class="btn btn-info btn-rounded btn-fw btn-sm">긍정</button>
+                  <button type="button" id="wc-n-btn" class="btn btn-danger btn-rounded btn-fw btn-sm">부정</button>
                   </span></h4>
-                  <canvas id="barChart2-c"></canvas>
+                  <div id="posWcChart"></div>
                 </div>
               </div>
             </div>
           </div>
-          
-        <!-- </div> -->
-        
-        
-        
+        </div>
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
@@ -284,9 +271,11 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="../resource/assets/js/chart.js"></script>
+  <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
   <!-- End custom js for this page-->
 </body>
 <script>
+
 var options = {
 	    scales: {
 	      yAxes: [{
@@ -338,19 +327,19 @@ var options = {
 	  }
 	
 	// 리뷰 추이 차트
-	var yData = ${year}
-	var mData = ${month}
-	var pData = ${pos_m}
-	var nData = ${neg_m}
+	var rvData = ${amountJason}
+	var rvObject = JSON.stringify(rvData);
+	var rvData = JSON.parse(rvObject);
 	
 	var labelList = new Array();
 	var pList = new Array();
 	var nList = new Array();
 	
-	for(var i = 0; i<pData.length; i++) {
-		labelList.push(yData[i]+" "+mData[i].toString());
-		pList.push(pData[i]);		
-		nList.push(nData[i]);
+	for(var i = 0; i<rvData.length; i++) {
+		var r = rvData[i];
+		labelList.push(r.yearDates);
+		pList.push(r.pos_m);		
+		nList.push(r.neg_m);
 	}
 
 	var multiLineData = {
@@ -385,6 +374,277 @@ var options = {
 	    });
 	  }
 	
+
+	// 키워드 차트
+	const kwJson = ${keywordJson}
+	const kwObject = JSON.stringify(kwJson);
+	const kwData = JSON.parse(kwObject);
 	
+	const posKWordList = new Array()
+	const posCntList = new Array()
+	const negKWordList = new Array()
+	const negCntList = new Array()
+	const posColor = new Array()
+	const posColorBorder = new Array()
+	const negColor = new Array()
+	const negColorBorder = new Array()
+	
+	for(var i = 0; i<kwData.length; i++){
+		var k = kwData[i]
+		posKWordList.push(k.pos_cnt_word)
+		posCntList.push(k.pos_cnt)
+		negKWordList.push(k.neg_cnt_word)
+		negCntList.push(k.neg_cnt)
+		posColor.push('rgba(54, 162, 235, 0.2)')
+		posColorBorder.push('rgba(54, 162, 235, 1)')
+		negColor.push('rgba(255, 99, 132, 0.2)')
+		negColorBorder.push('rgba(255,99,132,1)')
+	}
+	
+$('#neg-t').on('click', function(){
+	$('#posTopicChart').attr('id', 'negTopicChart')
+	drawNegTopicChart()
+})
+
+$('#pos-t').on('click', function(){
+	$('#negTopicChart').attr('id', 'posTopicChart')
+	drawPosTopicChart();
+})
+		  
+	 if ($("#posTopicChart").length) {
+		 drawPosTopicChart();
+	}
+		  
+	function drawPosTopicChart(){
+	// 긍정 키워드 차트 데이터
+	var posTopicData = {
+		    labels: posKWordList,
+		    datasets: [{
+		      label: '긍정 키워드',
+		      data: posCntList,
+		      backgroundColor: posColor,
+		      borderColor: posColorBorder,
+		      borderWidth: 1,
+		      fill: false
+		    }]
+		  };
+	
+	// 기존에 남아있는 차트 제거
+	let chartStatus = Chart.getChart('posTopicChart');
+	if (chartStatus !== undefined) {
+		chartStatus.destroy();
+	}
+	// 긍정 키워드 차트 그리기
+		var posTopicCanvas = $("#posTopicChart").get(0).getContext("2d");
+	    
+	    var posTopicChart = new Chart(posTopicCanvas, {
+	      type: 'bar',
+	      data: posTopicData,
+	      options: {
+	    	    scales: {
+	    	        yAxes: [{
+	    	          ticks: {
+	    	            beginAtZero: true
+	    	          }
+	    	        }]
+	    	      },
+	    	      legend: {
+	    	        display: false
+	    	      },
+	    	      elements: {
+	    	        point: {
+	    	          radius: 0
+	    	        }
+	    	      }
+
+	    	    }
+	    });
+	}
+			
+		 function drawNegTopicChart(){
+			
+			// 부정 키워드 차트 데이터
+			var negTopicData = {
+				    labels: negKWordList,
+				    datasets: [{
+				      label: '부정 키워드',
+				      data: negCntList,
+				      backgroundColor: negColor,
+				      borderColor: negColorBorder,
+				      borderWidth: 1,
+				      fill: false
+				    }]
+				  };
+				
+				if ($("#negTopicChart").length) {
+			    // 기존에 남아있는 차트 제거
+			    let chartStatus = Chart.getChart('negTopicChart');
+			    if (chartStatus !== undefined) {
+			      chartStatus.destroy();
+			    }
+			    
+			 	// 부정 키워드 차트 그리기
+			    var negTopicCanvas = $("#negTopicChart").get(0).getContext("2d");
+			    
+			    var negTopicChart = new Chart(negTopicCanvas, {
+			      type: 'bar',
+			      data: negTopicData,
+			      options: {
+			    	    scales: {
+			    	        yAxes: [{
+			    	          ticks: {
+			    	            beginAtZero: true
+			    	          }
+			    	        }]
+			    	      },
+			    	      legend: {
+			    	        display: false
+			    	      },
+			    	      elements: {
+			    	        point: {
+			    	          radius: 0
+			    	        }
+			    	      }
+
+			    	    }
+			    });
+			  }
+	 }
+	
+	// 워드 클라우드
+	zingchart.MODULESDIR = 'https://cdn.zingchart.com/modules/';
+	const jsonData = ${wcJson}
+	const jsonObject = JSON.stringify(jsonData);
+	const jData = JSON.parse(jsonObject);
+
+	const posWordList = []
+	const negWordList = []
+	
+	for(var i = 0; i < jData.length; i++){
+		var j = jData[i];
+		posWordList.push({text: j.pos_topic_word, count: j.pos_topic_count})
+		negWordList.push({text: j.neg_topic_word, count: j.neg_topic_count})
+	}
+	
+			 var posConfig = {
+			     type: 'wordcloud',
+			     options: {
+			     words: posWordList,
+			     minLength: 5,
+			     ignore: [""],
+			     maxItems: 40,
+			     aspect: 'spiral', // 'flow-top' | 'flow-center'
+			  
+			     colorType: 'palette',
+			     palette: ['#0040FF', '#2E64FE', '#2E9AFE', '#58ACFA'],
+			  
+			     style: {
+			       fontFamily: 'Crete Round',
+			  
+			       hoverState: {
+			         backgroundColor: '#0040FF',
+			         borderRadius: 2,
+			         fontColor: 'white'
+			       },
+			       tooltip: {
+			         text: '%text: %hits',
+			         visible: true,
+			         alpha: 0.9,
+			         backgroundColor: '#1976D2',
+			         borderRadius: 2,
+			         borderColor: 'none',
+			         fontColor: 'white',
+			         fontFamily: 'Georgia',
+			         textAlpha: 1
+			       }
+			     }
+			   },
+			  
+			   source: {
+			     //text: '--President Barack Obama<br> Selma 50th anniversary speech<br>March 7, 2015',
+			     //Source: https://obamawhitehouse.archives.gov/the-press-office/2015/03/07/remarks-president-50th-anniversary-selma-montgomery-marches
+			     fontColor: '#64B5F6',
+			     fontSize: 10,
+			     fontFamily: 'Georgia',
+			     fontWeight: 'normal',
+			     marginBottom: '10%'
+			   }
+			 };
+			 
+			 var negConfig = {
+				     type: 'wordcloud',
+				     options: {
+				     words: negWordList,
+				     minLength: 5,
+				     ignore: [""],
+				     maxItems: 40,
+				     aspect: 'spiral', // 'flow-top' | 'flow-center'
+				  
+				     colorType: 'palette',
+				     palette: ['#D32F2F', '#FF4000', '#FE2E2E', '#FA5858', '#F78181'],
+				  
+				     style: {
+				       fontFamily: 'Crete Round',
+				  
+				       hoverState: {
+				         backgroundColor: '#D32F2F',
+				         borderRadius: 2,
+				         fontColor: 'white'
+				       },
+				       tooltip: {
+				         text: '%text: %hits',
+				         visible: true,
+				         alpha: 0.9,
+				         backgroundColor: '#B40404',
+				         borderRadius: 2,
+				         borderColor: 'none',
+				         fontColor: 'white',
+				         fontFamily: 'Georgia',
+				         textAlpha: 1
+				       }
+				     }
+				   },
+				  
+				   source: {
+				     //text: '--President Barack Obama<br> Selma 50th anniversary speech<br>March 7, 2015',
+				     //Source: https://obamawhitehouse.archives.gov/the-press-office/2015/03/07/remarks-president-50th-anniversary-selma-montgomery-marches
+				     fontColor: '#64B5F6',
+				     fontSize: 10,
+				     fontFamily: 'Georgia',
+				     fontWeight: 'normal',
+				     marginBottom: '10%'
+				   }
+				 };
+
+
+			//워드클라우드 렌더링
+			 zingchart.render({
+			   id: 'posWcChart',
+			   data: posConfig,
+			   height: 300,
+			   width: '100%'
+			 });
+	
+			$('#wc-n-btn').on('click', function(){
+				$('#posWcChart').attr('id', 'negWcChart');
+				$('#negWcChart').empty();
+				zingchart.render({
+					   id: 'negWcChart',
+					   data: negConfig,
+					   height: 300,
+					   width: '100%'
+					 });
+			})
+			
+			$('#wc-p-btn').on('click', function(){
+				$('#negWcChart').attr('id', 'posWcChart');
+				$('#posWcChart').empty();
+				zingchart.render({
+					id: 'posWcChart',
+					data: posConfig,
+					height: 300,
+					width: '100%'
+				});
+			})
 </script>
 </html>
