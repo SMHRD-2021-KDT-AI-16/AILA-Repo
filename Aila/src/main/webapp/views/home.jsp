@@ -29,7 +29,7 @@
             <p></p>
           <input id="login" type="password" placeholder="인증 키 입력 후 엔터"><br>
         
-        <a href="#main" class="button big scrolly">Learn More</a>
+        <a href="#main" class="button big scrolly">show how?</a>
         
         </div>
     </section>
@@ -41,16 +41,12 @@
             <div class="inner">
                 <div class="flex flex-2">
                     <div class="col col2">
-                        <h3>NIBH NON LOBORTIS MUS NIBH</h3>
-                        <p>Etiam posuere hendrerit arcu, ac blandit nulla. Sed congue malesuada nibh, a varius odio
-                            vehicula aliquet. Aliquam consequat, nunc quis sollicitudin aliquet, enim magna cursus
-                            auctor lacinia nunc ex blandit augue. Ut vitae neque fermentum, luctus elit fermentum, porta
-                            augue. Nullam ultricies, turpis at fermentum iaculis, nunc justo dictum dui, non aliquet
-                            erat nibh non ex.</p>
-                        <p>Sed congue malesuada nibh, a varius odio vehicula aliquet. Aliquam consequat, nunc quis
-                            sollicitudin aliquet, enim magna cursus auctor lacinia nunc ex blandit augue. Ut vitae neque
-                            fermentum, luctus elit fermentum, porta augue. Nullam ultricies, turpis at fermentum
-                            iaculis, nunc justo dictum dui, non aliquet erat nibh non ex. </p>
+                        <h2>리뷰 분석을 통한 소비자들의 선호도 조사</h2>
+                        <p>
+							이 섹션에서는 고객 리뷰 분석을 통해 제품이나 서비스에 대한 소비자들의 선호와 기대를 깊이 있게 이해할 수 있습니다.<br>
+							사용자가 남긴 피드백, 그 중에서도 특히 긍정적인 의견과 부정적인 지적 사항을 면밀히 분석함으로써, 우리는 제품의 장점을 더욱 강조하고 개선해야 할 부분을 명확하게 파악할 수 있습니다.<br>
+							더 나아가, 이러한 분석을 통해 고객의 기대를 초과하는 제품 개발이나 서비스 제공 방향을 설정할 수 있습니다. 고객의 목소리에 귀 기울이며, 그들의 다양한 요구와 선호를 반영하는 것은 제품이나 서비스를 끊임없이 개선하고 시장에서의 경쟁력을 유지하기 위한 핵심 전략입니다.
+						</p>
                     </div>
                     <div class="col col1 first">
                         <div class="image round fit">
@@ -64,23 +60,15 @@
 
         <section class="wrapper style1">
             <div class="inner">
-                <header class="align-center">
-                    <h2>Aliquam ipsum purus dolor</h2>
-                    <p>Ac pretium parturient et scelerisque dis pulvinar nascetur suspendisse justo parturient est quis
-                        adipiscing nisi dis eu ullamcorper. Penatibus aliquet vestibulum dis pretium a ullamcorper
-                        accumsan facilisis elit ullamcorper porttitor dictumst per a a potenti interdum fusce a
-                        adipiscing nostra ac parturient. Proin a imperdiet at a scelerisque quam et at ante aenean per
-                        per faucibus senectus lobortis mi tincidunt a penatibus. Mauris vestibulum aliquet parturient
-                        odio dapibus euismod a mi ullamcorper maecenas turpis non scelerisque nibh fermentum natoque
-                        erat parturient suspendisse a magna curabitur cum.</p>
-                    <p>Aliquet a consectetur semper suscipit ridiculus mattis augue volutpat hendrerit proin hac vel
-                        tristique quis amet parturient sem. Adipiscing laoreet blandit vestibulum laoreet fermentum sed
-                        sociis lorem class ipsum scelerisque porttitor viverra vestibulum nascetur. Ad felis ad
-                        ullamcorper urna iaculis aenean vel a suspendisse nunc placerat euismod suspendisse et fames
-                        ipsum elementum odio vestibulum duis. Fringilla condimentum donec tincidunt enim volutpat nam
-                        velit quisque laoreet adipiscing nam in suspendisse mattis ad libero parturient scelerisque.
-                        Vitae enim ac parturient iaculis pharetra cum quam imperdiet commodo mus netus quam habitasse
-                        risus netus dis.</p>
+                <header class="align-right">
+                    <h2>실시간 검색어를 통한 트렌드 분석</h2>
+                    <p>
+						현대의 시장은 매우 빠르게 변화하며, 이 변화의 흐름을 읽는 것은 성공적인 마케팅 전략의 핵심입니다.<br>
+						이 섹션에서 제공하는 실시간 검색어 및 연관 검색어 분석을 통해, 우리는 시장의 최신 트렌드를 신속하게 파악하고 이에 대응할 수 있습니다.<br>
+						이를 통해 소비자의 관심사와 행동 패턴을 더욱 정확하게 이해하고, 그들이 현재 가장 관심을 가지고 있는 주제나<br>제품에 대해 깊이 있는 통찰을 얻을 수 있습니다.
+						최신 트렌드를 이해하고 이를 기반으로 한 마케팅 전략을 수립함으로써,<br> 우리는 시장에서의 위치를 강화하고, 소비자의 관심을 끌 수 있는 매력적인 제품이나 서비스를 제공할 수 있습니다.<br>
+						다양한 데이터를 종합적으로 분석하여, 시장 동향을 선도하는 전략적 결정을 내리는 것이 이 섹션의 주요 목표입니다.
+					</p>
                     <!-- Additional content goes here -->
                 </header>
             </div>
