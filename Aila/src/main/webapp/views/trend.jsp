@@ -42,7 +42,10 @@
 	      }
 		#test2 {
 			display: none;
+			transition: width 2s;
+			width: 50%;
 		}
+		
 		.test {
 			transition: all 2s;
 		}
@@ -75,7 +78,6 @@
                 <ul class="navbar-nav">
                     <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
                         <h1 class="welcome-text"><span class="text-black fw-bold">트렌드</span></h1>
-                        <!--  <h3 class="welcome-sub-text">Your performance summary this week </h3> -->
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
@@ -90,17 +92,9 @@
                     </li>
 
                     <li class="nav-item dropdown d-none d-lg-block user-dropdown">
-                        <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img class="img-xs" src="../resource/assets/images/mggoon_logo.png" alt="Company logo"> </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                            <div class="dropdown-header text-center">
-                                <img class="img-md" src="../resource/assets/images/mggoon_logo.png" alt="Company logo">
-                                <p class="mb-1 mt-3 font-weight-semibold">맛꾼푸드</p>
-                            </div>
-
-                            <a href="Logout.do" class="dropdown-item"><i
-                                    class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>로그아웃</a>
-                        </div>
+                        <a class="nav-link" href="Logout.do">
+                            <i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>로그아웃
+                            </a>
                     </li>
                 </ul>
 
@@ -185,7 +179,7 @@
 			                            </div>
 			                        </div>
 			                    </div>
-			                    <div id="test2" class="col-md-6 col-lg-3 grid-margin stretch-card" style="width: 50%;">
+			                    <div id="test2" class="col-md-6 col-lg-3 grid-margin stretch-card">
 			                        <div class="card"> 
 			                        	<div class="card-body card-rounded" >
 			                                <div class="d-flex align-items-center justify-content-between mb-3">
@@ -216,8 +210,6 @@
 			        </div>
 			    </div>
 			</div>
-                       <!-- 검색어 관련 정보들 -->
-                            <div style="display: none; width: 70%; height: 800px; background-color: green; float: right;"></div>
                         </div>
                         <!-- content-wrapper ends -->
                         <!-- partial:../../partials/_footer.html -->
