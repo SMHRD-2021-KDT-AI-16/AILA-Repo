@@ -28,7 +28,7 @@
             <p></p>
             <p></p>
           <input id="login" type="password" placeholder="인증 키 입력 후 엔터"><br>
-        	<a href="#main" class="button big scrolly">show how?</a>
+        	<a href="#main" class="button big scrolly">Learn More</a>
         
         </div>
     </section>
