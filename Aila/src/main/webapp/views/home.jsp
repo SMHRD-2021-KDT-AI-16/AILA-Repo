@@ -50,8 +50,7 @@
                     </div>
                     <div class="col col1 first">
                         <div class="image round fit">
-                            <a href="generic.html" class="link"><img src="images/pic02.jpg" alt="" width="320"
-                                    height="320"></a>
+                            <img src="images/review_analysis.png" width="160" height="160">
                         </div>
                     </div>
                 </div>
