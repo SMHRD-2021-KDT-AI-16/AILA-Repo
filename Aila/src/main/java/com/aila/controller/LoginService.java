@@ -23,13 +23,14 @@ public class LoginService implements command {
 		
 		if(result != null) {
 			HttpSession session = request.getSession();
+			response.setContentType("text/html;charset=utf-8");
 			session.setAttribute("member", result);
 			response.getWriter().print(true);
 		}else {
 			response.getWriter().print(false);
 		}
 		
-		return null;
+		return "Gotrend.do";
 	}
 
 }

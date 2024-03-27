@@ -13,7 +13,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../resource/assets/css/main.css">
    <style>
-   @import url('https://fonts.googleapis.com/css2?family=Poor+Story&family=Sunflower:wght@300&display=swap')
+	button {
+		padding: 0;
+    	margin: 0;
+    	box-sizing: border-box;
+	    margin: 10px 20px;
+	    color: #fff;
+	    text-decoration: none;
+	    background-color: #26bb74;
+	}
+	button.Blogin {
+		border-radius : 10px;
+	    display: inline-block;
+	    padding: 13px 30px;
+	    height
+	}
+   		@import url('https://fonts.googleapis.com/css2?family=Poor+Story&family=Sunflower:wght@300&display=swap')
    </style>
     
 </head>
@@ -27,9 +42,11 @@
             <p></p>
             <p></p>
             <p></p>
-          <input id="login" type="password" placeholder="인증 키 입력 후 엔터"><br>
-        	<a href="#main" class="button big scrolly">Learn More</a>
-        
+            <form action = "Login.do" method="post">
+          	<input id="login" type="password" style ="display: inline" placeholder="인증 키 입력 후 엔터"> 
+          	<button style ="display: inline" class = "Blogin">로그인</button><br>
+          	</form>
+        	<span><a href="#main" class="button big scrolly">Learn More</a></span>
         </div>
     </section>
 
