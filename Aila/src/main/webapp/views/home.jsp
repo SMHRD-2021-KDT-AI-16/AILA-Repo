@@ -12,6 +12,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../resource/assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    <style>
 	button {
 		padding: 0;
@@ -25,8 +26,9 @@
 	#Blogin {
 		border-radius : 10px;
 	    display: inline-block;
-	    padding: 13px 30px;
-	    height
+	    padding: 0px 20px;
+	    display: inline;
+	    font-size:18px;
 	}
    		@import url('https://fonts.googleapis.com/css2?family=Poor+Story&family=Sunflower:wght@300&display=swap')
    </style>
@@ -41,14 +43,12 @@
             </header>
             <p></p>
             <p></p>
-
             <p></p>
-            <!-- <form action = "Login.do" method="post"> -->
-          	<input name="inputKey" id="login" type="password" style ="display: inline" placeholder="인증 키 입력 후 엔터"> 
-          	<button style ="display: inline" id = "Blogin">로그인</button><br>
-
-        	<span><a href="#main" class="button big scrolly">Learn More</a></span>
-
+			<p>
+	          	<input name="inputKey" id="login" type="password" style ="display: inline" placeholder="인증 키 입력 후 엔터"> 
+	          	<button id = "Blogin">로그인</button><br>
+			</p>
+        	<span><a href="#main" id = "BButton" class="button big scrolly">Learn More <i class="fa-solid fa-angles-down"></i></a></span>
         </div>
     </section>
 
