@@ -151,7 +151,7 @@ $(function() {
       }
     ]
   };
-  var options = {
+  var loptions = {
     scales: {
       yAxes: [{
         ticks: {
@@ -381,7 +381,7 @@ $(function() {
     var barChart = new Chart(barChartCanvas, {
       type: 'bar',
       data: data,
-      options: options
+      options: loptions
     });
   }
  
@@ -392,7 +392,7 @@ $(function() {
     var barChart3 = new Chart(barChartCanvas3, {
       type: 'bar',
       data: keywordData,
-      options: options
+      options: loptions
     });
   }
   
@@ -402,7 +402,7 @@ $(function() {
     var barChart4 = new Chart(barChartCanvas4, {
       type: 'bar',
       data: keywordData,
-      options: options
+      options: loptions
     });
   }
 
@@ -411,7 +411,7 @@ $(function() {
     var lineChart = new Chart(lineChartCanvas, {
       type: 'line',
       data: data,
-      options: options
+      options: loptions
     });
   }
 
@@ -421,7 +421,7 @@ $(function() {
     var lineChart2 = new Chart(multiLineCanvas2, {
       type: 'line',
       data: multiLineData,
-      options: options
+      options: loptions
     });
   }
 
