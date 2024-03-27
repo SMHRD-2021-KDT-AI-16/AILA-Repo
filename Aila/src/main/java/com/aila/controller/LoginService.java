@@ -17,20 +17,23 @@ public class LoginService implements command {
 			throws ServletException, IOException {
 
 		String inputKey = request.getParameter("inputKey");
+		System.out.println(inputKey);
 		CompanyVO vo = new CompanyVO();
 		vo.setCompany_key(inputKey);
 		CompanyVO result = new MemberDAO().login(vo);
+		System.out.println("member: "+result);
 		
 		if(result != null) {
 			HttpSession session = request.getSession();
 			response.setContentType("text/html;charset=utf-8");
 			session.setAttribute("member", result);
 			response.getWriter().print(true);
+			//return "Trend.do";
 		}else {
 			response.getWriter().print(false);
 		}
 		
-		return "Gotrend.do";
+		return null;
 	}
 
 }

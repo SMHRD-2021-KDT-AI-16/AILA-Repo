@@ -22,7 +22,7 @@
 	    text-decoration: none;
 	    background-color: #26bb74;
 	}
-	button.Blogin {
+	#Blogin {
 		border-radius : 10px;
 	    display: inline-block;
 	    padding: 13px 30px;
@@ -42,10 +42,10 @@
             <p></p>
             <p></p>
             <p></p>
-            <form action = "Login.do" method="post">
-          	<input id="login" type="password" style ="display: inline" placeholder="인증 키 입력 후 엔터"> 
-          	<button style ="display: inline" class = "Blogin">로그인</button><br>
-          	</form>
+            <!-- <form action = "Login.do" method="post"> -->
+          	<input name="inputKey" id="login" type="password" style ="display: inline" placeholder="인증 키 입력 후 엔터"> 
+          	<button style ="display: inline" id = "Blogin">로그인</button><br>
+          
         	<span><a href="#main" class="button big scrolly">Learn More</a></span>
         </div>
     </section>
