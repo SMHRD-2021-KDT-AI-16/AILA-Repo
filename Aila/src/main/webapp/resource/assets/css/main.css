@@ -2098,7 +2098,7 @@
 		}
 
 			.flex.flex-2 .col.col1 {
-				width: 30%;
+				width: 23%;
 			}
 
 			.flex.flex-2 .col.col2 {
@@ -2921,8 +2921,8 @@
 			}
 
 		.wrapper.style1 {
-			background-color: #fafafa;
-			color: #999999;
+			background-color: rgb(255, 255, 255);
+			color: rgb(0, 0, 64);
 		}
 
 			.wrapper.style1 input, .wrapper.style1 select, .wrapper.style1 textarea {
@@ -2942,7 +2942,7 @@
 			}
 
 			.wrapper.style1 h1, .wrapper.style1 h2, .wrapper.style1 h3, .wrapper.style1 h4, .wrapper.style1 h5, .wrapper.style1 h6 {
-				color: #000;
+				color: rgb(0, 0, 0);
 			}
 
 			.wrapper.style1 blockquote {
@@ -3105,7 +3105,7 @@
 			}
 
 			.wrapper.style1 header p {
-				color: #bfbfbf;
+				color: rgb(0, 0, 0);
 			}
 
 			.wrapper.style1 table tbody tr {
