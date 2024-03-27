@@ -36,7 +36,6 @@ public class FrontController extends HttpServlet {
 }
 
 		protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
 			String uri = request.getRequestURI();
 			String cp = request.getContextPath();
 			String path = uri.substring(cp.length()+1);

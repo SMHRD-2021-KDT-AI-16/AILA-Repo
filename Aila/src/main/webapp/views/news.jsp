@@ -65,8 +65,7 @@
             <div class="navbar-menu-wrapper d-flex align-items-top border-bottom">
                 <ul class="navbar-nav">
                     <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                        <h1 class="welcome-text"><span class="text-black fw-bold">트렌드</span></h1>
-                        <!--  <h3 class="welcome-sub-text">Your performance summary this week </h3> -->
+                        <h1 class="welcome-text"><span class="text-black fw-bold">뉴스</span></h1>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
@@ -151,10 +150,8 @@
                             <div class="home-tab">
 								<div class="statistics-details d-flex align-items-center">
 									<div style="width: 50%; margin-left: 1.5rem;">
-										<!-- <h3 class="rate-percentage">인기 검색어</h3> -->
 									</div>
 									<div style="width: 50%; margin-left: 1.5rem;">
-										<!-- <h3 class="rate-percentage">내일 날씨</h3> -->
 									</div>
 								</div>
 							</div>
@@ -253,7 +250,7 @@
           		    			<div class="list align-items-center border-bottom py-2">
                                   <div class="wrapper w-100">
                                       <p class="mb-2 font-weight-medium">
-                                      	<div class="_blankResize"> <a target='_blank' onclick="newslink('\${data[i].news_link}')">\${ data[i].news_title }<a> </div>	
+                                      	<div class="_blankResize"> <a target='_blank' onclick="newslink('\${data[i].news_link}')">[\${data[i].news_publisher}] \${ data[i].news_title }<a> </div>	
                                       </p>
                                   </div>
                               	</div>

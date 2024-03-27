@@ -419,7 +419,25 @@ $(function(){
 		  	borderColor: posColorBorder,
 		  	borderWidth: 1,
 		  	fill: false
-		  	}]
+		  	}],
+		  	options: {
+	    	    scales: {
+	    	        y: {
+	    	          ticks: {
+	    	            beginAtZero: true
+	    	          }
+	    	        }
+	    	      },
+	    	      legend: {
+	    	        display: false
+	    	      },
+	    	      elements: {
+	    	        point: {
+	    	          radius: 0
+	    	        }
+	    	      }
+
+	    	    }
 		  };
 	
 	// 부정 키워드 차트 데이터
@@ -432,32 +450,33 @@ $(function(){
 		      borderColor: negColorBorder,
 		      borderWidth: 1,
 		      fill: false
-		    }]
+		    }],
+		    options: {
+	    	    scales: {
+	    	        y: {
+	    	          ticks: {
+	    	            beginAtZero: true
+	    	          }
+	    	        }
+	    	      },
+	    	      legend: {
+	    	        display: false
+	    	      },
+	    	      elements: {
+	    	        point: {
+	    	          radius: 0
+	    	        }
+	    	      }
+
+	    	    }
 		  };
 	
 	const topicCanvas = $("#topicChart").get(0).getContext("2d");
 	
 	let topicChart = new Chart(topicCanvas, {
 		type: 'bar',
-	    data: posTopicData,
-	    options: {
-    	    scales: {
-    	        y: {
-    	          ticks: {
-    	            beginAtZero: true
-    	          }
-    	        }
-    	      },
-    	      legend: {
-    	        display: false
-    	      },
-    	      elements: {
-    	        point: {
-    	          radius: 0
-    	        }
-    	      }
-
-    	    }
+	    data: posTopicData
+	    
 	})
 
 $('#neg-t').on('click', function(){
@@ -468,25 +487,7 @@ $('#neg-t').on('click', function(){
 	
 	topicChart = new Chart(topicCanvas, {
 		type: 'bar',
-	    data: negTopicData,
-	    options: {
-    	    scales: {
-    	        y: {
-    	          ticks: {
-    	            beginAtZero: true
-    	          }
-    	        }
-    	      },
-    	      legend: {
-    	        display: false
-    	      },
-    	      elements: {
-    	        point: {
-    	          radius: 0
-    	        }
-    	      }
-
-    	    }
+	    data: negTopicData
 	})
 })
 
@@ -497,25 +498,7 @@ $('#pos-t').on('click', function(){
 	}
 	topicChart = new Chart(topicCanvas, {
 		type: 'bar',
-	    data: posTopicData,
-	    options: {
-    	    scales: {
-    	        y: {
-    	          ticks: {
-    	            beginAtZero: true
-    	          }
-    	        }
-    	      },
-    	      legend: {
-    	        display: false
-    	      },
-    	      elements: {
-    	        point: {
-    	          radius: 0
-    	        }
-    	      }
-
-    	    }
+	    data: posTopicData
 	})
 })
 
