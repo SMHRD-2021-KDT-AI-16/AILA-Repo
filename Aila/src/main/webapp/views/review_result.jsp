@@ -93,7 +93,7 @@
               aria-labelledby="messageDropdown">
               <a href="Review.do?food_name=${food_name }&review_source=${member.company_name }" class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
-                  <h6 style="margin: 0.2rem;">${review_source}</h6>
+                  <h6 style="margin: 0.2rem;">${member.company_name }</h6>
                 </div>
               </a>
               <a href="Review.do?food_name=${food_name }&review_source=네이버" class="dropdown-item preview-item">
@@ -179,14 +179,16 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-        <div style="max-width: 80%;">
+        <div style="max-width: 90%;">
           
           <div class="row">
             <div class="col-lg-6 grid-margin stretch-card" style="width: 35%;">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">긍정/부정 비율</h4>
+                  <div style="width: 90%; padding: 1rem; margin: auto;">
                   <canvas id="eRateChart"></canvas>
+                  </div>
                 </div>
               </div>
             </div>
@@ -194,7 +196,9 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">리뷰 추이</h4>
+                  <div style="width: 90%; margin: auto;">
                   <canvas id="linechart-multi"></canvas>
+                  </div>
                 </div>
               </div>
             </div>
@@ -202,22 +206,7 @@
           </div>
           
           <div class="row">
-            <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                
-                  <h4 class="card-title d-flex justify-content-between">키워드 Top10
-                  <span>
-                  <button id="pos-t" type="button" class="btn btn-info btn-rounded btn-fw btn-sm">긍정</button>
-                  <button id="neg-t" type="button" class="btn btn-danger btn-rounded btn-fw btn-sm">부정</button>
-                  </span>
-                  </h4>
-                  
-                  <canvas id="posTopicChart"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 grid-margin stretch-card">
+            <div class="col-lg-6 grid-margin stretch-card" style="width: 40%;">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title d-flex justify-content-between">워드 클라우드
@@ -228,6 +217,32 @@
                 </div>
               </div>
             </div>
+            <div class="col-lg-6 grid-margin stretch-card" style="width: 40%;">
+              <div class="card">
+                <div class="card-body">
+                
+                  <h4 class="card-title d-flex justify-content-between">키워드 Top10
+                  <span>
+                  <button id="pos-t" type="button" class="btn btn-info btn-rounded btn-fw btn-sm">긍정</button>
+                  <button id="neg-t" type="button" class="btn btn-danger btn-rounded btn-fw btn-sm">부정</button>
+                  </span>
+                  </h4>
+                  <canvas id="topicChart"></canvas>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-lg-6 grid-margin stretch-card" style="width: 20%;">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">임시 기능</h4>
+                  <p>리뷰1</p>
+                  <p>리뷰2</p>
+                  <p>리뷰3</p>
+                </div>
+              </div>
+            </div>
+            
           </div>
         </div>
         </div>
@@ -269,25 +284,8 @@
   <!-- End custom js for this page-->
 </body>
 <script>
+$(function(){
 
-var options = {
-	    scales: {
-	      yAxes: [{
-	        ticks: {
-	          beginAtZero: true
-	        }
-	      }]
-	    },
-	    legend: {
-	      display: false
-	    },
-	    elements: {
-	      point: {
-	        radius: 0
-	      }
-	    }
-
-	  };
 	// 감정 도넛 차트
 	var eRateData = {
 			labels: ['부정', '긍정'],
@@ -364,7 +362,23 @@ var options = {
 	    var lineChart = new Chart(multiLineCanvas, {
 	      type: 'line',
 	      data: multiLineData,
-	      options: options
+	      options: {
+	  		scales: {
+		        y: {
+		          ticks: {
+		            beginAtZero: true
+		          }
+		        }
+		      },
+		      legend: {
+		        display: false
+		      },
+		      elements: {
+		        point: {
+		          radius: 0
+		        }
+		      }
+		  }
 	    });
 	  }
 	
@@ -394,117 +408,128 @@ var options = {
 		negColor.push('rgba(255, 99, 132, 0.2)')
 		negColorBorder.push('rgba(255,99,132,1)')
 	}
-	
-$('#neg-t').on('click', function(){
-	$('#posTopicChart').attr('id', 'negTopicChart')
-	drawNegTopicChart()
-})
 
-$('#pos-t').on('click', function(){
-	$('#negTopicChart').attr('id', 'posTopicChart')
-	drawPosTopicChart();
-})
-		  
-	 if ($("#posTopicChart").length) {
-		 drawPosTopicChart();
-	}
-		  
-	function drawPosTopicChart(){
 	// 긍정 키워드 차트 데이터
-	var posTopicData = {
-		    labels: posKWordList,
+	const posTopicData = {
+		  	labels: posKWordList,
+		  	datasets: [{
+		  	label: '긍정 키워드',
+		  	data: posCntList,
+		  	backgroundColor: posColor,
+		  	borderColor: posColorBorder,
+		  	borderWidth: 1,
+		  	fill: false
+		  	}]
+		  };
+	
+	// 부정 키워드 차트 데이터
+	const negTopicData = {
+		    labels: negKWordList,
 		    datasets: [{
-		      label: '긍정 키워드',
-		      data: posCntList,
-		      backgroundColor: posColor,
-		      borderColor: posColorBorder,
+		      label: '부정 키워드',
+		      data: negCntList,
+		      backgroundColor: negColor,
+		      borderColor: negColorBorder,
 		      borderWidth: 1,
 		      fill: false
 		    }]
 		  };
 	
-	// 기존에 남아있는 차트 제거
-	let chartStatus = Chart.getChart('posTopicChart');
+	const topicCanvas = $("#topicChart").get(0).getContext("2d");
+	
+	let topicChart = new Chart(topicCanvas, {
+		type: 'bar',
+	    data: posTopicData,
+	    options: {
+    	    scales: {
+    	        y: {
+    	          ticks: {
+    	            beginAtZero: true
+    	          }
+    	        }
+    	      },
+    	      legend: {
+    	        display: false
+    	      },
+    	      elements: {
+    	        point: {
+    	          radius: 0
+    	        }
+    	      }
+
+    	    }
+	})
+
+$('#neg-t').on('click', function(){
+	let chartStatus = Chart.getChart('topicChart');
 	if (chartStatus !== undefined) {
 		chartStatus.destroy();
 	}
-	// 긍정 키워드 차트 그리기
-		var posTopicCanvas = $("#posTopicChart").get(0).getContext("2d");
-	    
-	    var posTopicChart = new Chart(posTopicCanvas, {
-	      type: 'bar',
-	      data: posTopicData,
-	      options: {
-	    	    scales: {
-	    	        yAxes: [{
-	    	          ticks: {
-	    	            beginAtZero: true
-	    	          }
-	    	        }]
-	    	      },
-	    	      legend: {
-	    	        display: false
-	    	      },
-	    	      elements: {
-	    	        point: {
-	    	          radius: 0
-	    	        }
-	    	      }
-
-	    	    }
-	    });
-	}
-			
-		 function drawNegTopicChart(){
-			
-			// 부정 키워드 차트 데이터
-			var negTopicData = {
-				    labels: negKWordList,
-				    datasets: [{
-				      label: '부정 키워드',
-				      data: negCntList,
-				      backgroundColor: negColor,
-				      borderColor: negColorBorder,
-				      borderWidth: 1,
-				      fill: false
-				    }]
-				  };
-				
-				if ($("#negTopicChart").length) {
-			    // 기존에 남아있는 차트 제거
-			    let chartStatus = Chart.getChart('negTopicChart');
-			    if (chartStatus !== undefined) {
-			      chartStatus.destroy();
-			    }
-			    
-			 	// 부정 키워드 차트 그리기
-			    var negTopicCanvas = $("#negTopicChart").get(0).getContext("2d");
-			    
-			    var negTopicChart = new Chart(negTopicCanvas, {
-			      type: 'bar',
-			      data: negTopicData,
-			      options: {
-			    	    scales: {
-			    	        yAxes: [{
-			    	          ticks: {
-			    	            beginAtZero: true
-			    	          }
-			    	        }]
-			    	      },
-			    	      legend: {
-			    	        display: false
-			    	      },
-			    	      elements: {
-			    	        point: {
-			    	          radius: 0
-			    	        }
-			    	      }
-
-			    	    }
-			    });
-			  }
-	 }
 	
+	topicChart = new Chart(topicCanvas, {
+		type: 'bar',
+	    data: negTopicData,
+	    options: {
+    	    scales: {
+    	        y: {
+    	          ticks: {
+    	            beginAtZero: true
+    	          }
+    	        }
+    	      },
+    	      legend: {
+    	        display: false
+    	      },
+    	      elements: {
+    	        point: {
+    	          radius: 0
+    	        }
+    	      }
+
+    	    }
+	})
+})
+
+$('#pos-t').on('click', function(){
+	let chartStatus = Chart.getChart('topicChart');
+	if (chartStatus !== undefined) {
+		chartStatus.destroy();
+	}
+	topicChart = new Chart(topicCanvas, {
+		type: 'bar',
+	    data: posTopicData,
+	    options: {
+    	    scales: {
+    	        y: {
+    	          ticks: {
+    	            beginAtZero: true
+    	          }
+    	        }
+    	      },
+    	      legend: {
+    	        display: false
+    	      },
+    	      elements: {
+    	        point: {
+    	          radius: 0
+    	        }
+    	      }
+
+    	    }
+	})
+})
+
+$('#topicChart').on('click', function (evt) {
+                let activePoints = topicChart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
+                if (activePoints.length > 0) {
+                	let clickedDatasetIndex = activePoints[0]._datasetIndex;
+                    let clickedElementIndex = activePoints[0]._index;
+                    let label = topicChart.data.labels[clickedElementIndex];
+                    console.log('labels: '+topicChart.data.labels);
+                    console.log('Clicked Label:', label);
+                }
+            });
+		  
 	// 워드 클라우드
 	zingchart.MODULESDIR = 'https://cdn.zingchart.com/modules/';
 	const jsonData = ${wcJson}
@@ -615,7 +640,7 @@ $('#pos-t').on('click', function(){
 			 zingchart.render({
 			   id: 'posWcChart',
 			   data: posConfig,
-			   height: 300,
+			   height: 280,
 			   width: '100%'
 			 });
 	
@@ -640,5 +665,6 @@ $('#pos-t').on('click', function(){
 					width: '100%'
 				});
 			})
+});
 </script>
 </html>
