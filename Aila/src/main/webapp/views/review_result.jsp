@@ -333,6 +333,10 @@ $(function(){
 		pList.push(r.pos_m);		
 		nList.push(r.neg_m);
 	}
+	
+	labelList = labelList.reverse();
+	pList = pList.reverse();
+	nList = nList.reverse();
 
 	var multiLineData = {
 		    labels: labelList,
@@ -503,15 +507,16 @@ $('#pos-t').on('click', function(){
 })
 
 $('#topicChart').on('click', function (evt) {
-                let activePoints = topicChart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
-                if (activePoints.length > 0) {
-                	let clickedDatasetIndex = activePoints[0]._datasetIndex;
-                    let clickedElementIndex = activePoints[0]._index;
-                    let label = topicChart.data.labels[clickedElementIndex];
-                    console.log('labels: '+topicChart.data.labels);
-                    console.log('Clicked Label:', label);
-                }
-            });
+   let activePoints = topicChart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
+   if (activePoints.length > 0) {
+       let clickedDatasetIndex = activePoints[0]._datasetIndex;
+       let clickedElementIndex = activePoints[0]._index;
+       let label = topicChart.data.labels[clickedElementIndex];
+       
+       console.log('labels: '+topicChart.data.labels);
+       console.log('Clicked Label:', label);
+   }
+});
 		  
 	// 워드 클라우드
 	zingchart.MODULESDIR = 'https://cdn.zingchart.com/modules/';
