@@ -28,7 +28,7 @@ public class LoginService implements command {
 			response.setContentType("text/html;charset=utf-8");
 			session.setAttribute("member", result);
 			response.getWriter().print(true);
-			//return "Trend.do";
+
 		}else {
 			response.getWriter().print(false);
 		}

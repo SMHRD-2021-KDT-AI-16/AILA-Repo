@@ -42,7 +42,7 @@
             <p></p>
             <p></p>
             <p></p>
-            <!-- <form action = "Login.do" method="post"> -->
+  
           	<input name="inputKey" id="login" type="password" style ="display: inline" placeholder="인증 키 입력 후 엔터"> 
           	<button style ="display: inline" id = "Blogin">로그인</button><br>
           
