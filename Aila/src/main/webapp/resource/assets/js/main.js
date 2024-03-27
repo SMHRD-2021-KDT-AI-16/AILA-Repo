@@ -16,12 +16,9 @@
 
 	$(function() {
 		
-		// 로그인(나중에 수정)
-		$('#login').keypress(function(e){
-			
+		function login(){
 			var inputKey = $('#login').val();
-			if(e.keyCode == 13){
-				e.preventDefault();
+			
 				$.ajax({
 					url : 'Login.do',
 					data : {'inputKey':inputKey},
@@ -40,6 +37,16 @@
 					}
 				})
 				
+		}
+		
+		$('#Blogin').on('click', function(){
+			login();
+		})
+		// 로그인
+		$('#login').keypress(function(e){
+			if(e.keyCode == 13){
+				e.preventDefault();
+				login();
 			}
 		})
 
