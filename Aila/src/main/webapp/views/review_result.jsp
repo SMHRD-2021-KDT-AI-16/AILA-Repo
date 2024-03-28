@@ -27,6 +27,17 @@
 	   	.image-with-space {
 		margin-right: 13px; /* 그림의 오른쪽에 20px의 공백 추가 */
 		}
+		
+		.review-list{
+			height : 70px;
+			white-space: normal; /* 줄바꿈 */
+			overflow: hidden; /* 요소 크기 넘어가는 경우 표시 허용 여부 */
+			text-overflow :ellipsis; /* 넘어간 텍스트 ...로 대체 */
+			word-wrap : break-word; 
+			display: -webkit-box;
+			-webkit-line-clamp:12; 
+			-webkit-box-orient:vertical;
+		}
    	</style>
 </head>
 
@@ -235,10 +246,8 @@
             <div class="col-lg-6 grid-margin stretch-card" style="width: 20%;">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">임시 기능</h4>
-                  <p>리뷰1</p>
-                  <p>리뷰2</p>
-                  <p>리뷰3</p>
+                  <h4 class="card-title">상세 리뷰</h4>
+                 	<div id="full-review"></div>
                 </div>
               </div>
             </div>
@@ -537,9 +546,18 @@ $('#topicChart').on('click', function (evt) {
     	   },
     	   dataType: "json",
     	   success: function(data){
+    		   let full_review = $("#full-review");
+    		   let element = '';
+    		   full_review.empty();
     		   for(let i = 0; i < data.length; i++){
-    		   	console.log(data[i]);
+    			   element += `
+    			   	<div class="review-list border-bottom">
+    			   		<p>\${data[i]}</p>
+    			   	</div>
+    			   `
+    		   	
     		   }
+    		   full_review.append(element);
     	   },
     	   error: function(xhr, status, error){
     		   console.error("데이터를 불러오는 중 오류가 발생했습니다:", status, error);

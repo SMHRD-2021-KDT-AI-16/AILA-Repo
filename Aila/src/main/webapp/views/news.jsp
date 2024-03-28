@@ -239,13 +239,10 @@
 	          		  },// 서버에 보낼 데이터
           		      dataType: "json", // 서버로부터 응답받은 데이터 타입
           		      success: function(data) {
-          		    	  //let review = JSON.parse(data);
-          		    	  
           		    	  let news_list = document.getElementById('news-list');
           		    	  let element = "";
           		    	  news_list.innerText = "";
           		    	  for(let i = 0 ; i < data.length; i++) {
-          		    		console.log(data[i].news_title);
           		    		  element += `					
           		    			<div class="list align-items-center border-bottom py-2">
                                   <div class="wrapper w-100">
