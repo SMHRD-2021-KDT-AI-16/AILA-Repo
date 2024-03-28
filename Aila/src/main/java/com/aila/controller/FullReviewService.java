@@ -1,6 +1,7 @@
 package com.aila.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.aila.db.Review_resultDAO;
 import com.aila.model.TopicVO;
+import com.google.gson.Gson;
 
 public class FullReviewService implements command {
 
@@ -27,8 +29,15 @@ public class FullReviewService implements command {
 		vo.setReview_source(review_source);
 		vo.setTopic_content(topic_content);
 		
-		List<HashMap<String, String>> result = new Review_resultDAO().selectFullReview(vo, topic_emotion);
+		List<Object> result = new Review_resultDAO().selectFullReview(vo, topic_emotion);
 		
+		Gson gson = new Gson();
+		String jArray = gson.toJson(result);
+		
+		response.setContentType("application/json; charset=utf-8");
+		
+		response.getWriter().print(jArray.toString());
+		response.getWriter().flush();
 		
 		return null;
 	}

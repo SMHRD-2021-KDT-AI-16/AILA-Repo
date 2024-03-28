@@ -11,10 +11,10 @@
 	<select id="review" parameterType="review" resultType="review" fetchSize="1000">
 		SELECT * FROM review_info where food_idx = #{food_idx} and review_source=#{review_source}
 	</select>
-	<select id="fullPosReview" parameterType = "TopicVO">
-		select review_content from review_info where food_idx = #{food_idx} and review_source = #{review_source} and review_content like '%#{topic_content}%' and review_rating &gt; 3 limit 3
+	<select id="fullPosReview" parameterType = "TopicVO" resultType="String">
+		select review_content from review_info where food_idx = #{food_idx} and review_source = #{review_source} and review_content like CONCAT('%', #{topic_content}, '%') and review_rating &gt; 3 limit 3
 	</select>
-	<select id="fullNegReview" parameterType = "TopicVO">
-		select review_content from review_info where food_idx = #{food_idx} and review_source = #{review_source} and review_content like '%#{topic_content}%' and review_rating &lt; 3 limit 3
+	<select id="fullNegReview" parameterType = "TopicVO" resultType="String">
+		select review_content from review_info where food_idx = #{food_idx} and review_source = #{review_source} and review_content like CONCAT('%', #{topic_content}, '%') and review_rating &lt;= 3 limit 3
 	</select>
 </mapper>

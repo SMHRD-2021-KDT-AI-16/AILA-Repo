@@ -77,10 +77,12 @@ public class Review_resultDAO {
 		return result;
 	}
 
-	public List<HashMap<String, String>> selectFullReview(TopicVO vo, int topic_emotion) {
+	public List<Object> selectFullReview(TopicVO vo, int topic_emotion) {
 		
 		SqlSession sqlsession = factory.openSession();
-		List<HashMap<String, String>> result;
+		System.out.println(vo.toString());
+		System.out.println(topic_emotion);
+		List<Object> result;
 		if(topic_emotion == 1) {
 			result = sqlsession.selectList("fullPosReview", vo);
 		}else {

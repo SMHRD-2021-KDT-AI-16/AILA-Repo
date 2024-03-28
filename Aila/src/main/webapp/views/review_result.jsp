@@ -284,7 +284,6 @@
   <!-- End custom js for this page-->
 </body>
 <script>
-$(function(){
 
 	// 감정 도넛 차트
 	var eRateData = {
@@ -411,7 +410,6 @@ $(function(){
 		posColorBorder.push('rgba(54, 162, 235, 1)')
 		negColor.push('rgba(255, 99, 132, 0.2)')
 		negColorBorder.push('rgba(255,99,132,1)')
-		// console.log(k.pos_cnt_word)
 	}
 
 	// 긍정 키워드 차트 데이터
@@ -426,16 +424,6 @@ $(function(){
 		  	fill: false
 		  	}],
 		  	options: {
-		  		/* onClick: (e) => {
-		            const canvasPosition = Chart.helpers.getRelativePosition(e, chart);
-
-		            // Substitute the appropriate scale IDs
-		            const dataX = chart.scales.x.getValueForPixel(canvasPosition.x);
-		            const dataY = chart.scales.y.getValueForPixel(canvasPosition.y);
-		            
-		            console.log(dataX);
-		            console.log(dataY);
-		        }, */
 	    	    scales: {
 	    	        y: {
 	    	          ticks: {
@@ -538,19 +526,23 @@ $('#topicChart').on('click', function (evt) {
        }else{
     	   topic_emotion = 0;
        }
-       console.log(topic_emotion);
        
        $.ajax({
     	   url: "FullReview.do",
     	   data: {
     		   "food_idx": ${food_idx},
-    		   "reveiw_source": ${review_source},
+    		   "review_source": '${review_source}',
     		   "topic_emotion": topic_emotion,
     		   "topic_content": clickedLabel
     	   },
     	   dataType: "json",
     	   success: function(data){
-    		   
+    		   for(let i = 0; i < data.length; i++){
+    		   	console.log(data[i]);
+    		   }
+    	   },
+    	   error: function(xhr, status, error){
+    		   console.error("데이터를 불러오는 중 오류가 발생했습니다:", status, error);
     	   }
        })
        
@@ -694,6 +686,5 @@ $('#topicChart').on('click', function (evt) {
 					width: '100%'
 				});
 			})
-});
 </script>
 </html>
