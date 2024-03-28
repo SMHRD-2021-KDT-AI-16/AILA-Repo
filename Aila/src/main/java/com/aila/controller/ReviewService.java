@@ -30,9 +30,17 @@ public class ReviewService implements command {
 		HttpSession session= request.getSession();
 		response.setContentType("text/html;charset=utf-8");
 		
-		String food_name = request.getParameter("food_name");
-		session.setAttribute("food_name", food_name);
+		int food_idx = Integer.parseInt(request.getParameter("food_idx"));
+		session.setAttribute("food_idx", food_idx);
 
+		String food_name;
+		if(food_idx == 1) {
+			food_name = "고구마";
+		}else{
+			food_name = "김치";
+		}
+		request.setAttribute("food_name", food_name);
+		
 		String review_source = request.getParameter("review_source");
 		
 		if(review_source == null) {
@@ -41,7 +49,6 @@ public class ReviewService implements command {
 			review_source = vo.getCompany_name();
 		}
 		
-		
 		session.setAttribute("review_source", review_source);
 		
 		Review_resultDAO dao = new Review_resultDAO();
@@ -49,16 +56,11 @@ public class ReviewService implements command {
 		ArrayList<TopicVO> topic_list = new ArrayList<>();
 		ArrayList<ReviewVO> review_list = new ArrayList<>();
 		
-		int food_idx=1;
-		
-		if(food_name.equals("김치")) {
-			food_idx=2;
-		}
 		
 		review_list = dao.selectReview(food_idx, review_source);
 		System.out.println("review_list : " +review_list.size());
-		cnt_list = dao.fc_cnt(food_name, review_source);
-		topic_list = dao.selectTopic(food_name, review_source);
+		cnt_list = dao.fc_cnt(food_idx, review_source);
+		topic_list = dao.selectTopic(food_idx, review_source);
 		
 		Gson gson = new Gson();
 		

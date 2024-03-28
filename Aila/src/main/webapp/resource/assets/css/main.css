@@ -3903,11 +3903,12 @@
 		}
 
 .copyright {
-	color: #bfbfbf;
+	color: #fff;
 	font-size: 0.9em;
 	margin: 0 0 2em 0;
 	padding: 0;
 	text-align: center;
+	background-color: black;
 }
 .copyright a{
 	text-decoration: none !important;

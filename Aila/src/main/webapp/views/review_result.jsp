@@ -62,12 +62,12 @@
               data-bs-toggle="dropdown" aria-expanded="false"> ${food_name} </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
               aria-labelledby="messageDropdown">
-              <a href="Review.do?food_name=고구마&review_source=${review_source }" class="dropdown-item preview-item">
+              <a href="Review.do?food_idx=1&review_source=${review_source }" class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
                   <h6 style="margin: 0.2rem;">고구마</h6>
                 </div>
               </a>
-              <a href="Review.do?food_name=김치&review_source=${review_source }" class="dropdown-item preview-item">
+              <a href="Review.do?food_idx=2&review_source=${review_source }" class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
                   <h6 style="margin: 0.2rem;">김치</h6>
                 </div>
@@ -91,17 +91,17 @@
               data-bs-toggle="dropdown" aria-expanded="false"> ${review_source} </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
               aria-labelledby="messageDropdown">
-              <a href="Review.do?food_name=${food_name }&review_source=${member.company_name }" class="dropdown-item preview-item">
+              <a href="Review.do?food_idx=${food_idx }&review_source=${member.company_name }" class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
                   <h6 style="margin: 0.2rem;">${member.company_name }</h6>
                 </div>
               </a>
-              <a href="Review.do?food_name=${food_name }&review_source=네이버" class="dropdown-item preview-item">
+              <a href="Review.do?food_idx=${food_idx }&review_source=네이버" class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
                   <h6 style="margin: 0.2rem;">네이버</h6>
                 </div>
               </a>
-              <a href="Review.do?food_name=${food_name }&review_source=쿠팡" class="dropdown-item preview-item">
+              <a href="Review.do?food_idx=${food_idx }&review_source=쿠팡" class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
                   <h6 style="margin: 0.2rem;">쿠팡</h6>
                 </div>
@@ -411,6 +411,7 @@ $(function(){
 		posColorBorder.push('rgba(54, 162, 235, 1)')
 		negColor.push('rgba(255, 99, 132, 0.2)')
 		negColorBorder.push('rgba(255,99,132,1)')
+		// console.log(k.pos_cnt_word)
 	}
 
 	// 긍정 키워드 차트 데이터
@@ -425,6 +426,16 @@ $(function(){
 		  	fill: false
 		  	}],
 		  	options: {
+		  		/* onClick: (e) => {
+		            const canvasPosition = Chart.helpers.getRelativePosition(e, chart);
+
+		            // Substitute the appropriate scale IDs
+		            const dataX = chart.scales.x.getValueForPixel(canvasPosition.x);
+		            const dataY = chart.scales.y.getValueForPixel(canvasPosition.y);
+		            
+		            console.log(dataX);
+		            console.log(dataY);
+		        }, */
 	    	    scales: {
 	    	        y: {
 	    	          ticks: {
@@ -443,6 +454,9 @@ $(function(){
 
 	    	    }
 		  };
+	
+	
+	
 	
 	// 부정 키워드 차트 데이터
 	const negTopicData = {
@@ -482,6 +496,8 @@ $(function(){
 	    data: posTopicData
 	    
 	})
+	
+
 
 $('#neg-t').on('click', function(){
 	let chartStatus = Chart.getChart('topicChart');
@@ -507,16 +523,41 @@ $('#pos-t').on('click', function(){
 })
 
 $('#topicChart').on('click', function (evt) {
+	
    let activePoints = topicChart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
+   
    if (activePoints.length > 0) {
-       let clickedDatasetIndex = activePoints[0]._datasetIndex;
-       let clickedElementIndex = activePoints[0]._index;
-       let label = topicChart.data.labels[clickedElementIndex];
+	   let meta = topicChart.getDatasetMeta(0);	   
+	   let label = meta.label;
+	   let topic_emotion = 0;
+	   
+       let clickedLabel = topicChart.data.labels[activePoints[0].index];
        
-       console.log('labels: '+topicChart.data.labels);
-       console.log('Clicked Label:', label);
+       if(label == '긍정 키워드'){
+    	   topic_emotion = 1;
+       }else{
+    	   topic_emotion = 0;
+       }
+       console.log(topic_emotion);
+       
+       $.ajax({
+    	   url: "FullReview.do",
+    	   data: {
+    		   "food_idx": ${food_idx},
+    		   "reveiw_source": ${review_source},
+    		   "topic_emotion": topic_emotion,
+    		   "topic_content": clickedLabel
+    	   },
+    	   dataType: "json",
+    	   success: function(data){
+    		   
+    	   }
+       })
+       
    }
 });
+	
+    
 		  
 	// 워드 클라우드
 	zingchart.MODULESDIR = 'https://cdn.zingchart.com/modules/';

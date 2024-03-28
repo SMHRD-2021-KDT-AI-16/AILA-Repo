@@ -1,6 +1,7 @@
 package com.aila.db;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -16,12 +17,12 @@ public class Review_resultDAO {
 	private SqlSessionFactory factory = SqlSessionManager.getFactory();
 	
 	
-	public ArrayList<Frequency_cntVO> fc_cnt(String food_name, String review_source){
+	public ArrayList<Frequency_cntVO> fc_cnt(int food_idx, String review_source){
 		
 		SqlSession sqlsession = factory.openSession();
 		ArrayList<Frequency_cntVO> result = null;
 		Frequency_cntVO vo = new Frequency_cntVO();
-		vo.setFood_name(food_name);
+		vo.setFood_idx(food_idx);
 		vo.setFc_resource(review_source);
 		try {
 			result = (ArrayList)sqlsession.selectList("review_cnt", vo);
@@ -35,14 +36,14 @@ public class Review_resultDAO {
 		
 	}
 	
-	public ArrayList<TopicVO> selectTopic(String food_name, String review_source){
+	public ArrayList<TopicVO> selectTopic(int food_idx, String review_source){
 		
 		SqlSession sqlsession = factory.openSession();
 		
 		ArrayList<TopicVO> result = null;
 		
 		TopicVO vo = new TopicVO();
-		vo.setFood_name(food_name);
+		vo.setFood_idx(food_idx);
 		vo.setReview_source(review_source);
 		try {
 			result = (ArrayList)sqlsession.selectList("review_topic", vo);
@@ -74,6 +75,21 @@ public class Review_resultDAO {
 			sqlsession.close();
 		}
 		return result;
+	}
+
+	public List<HashMap<String, String>> selectFullReview(TopicVO vo, int topic_emotion) {
+		
+		SqlSession sqlsession = factory.openSession();
+		List<HashMap<String, String>> result;
+		if(topic_emotion == 1) {
+			result = sqlsession.selectList("fullPosReview", vo);
+		}else {
+			result = sqlsession.selectList("fullNegReview", vo);
+		}
+		sqlsession.close();
+		
+		return result;
+		
 	}
 	
 	

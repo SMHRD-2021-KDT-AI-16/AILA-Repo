@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.aila.controller.FullReviewService;
 import com.aila.controller.LoginService;
 import com.aila.controller.ReviewService;
 import com.aila.controller.NewsService;
@@ -33,6 +34,7 @@ public class FrontController extends HttpServlet {
 			map.put("views/Trend.do", new TrendService());
 			map.put("views/News.do", new NewsService());
 			map.put("views/Review.do", new ReviewService());
+			map.put("views/FullReview.do", new FullReviewService());
 }
 
 		protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
