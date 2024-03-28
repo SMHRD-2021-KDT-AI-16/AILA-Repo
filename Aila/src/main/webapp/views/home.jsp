@@ -124,14 +124,14 @@
     </div>
 
     <!-- Footer -->
-    <footer>
+    <footer  style = "background-color:black" >
       <div class="footer-container container-lg">
          <div>
-            <div class="copyright">
-                  <span>전남 목포시 산정로212번길 13 (구, 청호중학교) |</span>
-                  <span>T. 062-655-3510 |</span>
-                  <span>E. smhrd@smhrd.or.kr |</span>
-               <p>2024 BY Aila</p>
+            <div style = "font-color:white"class="copyright">
+                  <span><b>전남 목포시 산정로212번길 13 (구, 청호중학교) |</b></span>
+                  <span><b>T. 062-655-3510 |</b></span>
+                  <span><b>E. smhrd@smhrd.or.kr |</b></span>
+               <p><b>2024 BY Aila</b></p>
             </div>
          </div>
       </div>
