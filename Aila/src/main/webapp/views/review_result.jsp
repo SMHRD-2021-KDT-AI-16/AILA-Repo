@@ -29,14 +29,16 @@
 		}
 		
 		.review-list{
-			height : 70px;
+			/* max-height : 80px; */
 			white-space: normal; /* 줄바꿈 */
-			overflow: hidden; /* 요소 크기 넘어가는 경우 표시 허용 여부 */
-			text-overflow :ellipsis; /* 넘어간 텍스트 ...로 대체 */
+			
 			word-wrap : break-word; 
 			display: -webkit-box;
 			-webkit-line-clamp:12; 
 			-webkit-box-orient:vertical;
+		}
+		.review-list p{
+			margin-top: 0.5rem;
 		}
    	</style>
 </head>
@@ -190,7 +192,7 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-        <div style="max-width: 90%;">
+        <div style="max-width: 80%; margin: auto;">
           
           <div class="row">
             <div class="col-lg-6 grid-margin stretch-card" style="width: 35%;">
@@ -217,7 +219,7 @@
           </div>
           
           <div class="row">
-            <div class="col-lg-6 grid-margin stretch-card" style="width: 40%;">
+            <div class="col-lg-6 grid-margin stretch-card topic" style="width: 40%;">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title d-flex justify-content-between">워드 클라우드
@@ -228,7 +230,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 grid-margin stretch-card" style="width: 40%;">
+            <div class="col-lg-6 grid-margin stretch-card topic" style="width: 40%;">
               <div class="card">
                 <div class="card-body">
                 
@@ -243,11 +245,13 @@
               </div>
             </div>
             
-            <div class="col-lg-6 grid-margin stretch-card" style="width: 20%;">
+            <div class="col-lg-6 grid-margin stretch-card" style="width: 20%;" id="detail-review">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">상세 리뷰</h4>
-                 	<div id="full-review"></div>
+                 	<div id="full-review">
+                 	키워드 Top10의 각 막대를 클릭해보세요
+                 	</div>
                 </div>
               </div>
             </div>
@@ -546,9 +550,14 @@ $('#topicChart').on('click', function (evt) {
     	   },
     	   dataType: "json",
     	   success: function(data){
+    		   
     		   let full_review = $("#full-review");
     		   let element = '';
     		   full_review.empty();
+    		   
+    		   $(".topic").animate({ width: '49.9%' }, 1000);
+    		   $("#detail-review").animate({ width: '100%' }, 1000);
+    		   
     		   for(let i = 0; i < data.length; i++){
     			   element += `
     			   	<div class="review-list border-bottom">

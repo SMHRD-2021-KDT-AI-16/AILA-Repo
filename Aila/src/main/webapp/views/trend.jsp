@@ -42,13 +42,13 @@
 	      }
 		#test2 {
 			display: none;
-			transition: width 2s;
+			/* transition: width 2s; */
 			width: 50%;
 		}
 		
-		.test {
-			transition: all 2s;
-		}
+		/* .col-md-6 {
+			transition: width 1s;
+		}  */
 
    	</style>
 
@@ -161,7 +161,7 @@
 		
 			                </div>
 			                <div class="row flex-grow" style="position: absolute; width: 100%;">
-			                    <div class="col-md-6 col-lg-3 grid-margin stretch-card" style="width: 15%;">
+			                    <div class="col-md-6 col-lg-3 grid-margin stretch-card" style="width: 50%;" id="search10">
 			                        <div class="card">
 			                            <div class="card-body card-rounded">
 			                                <div class="d-flex align-items-center justify-content-between mb-3">
@@ -193,7 +193,7 @@
 			                            </div>
 			                        </div>
 			                    </div>
-			                   <div class="col-md-6 col-lg-3 grid-margin stretch-card test" style="width: 35%;">
+			                   <div class="col-md-6 col-lg-3 grid-margin stretch-card test" style="width: 50%;" id="weather">
 			                        <div class="card">
 			                            <div class="card-body card-rounded" style="height: 100%; width: 100%">
 			                                <div class="d-flex align-items-center justify-content-between mb-3">
@@ -261,6 +261,12 @@
 			            },
 			            dataType: "json",
 			            success: function(data) {
+			            	
+			            	$('#search10').css('width', '15%');
+			            	$('#weather').css('width', '35%');
+			            	$('#test2').fadeIn(1000); // 1초 동안 천천히 나타나도록 설정
+
+
 			                var existingChart = Chart.getChart("SearchCntChart");
 			                test2.style.display = 'block';
 			                if (existingChart) {

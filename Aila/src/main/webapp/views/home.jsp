@@ -131,7 +131,7 @@
                   <span><b>전남 목포시 산정로212번길 13 (구, 청호중학교) |</b></span>
                   <span><b>T. 062-655-3510 |</b></span>
                   <span><b>E. smhrd@smhrd.or.kr |</b></span>
-               <p><b>2024 BY Aila</b></p>
+               <p style="margin: 0;"><b>2024 BY Aila</b></p>
             </div>
          </div>
       </div>
