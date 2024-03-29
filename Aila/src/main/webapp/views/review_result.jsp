@@ -29,17 +29,21 @@
 		}
 		
 		.review-list{
-			/* max-height : 80px; */
 			white-space: normal; /* 줄바꿈 */
-			
 			word-wrap : break-word; 
-			display: -webkit-box;
-			-webkit-line-clamp:12; 
-			-webkit-box-orient:vertical;
 		}
 		.review-list p{
 			margin-top: 0.5rem;
+			
 		}
+		.topic{
+			width: 50%;
+		}
+		#detail-review{
+			width: 100%;
+			
+		}
+		
    	</style>
 </head>
 
@@ -219,7 +223,7 @@
           </div>
           
           <div class="row">
-            <div class="col-lg-6 grid-margin stretch-card topic" style="width: 40%;">
+            <div class="col-lg-6 grid-margin stretch-card topic">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title d-flex justify-content-between">워드 클라우드
@@ -230,11 +234,12 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 grid-margin stretch-card topic" style="width: 40%;">
+            <div class="col-lg-6 grid-margin stretch-card topic">
               <div class="card">
                 <div class="card-body">
                 
                   <h4 class="card-title d-flex justify-content-between">키워드 Top10
+                  <p class="text-primary" id="info">막대를 클릭하면 상세 리뷰가 나타납니다</p>
                   <span>
                   <button id="pos-t" type="button" class="btn btn-info btn-rounded btn-fw btn-sm">긍정</button>
                   <button id="neg-t" type="button" class="btn btn-danger btn-rounded btn-fw btn-sm">부정</button>
@@ -244,13 +249,15 @@
                 </div>
               </div>
             </div>
+            </div>
             
-            <div class="col-lg-6 grid-margin stretch-card" style="width: 20%;" id="detail-review">
+            <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card" id="detail-review">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">상세 리뷰</h4>
                  	<div id="full-review">
-                 	키워드 Top10의 각 막대를 클릭해보세요
+                 	
                  	</div>
                 </div>
               </div>
@@ -501,6 +508,7 @@
 
 
 $('#neg-t').on('click', function(){
+	$("#info").attr("class", "text-danger");
 	let chartStatus = Chart.getChart('topicChart');
 	if (chartStatus !== undefined) {
 		chartStatus.destroy();
@@ -513,6 +521,7 @@ $('#neg-t').on('click', function(){
 })
 
 $('#pos-t').on('click', function(){
+	$("#info").attr("class", "text-primary");
 	let chartStatus = Chart.getChart('topicChart');
 	if (chartStatus !== undefined) {
 		chartStatus.destroy();
@@ -551,12 +560,10 @@ $('#topicChart').on('click', function (evt) {
     	   dataType: "json",
     	   success: function(data){
     		   
+    			
     		   let full_review = $("#full-review");
     		   let element = '';
     		   full_review.empty();
-    		   
-    		   $(".topic").animate({ width: '49.9%' }, 1000);
-    		   $("#detail-review").animate({ width: '100%' }, 1000);
     		   
     		   for(let i = 0; i < data.length; i++){
     			   element += `
@@ -567,6 +574,9 @@ $('#topicChart').on('click', function (evt) {
     		   	
     		   }
     		   full_review.append(element);
+    			
+    		   const offset = $("#full-review").offset();
+    			$('html, body').animate({scrollTop: offset.top}, 500);
     	   },
     	   error: function(xhr, status, error){
     		   console.error("데이터를 불러오는 중 오류가 발생했습니다:", status, error);
