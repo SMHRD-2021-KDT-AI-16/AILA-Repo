@@ -281,7 +281,6 @@
     <script src="../resource/assets/js/template.js"></script>
     <script src="../resource/assets/js/settings.js"></script>
     <script src="../resource/assets/js/todolist.js"></script>
-    <script src="../resource/assets/js/chart.js"></script>
     <!-- End Scripts -->
 </body>
 

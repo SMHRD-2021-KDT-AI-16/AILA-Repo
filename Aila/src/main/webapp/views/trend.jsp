@@ -245,9 +245,6 @@
             <script src="../resource/assets/js/settings.js"></script>
             <script src="../resource/assets/js/todolist.js"></script>
             <!-- endinject -->
-            <!-- Custom js for this page-->
-            <script src="../resource/assets/js/chart.js"></script>
-            <!-- End custom js for this page-->
 			<script type="text/javascript">     
 			    var scb = document.getElementById('SearchCntChart').getContext('2d');
 				var test2 = document.getElementById('test2')

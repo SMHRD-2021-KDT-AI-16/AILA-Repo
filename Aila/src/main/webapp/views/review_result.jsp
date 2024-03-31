@@ -299,7 +299,6 @@
   <script src="../resource/assets/js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../resource/assets/js/chart.js"></script>
   <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
   <!-- End custom js for this page-->
 </body>

@@ -224,9 +224,6 @@
             <script src="../resource/assets/js/settings.js"></script>
             <script src="../resource/assets/js/todolist.js"></script>
             <!-- endinject -->
-            <!-- Custom js for this page-->
-            <script src="../resource/assets/js/chart.js"></script>
-            <!-- End custom js for this page-->
             <script type="text/javascript">            
             	function test(search_word) {
             		
