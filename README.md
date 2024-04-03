@@ -24,8 +24,11 @@
   - google trend API
 #### `Front-end`
   - JS
+  - Jquery
   - css
   - html
+  - Chart.js
+  - ZingChart
 </br>
 
 ## 3. ERD 설계
