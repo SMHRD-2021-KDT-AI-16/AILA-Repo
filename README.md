@@ -72,7 +72,7 @@
   - 데이터 베이스에서 일간 검색어 TOP10을 이용하여 네이버에 검색 후 뉴스 탭에서 뉴스 링크를 크롤링
   - 일간 검색어 TOP10 클릭시 해당 검색어 관련 뉴스 타이틀 TOP10을 가시화
   - 뉴스 타이틀 클릭시 해당 뉴스 페이지로 이동
-    <img src="https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/cd9b783f-1ecf-46f5-ab7b-2f30030e056f" width="450px" height="300px" title="px(픽셀) 크기 설정"></img><br/>
+  - <img src="https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/cd9b783f-1ecf-46f5-ab7b-2f30030e056f" width="450px" height="300px" title="px(픽셀) 크기 설정"></img><br/>
 ### 4.3. Controller
 
 - **요청 처리**
