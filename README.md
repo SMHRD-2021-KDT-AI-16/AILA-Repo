@@ -43,8 +43,9 @@
 ![image](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/bb46083e-1394-4c18-b856-33a8167c75c2)
 
 ## 4. 핵심 기능
-이 서비스의 핵심 기능은 리뷰 분석의 가시화를 통한 기업 의사결정 보조 기능입니다.  
-
+기업 맞춤 리뷰 데이터 분석 정보 제공 
+게시판과 채팅을 통한 실시간 정보 공유  
+맞춤 대출 서비스 소개
 
 
 <details>
@@ -52,6 +53,8 @@
 <div markdown="1">
 
 ### 4.1. 전체 흐름
+
+![image](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/47c9389c-8d60-44db-beda-5d0d158980f7)
 
 ### 4.2. 사용자 요청
 
