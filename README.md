@@ -99,7 +99,7 @@
 
 ## 5. 트러블 슈팅
 <details>
-<summary>String값을 화면으로 내보낼 때 명령어로 인식되는 문제</summary>
+<summary>String값을 화면으로 내보낼 때 인식 오류 문제</summary>
 <div markdown="1">
 
 - String값을 그대로 request객체에 담아 javascript로 보내면 숫자의 경우로 숫자 데이터로 인식하고, 문자의 경우 명령어로 인식하여 오류 발생.
