@@ -54,7 +54,8 @@
 
 ### 4.1. 전체 흐름
 
-![image](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/47c9389c-8d60-44db-beda-5d0d158980f7)
+![image](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/eadf7276-ea1a-44af-bd79-fc1b00dda354)
+
 
 ### 4.2. 사용자 요청
 
