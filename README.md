@@ -95,17 +95,13 @@
 
 </br>
 
-## 5. 핵심 트러블 슈팅
-
-### 5.1. 
-
-
-## 6. 그 외 트러블 슈팅
+## 5. 트러블 슈팅
 <details>
-<summary></summary>
+<summary>String값을 화면으로 내보낼 때 명령어로 인식되는 문제</summary>
 <div markdown="1">
 
--
+- String값을 request객체에 담아 javascript로 보내면 명령어로 인식하여 오류 발생
+- json으로 파싱하여 해결.
 
 </div>
 </details>
@@ -121,5 +117,5 @@
 
 </br>
 
-## 7. 회고 / 느낀점
+## 6. 회고 / 느낀점
 >
