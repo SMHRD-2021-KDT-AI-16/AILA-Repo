@@ -1,5 +1,6 @@
 # :pushpin: AILA
 > 정보가시화를 통한 기업 의사결정 보조 서비스
+>> 
 
 </br>
 
@@ -22,6 +23,7 @@
   - Python
   - Apache Tomcat 9.0
   - google trend API
+
 #### `Front-end`
   - JS
   - Jquery
@@ -29,6 +31,12 @@
   - html
   - Chart.js
   - ZingChart
+
+#### `IDE`
+  - Eclipse
+  - CoLab
+  - Jupyter NoteBook
+
 </br>
 
 ## 3. ERD 설계
