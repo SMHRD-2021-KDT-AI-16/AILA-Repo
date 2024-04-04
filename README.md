@@ -59,19 +59,22 @@
 ### 4.2. 사용자 요청
 
 - **기업의 필요성에 따른 리뷰 데이터 분석결과**
-  - 기업이 원하는 품목에 관한 리뷰데이터 분석결과를 차트로 가시화
-<img src="https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/4e5d5e6e-7e96-42e4-9858-3ba783664e1a" width="450px" height="300px" title="px(픽셀) 크기 설정"></img><br/>
+  - 기업이 원하는 품목에 관한 리뷰데이터 분석결과를 차트로 가시화<br/><br/>
+    <img src="https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/4e5d5e6e-7e96-42e4-9858-3ba783664e1a" width="450px" height="300px" title="px(픽셀) 크기 설정"></img><br/>
+<br/>
 - **식품인기검색어TOP10과 인기검색어 관한 연관검색어 검색량 날씨API를 가시화**
   - Openweathermap에서 지방별 날씨를 시각화
   - 일간 인기검색어를 네이버API에서 가져오고 그에 관련된 연관검색어 검색량을 데이터 베이스에 저장
-  - 데이터 베이스에서 가져온 연관검색어 검색량을 ChartJS로 가시화
-<img src="https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/6ba65855-acca-48dc-a03f-e39d02b1b267" width="450px" height="300px" title="px(픽셀) 크기 설정"></img><br/>
+  - 데이터 베이스에서 가져온 연관검색어 검색량을 ChartJS로 가시화<br/><br/>
+    <img src="https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/6ba65855-acca-48dc-a03f-e39d02b1b267" width="450px" height="300px" title="px(픽셀) 크기 설정"></img><br/>
+<br/>
 - **일간검색어TOP10과 검색어와관련된 뉴스링크**
   - 구글 API에서 일간 검색어 TOP10을 데이터 베이스에 저장
   - 데이터 베이스에서 일간 검색어 TOP10을 이용하여 네이버에 검색 후 뉴스 탭에서 뉴스 링크를 크롤링
   - 일간 검색어 TOP10 클릭시 해당 검색어 관련 뉴스 타이틀 TOP10을 가시화
-  - 뉴스 타이틀 클릭시 해당 뉴스 페이지로 이동
-  - <img src="https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/cd9b783f-1ecf-46f5-ab7b-2f30030e056f" width="450px" height="300px" title="px(픽셀) 크기 설정"></img><br/>
+  - 뉴스 타이틀 클릭시 해당 뉴스 페이지로 이동<br/><br/>
+   <img src="https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/cd9b783f-1ecf-46f5-ab7b-2f30030e056f" width="450px" height="300px" title="px(픽셀) 크기 설정"></img><br/>
+  <br/>
 ### 4.3. Controller
 
 - **요청 처리**
@@ -99,7 +102,7 @@
 <summary>String값을 화면으로 내보낼 때 명령어로 인식되는 문제</summary>
 <div markdown="1">
 
-- String값을 request객체에 담아 javascript로 보내면 명령어로 인식하여 오류 발생
+- String값을 그대로 request객체에 담아 javascript로 보내면 숫자의 경우로 숫자 데이터로 인식하고, 문자의 경우 명령어로 인식하여 오류 발생.
 - json으로 파싱하여 해결.
 
 </div>
