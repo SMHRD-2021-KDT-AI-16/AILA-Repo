@@ -62,11 +62,17 @@
 - **기업의 필요성에 따른 리뷰 데이터 분석결과**
   - 기업이 원하는 품목에 관한 리뷰데이터 분석결과를 차트로 가시화
 ![image](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/4e5d5e6e-7e96-42e4-9858-3ba783664e1a)
-- **인기검색어TOP10과 인기검색어 관한 연관검색어 검색량 날씨API를 가시화**
+- **식품인기검색어TOP10과 인기검색어 관한 연관검색어 검색량 날씨API를 가시화**
   - Openweathermap에서 지방별 날씨를 시각화
   - 일간 인기검색어를 네이버API에서 가져오고 그에 관련된 연관검색어 검색량을 데이터 베이스에 저장
   - 데이터 베이스에서 가져온 연관검색어 검색량을 ChartJS로 가시화  
 ![image](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/6ba65855-acca-48dc-a03f-e39d02b1b267)
+- **일간검색어TOP10과 검색어와관련된 뉴스링크**
+  - 구글 API에서 일간 검색어 TOP10을 데이터 베이스에 저장
+  - 데이터 베이스에서 일간 검색어 TOP10을 이용하여 네이버에 검색 후 뉴스 탭에서 뉴스 링크를 크롤링
+  - 일간 검색어 TOP10 클릭시 해당 검색어 관련 뉴스 타이틀 TOP10을 가시화
+  - 뉴스 타이틀 클릭시 해당 뉴스 페이지로 이동
+![image](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/cd9b783f-1ecf-46f5-ab7b-2f30030e056f)
 
 ### 4.3. Controller
 
