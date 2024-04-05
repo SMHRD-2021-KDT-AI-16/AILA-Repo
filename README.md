@@ -96,16 +96,6 @@
 
 ## 5. 트러블 슈팅
 <details>
-<summary>String값을 화면으로 내보낼 때 인식 오류 문제</summary>
-<div markdown="1">
-
-- String값을 그대로 request객체에 담아 javascript로 보내면 숫자의 경우 숫자 데이터로 인식하고, 문자의 경우 명령어로 인식하여 오류 발생.
-- json으로 파싱하여 해결.
-
-</div>
-</details>
-
-<details>
 <summary>GitHub File 복제시 서버 오류 문제</summary>
 <div markdown="1">
   
@@ -115,6 +105,28 @@
 </details>
 
 </br>
+<details>
+<summary>리뷰 추이 차트 생성시 시간을 숫자로 인식하는 오류</summary>
+<div markdown="1">
+  
+  - 데이터베이스에서 가져온 String으로 되어있는 yyyy-mm 형식의 날짜를 request 객체에 담아 세션에 담는 경우
+  - java script에서 사용을 할 때 문자열이 아닌 숫자로 인식을 하여 yyyy-mm의 형식이 아닌
+  - yyyy숫자 빼기 mm의 형태로 인식을 하여 yyyy-mm의 날짜가 아닌 4자리 수의 숫자 형태로 나타남.
+  - 이를 해결하기 위해 보내는 형식을 배열에 담는 것이 아닌 json형태로 키값에 따른 문자열로 받아오게 변경하는 형식으로 해결.
+  
+</div>
+</details>
+</br>
+<details>
+<summary> 개발 히스토리의 부재로 인한 생산성 저하</summary>
+<div markdown="1">
+  - 개발 중간중간 히스토리를 남기지 않고 진행을 하다가 오류가 생긴경우 히스토리가 없었기 때문에
+  - 모든 코드를 뜯어보며 오류가 생성된 원인을 찾기위해 너무 많은 시간을 소요하여 개발일정을 맞추지 못하는 경우가 생김.
+  - 특정 부분의 개발을 하였을 경우 작업 중간중간 히스토리를 남기는 작업을 진행
+  - 히스토리를 남긴 이후로 생산성이 증가
+
+</div>
+</details>
 
 ## 6. 회고 / 느낀점
 >
