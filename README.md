@@ -94,7 +94,10 @@
 
 </br>
 
-## 5. 트러블 슈팅
+## 5. 프로젝트 시연
+![실전프로젝트 시연 영상](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/144122046/0808851f-6fb6-4c70-930e-4cbd25aff69b)
+
+## 6. 트러블 슈팅
 <details>
 <summary>GitHub File 복제시 서버 오류 문제</summary>
 <div markdown="1">
