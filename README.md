@@ -70,8 +70,33 @@
 
 ### 6.1. 식품 트렌드
 
+![trend page](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/144122046/cdc8154e-291a-4a37-9904-f375a142e829)
+- 식품 인기검색어 TOP10과 인기검색어 관한 연관검색어 검색량 표시
+  - 일간 인기검색어를 네이버 데이터랩 API에서 가져오고 그에 관련된 연관검색어 검색량을 데이터 베이스에 저장
+  - 데이터 베이스에서 가져온 연관검색어 검색량을 ChartJS로 가시화
+- Openweathermap API를 활용하여 전국 일기예보 구현(익일 0시 기준)
 
+### 6.2. 리뷰 분석
 
+<img src="https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/144122046/4c39e419-eb2c-46e1-8b08-00c0648414a6" width="450px"></img>
+<img src="https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/144122046/48697310-9687-4d12-9301-40aab320e4cc" width="450px" height="231.7px"></img>
+- 원하는 품목에 관한 리뷰데이터 분석결과를 차트로 가시화
+- 자사몰/네이버/쿠팡 총 3개 채녈의 리뷰 분석 결과 비교 가능
+  - ko-electra fine tuning을 활용하여 리뷰 데이터의 감정(긍정/부정) 분석을 진행
+  - 긍정/부정 리뷰의 비율을 도넛 차트로 가시화
+  - 월별 리뷰 갯수 추이를 통한 판매량 변화 분석
+  - 긍정/부정 별 빈도수가 높은 키워드를 워드 클라우드와 막대 그래프로 시각화
+  - 막대 그래프의 각 막대 클릭 시 해당 키워드가 포함된 전체 리뷰의 내용을 최대 3개 표시
+    ![detail reviews](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/144122046/2178f7d4-b90e-4d2f-829e-3f9a00938ab9)
+
+### 6.3. 뉴스
+
+![news page](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/144122046/099d99ec-c320-45e5-b9d5-7a12cab483d2)
+- 구글 API를 활용하여 일간 검색어 TOP10 표시
+- 각 검색어 클릭 시 우측 화면에 해당 검색어 관련 뉴스 타이틀 TOP10을 표시
+- 각 뉴스 타이틀 클릭 시 해당 기사로 이동
+
+<!--  
 ### 6.2. 사용자 요청
 
 - **기업의 필요성에 따른 리뷰 데이터 분석결과**
@@ -103,7 +128,7 @@
 
 ### 4.5. DAO
 
-
+-->
 
 </div>
 </details>
