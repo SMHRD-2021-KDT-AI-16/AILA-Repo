@@ -8,6 +8,7 @@
 ## 1. 제작 기간 & 참여 인원
 - 2024년 02월 5일 ~ 2024년 4월 1일
 - 팀 프로젝트
+- 프로젝트 과제: 리뷰 및 고객 분석을 통한 모 식품기업의 신제품 솔루션 서비스
 - 참여 인원
 
 | 이름 | 역할 |
@@ -52,7 +53,13 @@
 ## 3. ERD 설계
 ![image](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/bb46083e-1394-4c18-b856-33a8167c75c2)
 
-## 4. 핵심 기능
+## 4. 서비스 흐름도
+![aila 서비스 흐름도](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/144122046/a1921da8-3c7f-4987-b392-40ed7c187d3d)
+
+## 5. 시스템 아키텍처
+![image](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/eadf7276-ea1a-44af-bd79-fc1b00dda354)
+
+## 6. 핵심 기능
 - 기업 맞춤 리뷰 데이터 분석 정보 제공
 - 식품 분야 인기 검색어 정보를 통한 트렌드 확인
 
@@ -61,12 +68,11 @@
 <summary><b>핵심 기능 설명 펼치기</b></summary>
 <div markdown="1">
 
-### 4.1. 전체 흐름
-
-![image](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/eadf7276-ea1a-44af-bd79-fc1b00dda354)
+### 6.1. 식품 트렌드
 
 
-### 4.2. 사용자 요청
+
+### 6.2. 사용자 요청
 
 - **기업의 필요성에 따른 리뷰 데이터 분석결과**
   - 기업이 원하는 품목에 관한 리뷰데이터 분석결과를 차트로 가시화<br>
@@ -82,7 +88,7 @@
   - 일간 검색어 TOP10 클릭시 해당 검색어 관련 뉴스 타이틀 TOP10을 가시화
   - 뉴스 타이틀 클릭시 해당 뉴스 페이지로 이동<br>
    <img src="https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/cd9b783f-1ecf-46f5-ab7b-2f30030e056f" width="450px" height="300px" title="px(픽셀) 크기 설정"></img>
-### 4.3. Controller
+### 6.3. Controller
 
 - **요청 처리**
   - 화면에서 요청된 데이터 값을 Service로 전달해줍니다.
@@ -104,10 +110,10 @@
 
 </br>
 
-## 5. 프로젝트 시연
+## 7. 프로젝트 시연
 ![실전프로젝트 시연 영상](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/144122046/0808851f-6fb6-4c70-930e-4cbd25aff69b)
 
-## 6. 트러블 슈팅
+## 8. 트러블 슈팅
 <details>
 <summary>GitHub File 복제시 서버 오류 문제</summary>
 <div markdown="1">
