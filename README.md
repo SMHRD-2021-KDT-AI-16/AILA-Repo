@@ -54,7 +54,7 @@
 ![image](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/bb46083e-1394-4c18-b856-33a8167c75c2)
 
 ## 4. 서비스 흐름도
-![aila 서비스 흐름도](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/144122046/a1921da8-3c7f-4987-b392-40ed7c187d3d)
+![aila 서비스 흐름도](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/144122046/0484eb6c-3681-4628-8512-50e72e8892e7)
 
 ## 5. 시스템 아키텍처
 ![image](https://github.com/SMHRD-2021-KDT-AI-16/AILA-Repo/assets/152379672/eadf7276-ea1a-44af-bd79-fc1b00dda354)
